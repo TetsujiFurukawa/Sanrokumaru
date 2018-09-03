@@ -1,0 +1,24 @@
+■Angularのドキュメント
+https://angular.io/guide/quickstart
+
+npm install -g @angular/cli
+
+https://github.com/ng-bootstrap/ng-bootstrap
+
+
+npm install --save bootstrap@4.0.0 jquery@1.9.1 popper.js@^1.12.3
+npm install --save @ng-bootstrap/ng-bootstrap
+
+
+
+■Angular6でBootstrap4を使ってみる
+https://dev.classmethod.jp/client-side/angular6-bootstrap4/
+
+npm install -g @angular/cli
+
+ng new angular6-bootstrap4
+cd angular6-bootstrap4
+ng version
+
+npm install --save bootstrap
+npm install --save jquery popper.js
