@@ -16,9 +16,12 @@ https://dev.classmethod.jp/client-side/angular6-bootstrap4/
 
 npm install -g @angular/cli
 
-ng new angular6-bootstrap4
-cd angular6-bootstrap4
+ng new sanrokumaru
+cd sanrokumaru
 ng version
 
 npm install --save bootstrap
 npm install --save jquery popper.js
+
+Å°Tutorial: Styling Angular CLI v6 apps with Bootstrap
+https://medium.com/@beeman/tutorial-styling-angular-cli-v6-apps-with-bootstrap-8d4f8ea5adae
