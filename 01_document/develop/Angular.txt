@@ -11,8 +11,7 @@ npm install --save @ng-bootstrap/ng-bootstrap
 
 
 
-■Angular6でBootstrap4を使ってみる
-https://dev.classmethod.jp/client-side/angular6-bootstrap4/
+■Angular6でBootstrap3を使う
 
 npm install -g @angular/cli
 
@@ -20,8 +19,17 @@ ng new sanrokumaru
 cd sanrokumaru
 ng version
 
-npm install --save bootstrap
-npm install --save jquery popper.js
+npm install ngx-bootstrap --save
 
-■Tutorial: Styling Angular CLI v6 apps with Bootstrap
-https://medium.com/@beeman/tutorial-styling-angular-cli-v6-apps-with-bootstrap-8d4f8ea5adae
+
+①コンポーネントを作る
+ng g component xxx
+
+■コンポーネントの分割
+https://qiita.com/kuniatsu/items/c0731e5cb664227c53a7
+
+■モジュール追加
+ng generate module xxx
+
+ng g component login/login
+
