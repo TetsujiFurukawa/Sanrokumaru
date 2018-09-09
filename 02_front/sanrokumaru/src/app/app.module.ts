@@ -8,6 +8,8 @@ import { FooterComponent } from './common/footer/footer.component';
 import { Screen0001LoginComponent } from './screen00/screen0001-login/screen0001-login.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
   ],
   imports: [
     BrowserModule, TooltipModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
