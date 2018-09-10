@@ -33,3 +33,10 @@ ng generate module xxx
 
 ng g component login/login
 
+
+
+
+
+
+Å°éQçl
+https://dev.classmethod.jp/ria/angular-js/angular-cli-list/

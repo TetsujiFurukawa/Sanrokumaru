@@ -29,16 +29,13 @@
         <table class="table table-hover table-striped table-responsive">
           <thead class="thead-dark">
             <tr>
-              <th class="text-center" width='10%'>お知らせ</th>
+              <th colspan="2" class="text-center" width='100%'>お知らせ</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let payment of payments">
-              <td>{{payment.payDate}}</td>
-              <td>{{payment.name}}</td>
-              <td class="text-right">{{payment.unitPrice | number }}</td>
-              <td class="text-right">{{payment.quantity | number }}</td>
-              <td class="text-right">{{payment.amount | number }}</td>
+            <tr *ngFor="let information of informations">
+              <td>{{information.date}}</td>
+              <td>{{information.information}}</td>
             </tr>
           </tbody>
         </table>
