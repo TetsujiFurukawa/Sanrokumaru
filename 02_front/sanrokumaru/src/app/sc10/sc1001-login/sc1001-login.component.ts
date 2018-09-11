@@ -3,11 +3,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Information } from '../../entity/information';
 
 @Component({
-  selector: 'app-screen0001-login',
-  templateUrl: './screen0001-login.component.html',
-  styleUrls: ['./screen0001-login.component.css']
+  selector: 'app-sc1001-login',
+  templateUrl: './sc1001-login.component.html',
+  styleUrls: ['./sc1001-login.component.css']
 })
-export class Screen0001LoginComponent implements OnInit {
+export class Sc1001LoginComponent implements OnInit {
 
   constructor() { }
 
