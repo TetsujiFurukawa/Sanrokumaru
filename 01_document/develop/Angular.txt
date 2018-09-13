@@ -29,14 +29,21 @@ ng g component xxx
 https://qiita.com/kuniatsu/items/c0731e5cb664227c53a7
 
 ■モジュール追加
-ng generate module xxx
+//ng generate module xxx
 
-ng g component login/login
+ng g component sc10/sc1003-evaluationResultList
 
+■ルーターモジュールを追加
+<router-outlet></router-outlet>
 
+下のコマンドが使えるらしい
+ng generate module app-routing --flat --module=app
 
 
 
 
 ■参考
 https://dev.classmethod.jp/ria/angular-js/angular-cli-list/
+
+テストなど
+https://albatrosary.gitbooks.io/start-angular/angular-cli.html
