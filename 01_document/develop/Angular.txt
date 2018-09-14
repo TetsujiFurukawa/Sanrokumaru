@@ -39,7 +39,10 @@ ng g component sc10/sc1003-evaluationResultList
 下のコマンドが使えるらしい
 ng generate module app-routing --flat --module=app
 
+■サービス追加
+ng generate service service/common
 
+http://tech.pjin.jp/blog/2017/11/29/angular-web-14-showhidechange/
 
 
 ■参考
@@ -47,3 +50,6 @@ https://dev.classmethod.jp/ria/angular-js/angular-cli-list/
 
 テストなど
 https://albatrosary.gitbooks.io/start-angular/angular-cli.html
+
+■デバッグ
+https://mosapride.com/index.php/2018/04/12/post-774/
