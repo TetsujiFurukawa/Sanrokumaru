@@ -1,17 +1,17 @@
 <form class="form-horizontal">
   <div class="row" style="height:100%;">
-    <div style="color: whitesmoke; background-color: rgba(146, 208, 80, 0.589);height:100%;" class="col-xs-4 hidden-xs ">
+    <div style="color: whitesmoke; background-color: rgba(146, 208, 80, 0.589); height:100%;" class="col-12 col-sm-4">
       <br>
       <h3>ようこそ</h3>
       <br>
       <h4>Sanrokumaruシステムへ</h4>
       <br>
-      <h4>より良いコミュニケーションを目指して</h4>
+      <h6>より良いコミュニケーションを目指して</h6>
     </div>
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-12 col-sm-8">
       <!-- margin-left -->
       <div class="col-sm-2"></div>
-      <div class="form-group col-sm-8">
+      <div class="form-group col-sm-8 ">
         <label for="loginUserId">ユーザID</label>
         <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId">
         <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
@@ -41,7 +41,7 @@
         </table>
       </div>
       <!-- margin-right -->
-      <div class="col-xs-2"></div>
+      <div class="col-2"></div>
     </div>
   </div>
 </form>

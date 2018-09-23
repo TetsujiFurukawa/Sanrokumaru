@@ -1,17 +1,17 @@
-¡Angular‚ÌƒhƒLƒ…ƒƒ“ƒg
-https://angular.io/guide/quickstart
+//â– Angularã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
+//https://angular.io/guide/quickstart
 
-npm install -g @angular/cli
+//npm install -g @angular/cli
 
-https://github.com/ng-bootstrap/ng-bootstrap
-
-
-npm install --save bootstrap@4.0.0 jquery@1.9.1 popper.js@^1.12.3
-npm install --save @ng-bootstrap/ng-bootstrap
+//https://github.com/ng-bootstrap/ng-bootstrap
 
 
+//npm install --save bootstrap@4.0.0 jquery@1.9.1 popper.js@^1.12.3
+//npm install --save @ng-bootstrap/ng-bootstrap
 
-¡Angular6‚ÅBootstrap3‚ğg‚¤
+
+
+â– Angular6ã§Bootstrap3ã‚’ä½¿ã†
 
 npm install -g @angular/cli
 
@@ -22,34 +22,68 @@ ng version
 npm install ngx-bootstrap --save
 
 
-‡@ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğì‚é
+â‘ ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½œã‚‹
 ng g component xxx
 
-¡ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì•ªŠ„
+â– ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®åˆ†å‰²
 https://qiita.com/kuniatsu/items/c0731e5cb664227c53a7
 
-¡ƒ‚ƒWƒ…[ƒ‹’Ç‰Á
+â– ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«è¿½åŠ 
 //ng generate module xxx
 
 ng g component sc10/sc1003-evaluationResultList
 
-¡ƒ‹[ƒ^[ƒ‚ƒWƒ…[ƒ‹‚ğ’Ç‰Á
+â– ãƒ«ãƒ¼ã‚¿ãƒ¼ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ 
 <router-outlet></router-outlet>
 
-‰º‚ÌƒRƒ}ƒ“ƒh‚ªg‚¦‚é‚ç‚µ‚¢
+ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ãŒä½¿ãˆã‚‹ã‚‰ã—ã„
 ng generate module app-routing --flat --module=app
 
-¡ƒT[ƒrƒX’Ç‰Á
+â– ã‚µãƒ¼ãƒ“ã‚¹è¿½åŠ 
 ng generate service service/common
 
 http://tech.pjin.jp/blog/2017/11/29/angular-web-14-showhidechange/
 
 
-¡Ql
+â– å‚è€ƒ
 https://dev.classmethod.jp/ria/angular-js/angular-cli-list/
 
-ƒeƒXƒg‚È‚Ç
+ãƒ†ã‚¹ãƒˆãªã©
 https://albatrosary.gitbooks.io/start-angular/angular-cli.html
 
-¡ƒfƒoƒbƒO
+â– ãƒ‡ãƒãƒƒã‚°
 https://mosapride.com/index.php/2018/04/12/post-774/
+
+
+â– bootstrap
+https://qiita.com/nirasan/items/72739440d513ba146f37
+
+//â– ngx-bootstrap
+//https://www.npmjs.com/package/ngx-bootstrap
+
+
+
+2018/9/23ã‚„ã‚Šç›´ã—
+â– ngx-bootstrapã¯å‰Šé™¤
+
+npm uninstall ngx-bootstrap --save
+
+â– ng-bootstrapã‚’å…¥ã‚Œã‚‹
+Angular ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã« ng-bootstrap ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
+https://qiita.com/nirasan/items/72739440d513ba146f37
+
+npm install --save @ng-bootstrap/ng-bootstrap
+
+
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              
+â– ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®bootstrap
+https://dev.classmethod.jp/client-side/angular6-bootstrap4/
+
+jqueruã¨ã‹ã‚‚å…¥ã‚Œã‚‹
+npm install --save jquery
+npm install --save jquery popper.js
+
+â– bootstrap3â‡’4
+https://webnetamemo.com/coding/bootstrap4/201710015697
+
