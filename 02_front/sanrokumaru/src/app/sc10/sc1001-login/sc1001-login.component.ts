@@ -29,8 +29,8 @@ export class Sc1001LoginComponent implements OnInit {
   // Informationsの初期化
   private setUpInformations() {
     this.informations = [
-      { date: '2018/8/1', information: '運用停止のお知らせ。' },
-      { date: '2018/2/1', information: '運用開始' },
+      { date: '2018/8/1', information: '運用停止のお知らせ', detail: 'メンテナンスのため月末の0:00～2:00まで運用を停止します。' },
+      { date: '2018/2/1', information: '運用開始', detail: '運用を開始します。' },
     ];
   }
 }

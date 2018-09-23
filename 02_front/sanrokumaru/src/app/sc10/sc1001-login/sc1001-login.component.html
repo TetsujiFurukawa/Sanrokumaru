@@ -1,17 +1,17 @@
-<form class="form-horizontal">
-  <div class="row" style="height:100%;">
-    <div style="color: whitesmoke; background-color: rgba(146, 208, 80, 0.589); height:100%;" class="col-12 col-sm-4">
-      <br>
-      <h3>ようこそ</h3>
-      <br>
-      <h4>Sanrokumaruシステムへ</h4>
-      <br>
-      <h6>より良いコミュニケーションを目指して</h6>
-    </div>
-    <div class="col-12 col-sm-8">
+<div class="row" style="height:100%;">
+  <div style="color: whitesmoke; background-color: rgba(146, 208, 80, 0.589); height:100%;" class="col-12 col-sm-4">
+    <br>
+    <h3>ようこそ</h3>
+    <br>
+    <h4>Sanrokumaruシステムへ</h4>
+    <br>
+    <h6>より良いコミュニケーションを目指して</h6>
+  </div>
+  <div class="col-12 col-sm-8">
+    <form class="form-horizontal">
       <!-- margin-left -->
-      <div class="col-sm-2"></div>
-      <div class="form-group col-sm-8 ">
+      <div class="col-sm-1"></div>
+      <div class="form-group col-sm-10">
         <label for="loginUserId">ユーザID</label>
         <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId">
         <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
@@ -26,22 +26,23 @@
         <br><br>
 
         <!-- information -->
-        <table class="table table-hover table-striped table-responsive">
-          <thead class="thead-dark">
+        <table class="table table-hover table-striped table-bordered table-responsive">
+          <thead>
             <tr>
-              <th colspan="2" class="text-center" width='100%'>お知らせ</th>
+              <th colspan="3" class="text-center" style="background-color:rgba(146, 208, 80, 0.589)">お知らせ</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let information of informations">
               <td>{{information.date}}</td>
               <td>{{information.information}}</td>
+              <td>{{information.detail}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <!-- margin-right -->
-      <div class="col-2"></div>
-    </div>
+      <div class="col-sm-1"></div>
+    </form>
   </div>
-</form>
+</div>
