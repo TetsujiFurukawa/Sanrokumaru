@@ -1,76 +1,117 @@
-<div class="row">
-  <div class="col-sm-6">
-    <label>姓</label>
-    <input name="firstname" class="firstname form-control" required="" type="text">
-  </div>
-  <div class="col-sm-6">
-    <label>名前</label>
-    <input name="lastname" class="lastname form-control" required="" type="text">
-  </div>
-
-  <div class="col-12">
-    <h6>評価結果一覧</h6>
-    <br>
-  </div>
-  <div class="col-12" style="text-align: left;">
-    <form #templateVariableName="ngForm" (ngSubmit)="functionName" class="form-inline">
-
-      <!-- 評価期間 -->
-      <div class="col-12">
-        <label for="loginUserId" style="text-align: left;justify-content: left;">評価期間 &nbsp;</label>
-      </div>
-      <div class=" col-12 col-sm-4">
-        <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-          [(ngModel)]="searchEvaluationMonthFrom">
-      </div>
-      <div class="col-12 col-sm-2">
-        <label for="loginUserId">&nbsp; ～ &nbsp;</label>
-      </div>
-      <div class="col-12 col-sm-4">
-        <input class="form-group" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" [(ngModel)]="loginUserId"
-          size="30em">
-      </div>
-
-      <div class="col-12 col-sm-12">
-        <!-- 社員番号・ランク -->
-        <label for="loginUserId">社員番号 &nbsp;</label>
-        <input class="form-group" id="searchEmployeeCode" name="searchEvaluationMonthFrom" type="text" [(ngModel)]="searchEvaluationMonthFrom">
-        <label for="loginUserId">ランク &nbsp;</label>
-        <input class="form-group" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" [(ngModel)]="loginUserId">
-      </div>
-      <!-- </div> -->
-
-    </form>
-  </div>
+<!-- タイトル -->
+<div class="col-12">
+  <h6>評価結果一覧</h6>
+  <hr>
 </div>
-<!-- <div class="col-12">
-  <form class=”form-inline”>
-  <div class="form-group col-sm-12">
-    <label for="loginUserId">ユーザID</label>
-    <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId">
-    <br>
-    <label for="loginPassword">パスワード</label>
-    <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword">
-    <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span>
-    <br><br>
 
-    <button id="search" class="btn btn-success" style="width:100%" routerLink="/sc1003">ログイン</button>
-    <br><br>
+<div class="search-condition" style="max-width:1000px;">
+  <form #templateVariableName="ngForm" (ngSubmit)="functionName" class="form-horizontal">
+    <!-- 評価期間 -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">評価期間</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
+          placeholder="yyyy/mm/dd" [(ngModel)]="searchEvaluationMonthFrom">
+      </div>
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">～</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" placeholder="yyyy/mm/dd"
+          [(ngModel)]="loginUserId">
+      </div>
+    </div>
+    <!-- 社員番号・ランク -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">社員番号</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
+          placeholder="社員番号" [(ngModel)]="searchEvaluationMonthFrom">
+      </div>
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">ランク</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" placeholder="ランク"
+          [(ngModel)]="loginUserId">
+      </div>
+    </div>
 
-    <table class="table table-hover table-striped table-bordered table-responsive">
-      <thead>
-        <tr>
-          <th colspan="3" class="text-center" style="background-color:rgba(146, 208, 80, 0.589)">お知らせ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let information of informations">
-          <td>{{information.date}}</td>
-          <td>{{information.information}}</td>
-          <td>{{information.detail}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- 部署 -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">部署1</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
+          placeholder="部署1" [(ngModel)]="searchEvaluationMonthFrom">
+      </div>
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">部署2</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" placeholder="部署2"
+          [(ngModel)]="loginUserId">
+      </div>
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">部署3</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" placeholder="部署3"
+          [(ngModel)]="loginUserId">
+      </div>
+    </div>
+    <!-- 姓・名 -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">姓</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
+          placeholder="姓" [(ngModel)]="searchEvaluationMonthFrom">
+      </div>
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">名</label>
+      </div>
+      <div class="form-group col-12 col-sm-3">
+        <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text" placeholder="名"
+          [(ngModel)]="loginUserId">
+      </div>
+    </div>
+    <!-- 評価対象 -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">評価対象</label>
+      </div>
+      <div class="form-group col-12 col-sm-11">
+        <ng-container *ngFor="let item of evaluattionTargetData; index as i">
+          <label>
+            <input type="radio" name="evaluattionTarget" [(ngModel)]="selectedEvaluattionTarget" [value]="item.value"
+              [checked]="selectedEvaluattionTarget == item.value" (change)="show(i)">
+            {{item.label}} &nbsp;
+          </label>
+        </ng-container>
+      </div>
+    </div>
+    <!-- 退職者 -->
+    <div class="row">
+      <div class="form-group col-12 col-sm-1">
+        <label for="loginUserId">退職者</label>
+      </div>
+      <div class="form-group col-12 col-sm-11">
+        <ng-container *ngFor="let item of retireeData; index as i">
+          <label>
+            <input type="checkbox" name=" retiree{{i}}" [(ngModel)]=" retireeData[i].selected" [value]="item.value"
+              (change)="show()">
+            {{item.label}}
+          </label>
+        </ng-container>
+      </div>
+    </div>
+
   </form>
-</div> -->
+</div>
