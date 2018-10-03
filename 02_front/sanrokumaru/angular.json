@@ -20,16 +20,33 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "jquery.slim.min.js.map",
+                "input": "../node_modules/jquery/dist/",
+                "output": "./"
+              },
+              {
+                "glob": "popper.min.js.map",
+                "input": "../node_modules/popper.js/dist/umd/",
+                "output": "./"
+              },
+              {
+                "glob": "bootstrap.min.js.map",
+                "input": "../node_modules/bootstrap/dist/js/",
+                "output": "./"
+              },
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"
             ]
           },
           "configurations": {
@@ -78,15 +95,32 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css",
               "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"
             ],
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "jquery.slim.min.js.map",
+                "input": "node_modules/jquery/dist/",
+                "output": "./"
+              },
+              {
+                "glob": "popper.min.js.map",
+                "input": "node_modules/popper.js/dist/umd/",
+                "output": "./"
+              },
+              {
+                "glob": "bootstrap.min.js.map",
+                "input": "node_modules/bootstrap/dist/js/",
+                "output": "./"
+              },
               "src/assets"
             ]
           }
