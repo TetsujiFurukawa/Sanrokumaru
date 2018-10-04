@@ -74,16 +74,29 @@ https://qiita.com/nirasan/items/72739440d513ba146f37
 
 npm install --save @ng-bootstrap/ng-bootstrap
 
-
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
               
-■クラスメソッドのbootstrap
+■クラスメソッドのbootstrapを参考にして
 https://dev.classmethod.jp/client-side/angular6-bootstrap4/
 
 jqueruとかも入れる
 npm install --save jquery
 npm install --save jquery popper.js
 
-■bootstrap3⇒4
+■bootstrap3⇒4の時に気を付けること
 https://webnetamemo.com/coding/bootstrap4/201710015697
+
+■デザインの参考
+https://bootsnipp.com/snippets/featured/sign-up-form-validations-not-achieved
+
+■datetimepickerをインストールする
+npm install --save bootstrap-datepicker
+
+■datetimepickerの参考
+https://dev.classmethod.jp/server-side/serverless/angular5-bootstrap-datepicker/
+
+
+■サービスを追加する
+ng generate service service/sc10/sc1003EvaluationResultList
+
+コンポーネントにサービスを追加する
 

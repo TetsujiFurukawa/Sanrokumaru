@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import 'bootstrap-datepicker';
-import { EvaluateResultSumaryList } from '../../entity/evaluateResultSumaryList';
+import { EvaluateResultSumaryList } from '../../entity/dto/evaluateResultSumaryList';
+import { Sc1003EvaluationResultListService } from '../../service/sc10/sc1003-evaluation-result-list.service';
 
-// import * as $ from 'jquery';
+import 'bootstrap-datepicker';
+import * as $ from 'jquery';
 
 import { HeaderService } from '../../service/common/header/header.service';
 
 @Component({
   selector: 'app-sc1003-evaluation-result-list',
   templateUrl: './sc1003-evaluation-result-list.component.html',
-  styleUrls: ['./sc1003-evaluation-result-list.component.css']
+  styleUrls: ['./sc1003-evaluation-result-list.component.css'],
+  providers: [Sc1003EvaluationResultListService]
 })
 export class Sc1003EvaluationResultListComponent implements OnInit {
 
@@ -34,12 +36,12 @@ export class Sc1003EvaluationResultListComponent implements OnInit {
   evaluateResultSumaryList: EvaluateResultSumaryList[];
 
 
-  constructor() {
+  constructor(private sc1003EvaluationResultListService: Sc1003EvaluationResultListService) {
   }
 
   ngOnInit() {
     this.setUpDatePicker();
-    this.setUpEvaluateResultSumaryLisｐ();
+    this.evaluateResultSumaryList = this.sc1003EvaluationResultListService.getEvaluationResultListSummary();
   }
 
 
@@ -48,54 +50,5 @@ export class Sc1003EvaluationResultListComponent implements OnInit {
       locale: 'ja',
       format: 'yyyy-mm-dd'
     });
-  }
-
-  // Informationsの初期化
-  private setUpEvaluateResultSumaryLisｐ() {
-    this.evaluateResultSumaryList = [
-      {
-        employeeCode: '12345',
-        employeeName: 'テスト　太郎',
-        employeeDepartment: 'XX営業部',
-        Rank: '10',
-        mailaddress: 'aaa@yahoo.co.jp',
-        totalScore: 720,
-        Score01: 60,
-        Score02: 60,
-        Score03: 60,
-        Score04: 60,
-        Score05: 60,
-        Score06: 60,
-        Score07: 60,
-        Score08: 60,
-        Score09: 60,
-        Score10: 60,
-        Score11: 60,
-        Score12: 60
-      },
-      {
-        employeeCode: '12345',
-        employeeName: 'テスト　次郎',
-        employeeDepartment: 'XX営業部',
-        Rank: '10',
-        mailaddress: 'aaa@yahoo.co.jp',
-        totalScore: 720,
-        Score01: 60,
-        Score02: 60,
-        Score03: 60,
-        Score04: 60,
-        Score05: 60,
-        Score06: 60,
-        Score07: 60,
-        Score08: 60,
-        Score09: 60,
-        Score10: 60,
-        Score11: 60,
-        Score12: 60
-      }
-    ];
-
-
-
   }
 }

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
-import { BodyComponent } from './common/body/body.component';
 import { FooterComponent } from './common/footer/footer.component';
 
 import { Sc1001LoginComponent } from './sc10/sc1001-login/sc1001-login.component';
@@ -16,7 +15,6 @@ import { Sc1003EvaluationResultListComponent } from './sc10/sc1003-evaluation-re
   declarations: [
     AppComponent,
     HeaderComponent,
-    BodyComponent,
     FooterComponent,
     Sc1001LoginComponent,
     Sc1003EvaluationResultListComponent
