@@ -4,7 +4,7 @@ import { EvaluateResultSumaryList } from '../../entity/dto/evaluateResultSumaryL
 @Injectable({
   providedIn: 'root'
 })
-export class Sc1003EvaluationResultListService {
+export class Sc1003EvaluationResultService {
 
   constructor() { }
 
