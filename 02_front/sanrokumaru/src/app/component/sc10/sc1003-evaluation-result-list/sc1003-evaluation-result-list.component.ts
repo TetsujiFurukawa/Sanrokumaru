@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EvaluateResultSumaryList } from '../../entity/dto/evaluateResultSumaryList';
-import { Sc1003EvaluationResultListService } from '../../service/sc10/sc1003-evaluation-result-list.service';
+import { EvaluateResultSumaryList } from '../../../entity/dto/evaluateResultSumaryList';
+import { Sc1003EvaluationResultListService } from '../../../service/sc10/sc1003-evaluation-result-list.service';
 
 import 'bootstrap-datepicker';
 import * as $ from 'jquery';
 
-import { HeaderService } from '../../service/common/header/header.service';
+import { HeaderService } from '../../../service/common/header/header.service';
 
 @Component({
   selector: 'app-sc1003-evaluation-result-list',

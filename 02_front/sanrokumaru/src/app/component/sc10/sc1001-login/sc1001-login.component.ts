@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Information } from '../../entity/domain/information';
-import { HeaderService } from '../../service/common/header/header.service';
+import { Information } from '../../../entity/domain/information';
+import { HeaderService } from '../../../service/common/header/header.service';
 
 @Component({
   selector: 'app-sc1001-login',

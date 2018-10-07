@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { Sc1001LoginComponent } from './sc10/sc1001-login/sc1001-login.component';
-import { Sc1003EvaluationResultListComponent } from './sc10/sc1003-evaluation-result-list/sc1003-evaluation-result-list.component';
+import { Sc1001LoginComponent } from './component/sc10/sc1001-login/sc1001-login.component';
+import { Sc1003EvaluationResultListComponent } from './component/sc10/sc1003-evaluation-result-list/sc1003-evaluation-result-list.component';
 
 @NgModule({
   imports: [
