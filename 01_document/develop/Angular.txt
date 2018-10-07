@@ -100,3 +100,8 @@ ng generate service service/sc10/sc1003EvaluationResultList
 
 コンポーネントにサービスを追加する
 
+■セッションなどのストレージ
+https://qiita.com/gaaamii/items/93b8da53b22273eadb02
+
+■モックサービス
+http://neos21.hatenablog.com/entry/2018/02/09/080000
