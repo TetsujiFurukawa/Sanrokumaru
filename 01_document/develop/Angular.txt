@@ -78,7 +78,7 @@ npm install --save @ng-bootstrap/ng-bootstrap
 ■クラスメソッドのbootstrapを参考にして
 https://dev.classmethod.jp/client-side/angular6-bootstrap4/
 
-jqueruとかも入れる
+jQueryとかも入れる
 npm install --save jquery
 npm install --save jquery popper.js
 
@@ -105,3 +105,20 @@ https://qiita.com/gaaamii/items/93b8da53b22273eadb02
 
 ■モックサービス
 http://neos21.hatenablog.com/entry/2018/02/09/080000
+
+
+■Angularのupdateについて
+参考：http://blog.yuhiisk.com/archive/2018/05/04/update-angular-to-v6.html
+下のメッセージが出た。
+Your global Angular CLI version (6.2.4) is greater than your local
+version (6.1.5). The local Angular CLI version is used.
+
+To disable this warning use "ng config -g cli.warnings.versionMismatch false".
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+ローカルのcliを更新する
+npm install @angular/cli@latest
+ng update @angular/cli
+
+ng update @angular/core
+
