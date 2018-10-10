@@ -125,7 +125,7 @@ https://mosapride.com/index.php/2018/04/12/post-774/
 ■モックサーdddビス
 http://neos21.hatenablog.com/entry/2018/02/09/080000
 
-■モックサーバbbbbbーを作る
+■モックサーバcccccーを作る
 http://neos21.hatenablog.com/entry/2018/07/26/080000
 
 npm install angular-in-memory-web-api --save
