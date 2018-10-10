@@ -122,7 +122,7 @@ ng update @angular/core
 ■デバッグ成功
 https://mosapride.com/index.php/2018/04/12/post-774/
 
-■モックサーdddビス
+■モックサービス
 http://neos21.hatenablog.com/entry/2018/02/09/080000
 
 ■モックサーバcccccーを作る
