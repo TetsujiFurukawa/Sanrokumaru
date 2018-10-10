@@ -103,9 +103,6 @@ ng generate service service/sc10/sc1003EvaluationResultList
 ■セッションなどのストレージ
 https://qiita.com/gaaamii/items/93b8da53b22273eadb02
 
-■モックサービス
-http://neos21.hatenablog.com/entry/2018/02/09/080000
-
 
 ■Angularのupdateについて
 参考：http://blog.yuhiisk.com/archive/2018/05/04/update-angular-to-v6.html
@@ -121,4 +118,15 @@ npm install @angular/cli@latest
 ng update @angular/cli
 
 ng update @angular/core
+
+■デバッグ成功
+https://mosapride.com/index.php/2018/04/12/post-774/
+
+■モックサービス
+http://neos21.hatenablog.com/entry/2018/02/09/080000
+
+■モックサーバーを作る
+http://neos21.hatenablog.com/entry/2018/07/26/080000
+
+npm install angular-in-memory-web-api --save
 
