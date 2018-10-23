@@ -1,65 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
 /* Master Styles */
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
-body {
-  margin: 2em;
-}
-body, input[text], button {
-  color: #888;
-  font-family: Cambria, Georgia;
-}
-a {
-  cursor: pointer;
-  cursor: hand;
-}
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
-}
+@charset "UTF-8";
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
+/* ----- common ----- */
+html{
+  font-size: 12px;
 }
 
 /* everywhere else */
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Meiryo,Arial,Helvetica, sans-serif;
+  font-size: 1.0rem;
 }
+
+/* no padding class */
+.wrapper{
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* search result table */
+.searchResult{
+  box-shadow: 2px 2px 10px 1px #e3e3e3;
+}
+.searchResult > thead > tr > th{
+  background-color:rgba(146, 208, 80, 0.589);
+}
+
+/* head */
+.head{
+  background-color:green;
+}
+
+/* main contains all screen parts */
+.main{
+  padding: 4rem 2rem 1rem 2rem;
+}
+
+/* searchCondition */
+.searchCondition{
+  padding: 1rem 1rem 0rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;	
+  box-shadow: 2px 2px 10px 1px #e3e3e3;
+}
+
+/* ----- login ----- */
+
+/* welcome(login) */
+.welcome{
+  line-height: 3rem;
+  color: whitesmoke; 
+  background-color: rgba(146, 208, 80, 0.589); 
+  box-shadow: 2px 2px 10px 1px #e3e3e3;
+  height:100vh;
+}
+
+/* login */
+.login{
+  margin-top: 15rem;
+  padding: 20px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;	
+  box-shadow: 2px 2px 10px 1px #e3e3e3;
+}
+.login > button{
+  width: 100%;
+}
+
+
+/* Form */
+.form-group > label {
+  padding-top: 8px;
+  padding-right: 0px;
+  text-align: right;
+}
+

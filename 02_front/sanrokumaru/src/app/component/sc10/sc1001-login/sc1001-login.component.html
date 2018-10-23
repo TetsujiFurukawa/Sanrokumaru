@@ -1,48 +1,50 @@
-<div class="row" style="height:100%;">
-  <div style="color: whitesmoke; background-color: rgba(146, 208, 80, 0.589); height:100vh;" class="col-12 col-sm-4">
+<div class="row">
+  <!-- left Part -->
+  <div class="col-12 col-sm-4 welcome">
+    <h1>ようこそ</h1>
     <br>
-    <h3>ようこそ</h3>
+    <h1>Sanrokumaruシステムへ</h1>
     <br>
-    <h4>Sanrokumaruシステムへ</h4>
-    <br>
-    <h6>より良いコミュニケーションを目指して</h6>
+    <h4>より良いコミュニケーションを目指して</h4>
   </div>
+
+  <!-- right part -->
   <div class="col-12 col-sm-8">
-    <form class="form-horizontal">
-      <!-- margin-left -->
-      <div class="col-sm-1"></div>
-      <div class="form-group col-sm-10">
-        <label for="loginUserId">ユーザID</label>
-        <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId">
-        <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
-        <br>
-        <label for="loginPassword">パスワード</label>
-        <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword">
-        <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
-        <br><br>
-
-        <!-- button -->
-        <button id="search" class="btn btn-success" style="width:100%" routerLink="/sc1003">ログイン</button>
-        <br><br>
-
+    <div class="container-fluid">
+      <form>
+        <!-- login -->
+        <div class="row">
+          <div class="col-sm-4 offset-sm-4 login">
+            <label for="loginUserId">ユーザID</label>
+            <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId" placeholder="ユーザID">
+            <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
+            <br>
+            <label for="loginPassword">パスワード</label>
+            <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword" placeholder="パスワード">
+            <br>
+            <button id="search" class="btn btn-success mt-3" routerLink="/sc1003">ログイン</button>
+          </div>
+        </div>
         <!-- information -->
-        <table class="table table-hover table-striped table-responsive">
-          <thead>
-            <tr>
-              <th colspan="3" class="text-center" style="background-color:rgba(146, 208, 80, 0.589)">お知らせ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let information of informations">
-              <td>{{information.date}}</td>
-              <td>{{information.information}}</td>
-              <td>{{information.detail}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- margin-right -->
-      <div class="col-sm-1"></div>
-    </form>
+        <div class="row">
+          <div class="col-sm-6 offset-sm-3 mt-5">
+            <table class="table table-hover table-striped searchResult">
+              <thead>
+                <tr>
+                  <th colspan="3" class="text-center">お知らせ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let information of informations">
+                  <td>{{information.date}}</td>
+                  <td>{{information.information}}</td>
+                  <td>{{information.detail}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
