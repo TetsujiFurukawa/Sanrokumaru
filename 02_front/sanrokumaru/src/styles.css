@@ -11,6 +11,9 @@ html{
   font-family: Meiryo,Arial,Helvetica, sans-serif;
   font-size: 1.0rem;
 }
+.form-group{
+  margin-bottom: 0.2rem;
+}
 
 /* no padding class */
 .wrapper{
@@ -26,6 +29,8 @@ html{
 }
 .searchResult > thead > tr > th{
   background-color:rgba(146, 208, 80, 0.589);
+  vertical-align: middle;
+  border: 0px;
 }
 
 /* head */
@@ -44,6 +49,20 @@ html{
   border: 1px solid #ccc;
   border-radius: 0.5rem;	
   box-shadow: 2px 2px 10px 1px #e3e3e3;
+}
+
+.searchButtonArea{
+  margin: 1rem 0rem 1rem 0rem;
+  padding: 0rem;
+}
+
+.searchInfoArea{
+  margin-top: 0rem;
+  padding: 0rem;
+}
+.searchResultArea{
+  margin-top: 1rem;
+  padding: 0rem;
 }
 
 /* ----- login ----- */
