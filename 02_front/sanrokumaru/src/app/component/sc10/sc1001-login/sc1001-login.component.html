@@ -16,11 +16,13 @@
         <div class="row">
           <div class="col-sm-4 offset-sm-4 login">
             <label for="loginUserId">ユーザID</label>
-            <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId" placeholder="ユーザID">
+            <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId"
+              placeholder="ユーザID">
             <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
             <br>
             <label for="loginPassword">パスワード</label>
-            <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword" placeholder="パスワード">
+            <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword"
+              placeholder="パスワード">
             <br>
             <button id="search" class="btn btn-success mt-3" routerLink="/sc1003">ログイン</button>
           </div>

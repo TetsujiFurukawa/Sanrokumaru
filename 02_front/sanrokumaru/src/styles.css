@@ -1,12 +1,11 @@
 /* Master Styles */
 @charset "UTF-8";
 
-/* ----- common ----- */
+/* 共通 */
 html{
   font-size: 12px;
 }
 
-/* everywhere else */
 * {
   font-family: Meiryo,Arial,Helvetica, sans-serif;
   font-size: 1.0rem;
@@ -15,7 +14,7 @@ html{
   margin-bottom: 0.2rem;
 }
 
-/* no padding class */
+/* ラップするだけのクラス */
 .wrapper{
   margin-left: 0px;
   margin-right: 0px;
@@ -43,14 +42,28 @@ html{
   padding: 4rem 2rem 1rem 2rem;
 }
 
-/* searchCondition */
-.searchCondition{
+/* Form */
+.form-group > label {
+  padding-top: 8px;
+  padding-right: 0px;
+  text-align: right;
+}
+
+/* タイトルのエリア */
+.titleArea{
+  padding: 0rem;
+  margin: 0rem;
+}
+
+/* 検索条件を入力するエリア */
+.searchConditionArea{
   padding: 1rem 1rem 0rem 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;	
   box-shadow: 2px 2px 10px 1px #e3e3e3;
 }
 
+/* 検索ボタンのエリア */
 .searchButtonArea{
   margin: 1rem 0rem 1rem 0rem;
   padding: 0rem;
@@ -60,12 +73,14 @@ html{
   margin-top: 0rem;
   padding: 0rem;
 }
+
+/* 検索結果のエリア */
 .searchResultArea{
   margin-top: 1rem;
   padding: 0rem;
 }
 
-/* ----- login ----- */
+/* ログインのみの設定 */
 
 /* welcome(login) */
 .welcome{
@@ -90,10 +105,4 @@ html{
 }
 
 
-/* Form */
-.form-group > label {
-  padding-top: 8px;
-  padding-right: 0px;
-  text-align: right;
-}
 

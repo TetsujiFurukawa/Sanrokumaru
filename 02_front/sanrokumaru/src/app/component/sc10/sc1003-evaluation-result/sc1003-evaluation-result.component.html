@@ -7,13 +7,15 @@
       <div class="main">
         <!-- screen title -->
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <h6>評価結果一覧</h6>
-            </div>
+
+          <!-- タイトル欄 -->
+          <div class="row titleArea">
+            <h6>評価結果一覧</h6>
           </div>
+
           <!-- 検索条件欄 -->
-          <div class="row searchCondition">
+          <div class="row searchConditionArea">
+            <!-- -------------------- 1段目 -------------------- -->
             <!-- 評価期間 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">評価期間</label>
@@ -33,6 +35,8 @@
             </div>
             <div class="form-group col-12 col-sm-3">
             </div>
+
+            <!-- -------------------- 2段目 -------------------- -->
             <!-- 社員番号・ランク -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">社員番号</label>
@@ -52,6 +56,8 @@
             </div>
             <div class="form-group col-12 col-sm-3">
             </div>
+
+            <!-- -------------------- 3段目 -------------------- -->
             <!-- 部署 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">部署1</label>
@@ -75,6 +81,7 @@
                 placeholder="部署3" [(ngModel)]="loginUserId">
             </div>
 
+            <!-- -------------------- 4段目 -------------------- -->
             <!-- 姓・名 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">姓</label>
@@ -95,6 +102,7 @@
             <div class="form-group col-12 col-sm-3">
             </div>
 
+            <!-- -------------------- 5段目 -------------------- -->
             <!-- 評価対象 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">評価対象</label>
@@ -108,6 +116,8 @@
                 </label>
               </ng-container>
             </div>
+
+            <!-- -------------------- 6段目 -------------------- -->
             <!-- 退職者 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">退職者</label>
@@ -124,8 +134,8 @@
           </div>
 
           <!-- ボタンのエリア -->
-          <div class="row searchButtonArea col-12">
-            <div class="form-group col-12 offset-sm-1 col-sm-3">
+          <div class="row searchButtonArea">
+            <div class="form-group col-12 offset-sm-6 col-sm-3">
               <button type="submit" id="btnClear" class="form-control btn btn-success">クリア</button>
             </div>
             <div class="form-group col-12 col-sm-3">
@@ -133,7 +143,7 @@
             </div>
           </div>
 
-          <!-- 検索結果エリア -->
+          <!-- 検索情報エリア -->
           <div class="row col-12">
             <div class="form-group searchInfoArea col-12 col-sm-4">
               <label>検索結果：1 ~ 50件（999件）</label>
@@ -150,23 +160,23 @@
               </div>
 
             </div>
-            <div class="form-group col-12 col-sm-4">
+            <div class="form-group col-12 offset-sm-1 col-sm-4">
               <nav aria-label="ページ送り">
                 <ul class="pagination">
-                  <li class="page-item"><a class="page-item" href="#">前へ</a></li>
-                  <li class="page-item"><a class="page-item" href="#">1</a></li>
-                  <li class="page-item"><a class="page-item" href="#">2</a></li>
-                  <li class="page-item"><a class="page-item" href="#">3</a></li>
-                  <li class="page-item"><a class="page-item" href="#">次へ</a></li>
+                  <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">次へ</a></li>
                 </ul>
               </nav>
             </div>
           </div>
 
-          <!-- information -->
+          <!--検索結果エリア -->
           <div class="row">
             <div class="form-group searchResultArea col-12">
-              <table class="table table-hover table-striped searchResult">
+              <table class="table table-hover table-striped table-responsive-xl searchResult">
                 <thead>
                   <tr>
                     <th rowspan="2" class="text-center">社員番号</th>
@@ -218,7 +228,8 @@
               </table>
             </div>
           </div>
-          <!-- 検索結果エリア -->
+
+          <!-- 検索情報エリア -->
           <div class="row wrapper col-12">
             <div class="form-group searchInfoArea col-12 col-sm-4">
               <label>検索結果：1 ~ 50件（999件）</label>
@@ -233,16 +244,15 @@
                   <a class="dropdown-item" href="#">100件</a>
                 </div>
               </div>
-
             </div>
-            <div class="form-group col-12 col-sm-4">
+            <div class="form-group col-12 offset-sm-1 col-sm-4">
               <nav aria-label="ページ送り">
                 <ul class="pagination">
-                  <li class="page-item"><a class="page-item" href="#">前へ</a></li>
-                  <li class="page-item"><a class="page-item" href="#">1</a></li>
-                  <li class="page-item"><a class="page-item" href="#">2</a></li>
-                  <li class="page-item"><a class="page-item" href="#">3</a></li>
-                  <li class="page-item"><a class="page-item" href="#">次へ</a></li>
+                  <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">次へ</a></li>
                 </ul>
               </nav>
             </div>
