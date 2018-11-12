@@ -15,100 +15,86 @@
 
           <!-- 検索条件欄 -->
           <div class="row searchConditionArea">
+
             <!-- -------------------- 1段目 -------------------- -->
-            <!-- 評価期間 -->
+            <!-- 開始月 -->
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">評価期間</label>
+              <label for="searchEvaluationMonthFrom">
+                開始月<span class="required">*</span>
+              </label>
             </div>
             <div id="datepicker" class="form-group col-12 col-sm-3">
               <input class="form-control date" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-                placeholder="yyyy-mm-dd" [(ngModel)]="searchEvaluationMonthFrom">
+                placeholder="yyyy-mm" [(ngModel)]="searchEvaluationMonthFrom">
             </div>
+            <!-- 従業員コード・ランク -->
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">～</label>
-            </div>
-            <div id="datepicker" class="form-group col-12 col-sm-3">
-              <input class="form-control date" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text"
-                placeholder="yyyy-mm-dd" [(ngModel)]="loginUserId">
-            </div>
-            <div class="form-group col-12 col-sm-1">
+              <label for="employeeCode">従業員コード</label>
             </div>
             <div class="form-group col-12 col-sm-3">
+              <input class="form-control form-control" id="employeeCode" name="employeeCode" type="text" placeholder="従業員コード"
+                [(ngModel)]="employeeCode">
+            </div>
+            <div class="form-group col-12 col-sm-1">
+              <label for="employeeRank">ランク</label>
+            </div>
+            <div class="form-group col-12 col-sm-3">
+              <input class="form-control" id="employeeRank" name="employeeRank" type="text" placeholder="ランク"
+                [(ngModel)]="employeeRank">
             </div>
 
             <!-- -------------------- 2段目 -------------------- -->
-            <!-- 社員番号・ランク -->
+            <!-- 部署 -->
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">社員番号</label>
+              <label for="employeeDepartment1">部署1</label>
             </div>
             <div class="form-group col-12 col-sm-3">
-              <input class="form-control form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom"
-                type="text" placeholder="社員番号" [(ngModel)]="aa">
+              <input class="form-control" id="employeeDepartment1" name="employeeDepartment1" type="text" placeholder="部署1"
+                [(ngModel)]="employeeDepartment1">
             </div>
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">ランク</label>
+              <label for="employeeDepartment2">部署2</label>
             </div>
             <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text"
-                placeholder="ランク" [(ngModel)]="loginUserId">
+              <input class="form-control" id="employeeDepartment2" name="employeeDepartment2" type="text" placeholder="部署2"
+                [(ngModel)]="employeeDepartment2">
             </div>
             <div class="form-group col-12 col-sm-1">
+              <label for="employeeDepartment3">部署3</label>
             </div>
             <div class="form-group col-12 col-sm-3">
+              <input class="form-control" id="employeeDepartment3" name="employeeDepartment3" type="text" placeholder="部署3"
+                [(ngModel)]="employeeDepartment3">
             </div>
 
             <!-- -------------------- 3段目 -------------------- -->
-            <!-- 部署 -->
+            <!-- 姓・名 -->
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">部署1</label>
+              <label for="employeeLastName">姓</label>
             </div>
             <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-                placeholder="部署1" [(ngModel)]="aa">
+              <input class="form-control" id="employeeLastName" name="employeeLastName" type="text" placeholder="姓"
+                [(ngModel)]="employeeLastName">
             </div>
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">部署2</label>
+              <label for="employeeFirstName">名</label>
             </div>
             <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text"
-                placeholder="部署2" [(ngModel)]="loginUserId">
+              <input class="form-control" id="employeeFirstName" name="employeeFirstName" type="text" placeholder="名"
+                [(ngModel)]="employeeFirstName">
             </div>
             <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">部署3</label>
             </div>
             <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text"
-                placeholder="部署3" [(ngModel)]="loginUserId">
             </div>
 
             <!-- -------------------- 4段目 -------------------- -->
-            <!-- 姓・名 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">姓</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-                placeholder="姓" [(ngModel)]="aa">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">名</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="searchEvaluationMonthTo" name="searchEvaluationMonthTo" type="text"
-                placeholder="名" [(ngModel)]="loginUserId">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-            </div>
-            <div class="form-group col-12 col-sm-3">
-            </div>
-
-            <!-- -------------------- 5段目 -------------------- -->
             <!-- 評価対象 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">評価対象</label>
             </div>
             <div class="form-group col-12 col-sm-11">
-              <ng-container *ngFor="let item of evaluattionTargetData; index as i">
+              <ng-container *ngFor="let item of evaluattionTargetOption; index as i">
                 <label>
                   <input type="radio" name="evaluattionTarget" [(ngModel)]="selectedEvaluattionTarget" [value]="item.value"
                     [checked]="selectedEvaluattionTarget == item.value" (change)="show(i)">
@@ -117,15 +103,15 @@
               </ng-container>
             </div>
 
-            <!-- -------------------- 6段目 -------------------- -->
+            <!-- -------------------- 5段目 -------------------- -->
             <!-- 退職者 -->
             <div class="form-group col-12 col-sm-1">
               <label for="loginUserId">退職者</label>
             </div>
             <div class="form-group col-12 col-sm-11">
-              <ng-container *ngFor="let item of retireeData; index as i">
+              <ng-container *ngFor="let item of retireeOption; index as i">
                 <label>
-                  <input type="checkbox" name=" retiree{{i}}" [(ngModel)]=" retireeData[i].selected" [value]="item.value"
+                  <input type="checkbox" name=" retiree{{i}}" [(ngModel)]=" retireeOption[i].selected" [value]="item.value"
                     (change)="show()">
                   {{item.label}}
                 </label>
@@ -148,59 +134,57 @@
 
           <!--検索結果エリア -->
           <div class="row searchResultArea">
-            <div class="form-group col-12">
 
-              <table class="table table-hover table-striped table-responsive-xl searchResult">
-                <thead>
-                  <tr>
-                    <th rowspan="2" class="text-center">社員番号</th>
-                    <th rowspan="2" class="text-center">氏名</th>
-                    <th rowspan="2" class="text-center">部署</th>
-                    <th rowspan="2" class="text-center">ランク</th>
-                    <th rowspan="2" class="text-center">メールアドレス</th>
-                    <th colspan="13" class="text-center">総合点</th>
-                  </tr>
-                  <tr>
-                    <th class="text-center">総合</th>
-                    <th class="text-center">4月</th>
-                    <th class="text-center">5月</th>
-                    <th class="text-center">6月</th>
-                    <th class="text-center">7月</th>
-                    <th class="text-center">8月</th>
-                    <th class="text-center">9月</th>
-                    <th class="text-center">10月</th>
-                    <th class="text-center">11月</th>
-                    <th class="text-center">12月</th>
-                    <th class="text-center">1月</th>
-                    <th class="text-center">2月</th>
-                    <th class="text-center">3月</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let evaluateResultSumary of evaluateResultSumaryList">
-                    <td>{{evaluateResultSumary.employeeCode}}</td>
-                    <td>{{evaluateResultSumary.employeeName}}</td>
-                    <td>{{evaluateResultSumary.employeeDepartment}}</td>
-                    <td class="text-center">{{evaluateResultSumary.Rank}}</td>
-                    <td>{{evaluateResultSumary.mailaddress}}</td>
-                    <td class="text-right">{{evaluateResultSumary.totalScore}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score01}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score02}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score03}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score04}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score05}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score06}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score07}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score08}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score09}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score10}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score11}}</td>
-                    <td class="text-right">{{evaluateResultSumary.Score12}}</td>
-                  </tr>
-                </tbody>
-              </table>
+            <table class="table table-hover table-striped table-responsive-xl searchResult">
+              <thead>
+                <tr>
+                  <th rowspan="2" class="text-center">社員番号</th>
+                  <th rowspan="2" class="text-center">氏名</th>
+                  <th rowspan="2" class="text-center">部署</th>
+                  <th rowspan="2" class="text-center">ランク</th>
+                  <th rowspan="2" class="text-center">メールアドレス</th>
+                  <th colspan="13" class="text-center">総合点</th>
+                </tr>
+                <tr>
+                  <th class="text-center">総合</th>
+                  <th class="text-center">4月</th>
+                  <th class="text-center">5月</th>
+                  <th class="text-center">6月</th>
+                  <th class="text-center">7月</th>
+                  <th class="text-center">8月</th>
+                  <th class="text-center">9月</th>
+                  <th class="text-center">10月</th>
+                  <th class="text-center">11月</th>
+                  <th class="text-center">12月</th>
+                  <th class="text-center">1月</th>
+                  <th class="text-center">2月</th>
+                  <th class="text-center">3月</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let evaluateResultSumary of evaluateResultSumaryList">
+                  <td>{{evaluateResultSumary.employeeCode}}</td>
+                  <td>{{evaluateResultSumary.employeeName}}</td>
+                  <td>{{evaluateResultSumary.employeeDepartment}}</td>
+                  <td class="text-center">{{evaluateResultSumary.Rank}}</td>
+                  <td>{{evaluateResultSumary.mailaddress}}</td>
+                  <td class="text-right">{{evaluateResultSumary.totalScore}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score01}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score02}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score03}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score04}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score05}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score06}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score07}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score08}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score09}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score10}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score11}}</td>
+                  <td class="text-right">{{evaluateResultSumary.Score12}}</td>
+                </tr>
+              </tbody>
+            </table>
 
-            </div>
           </div>
 
           <!-- 検索情報エリア -->

@@ -15,26 +15,32 @@ import { HeaderService } from '../../../service/common/header/header.service';
 })
 export class If1003EvaluationResultComponent implements OnInit {
 
+  // 検索条件
   searchEvaluationMonthFrom: string;
-  searchEvaluationMonthTo: string;
+  employeeCode: string;
+  employeeRank: string;
+  employeeDepartment1: string;
+  employeeDepartment2: string;
+  employeeDepartment3: string;
+  employeeLastName: string;
+  employeeFirstName: string;
 
-  // 評価対象者
+  // 評価対象ラジオボタン
   selectedEvaluattionTarget = '0';
-  evaluattionTargetData = [
+  evaluattionTargetOption = [
     { label: '指定なし', value: '0' },
     { label: '評価対象者のみ表示', value: '1' },
     { label: '未評価の評価対象者のみ表示(評価残)', value: '2' }
   ];
 
-  // 退職者
+  // 退職者チェックボックス
   selectedRetiree;
-  retireeData = [
+  retireeOption = [
     { label: '退職者を含む', value: '9', selected: false }
   ];
 
-  // 一覧表示用のエンティティ
+  // 検索結果一覧表示用のエンティティ
   evaluateResultSumaryList: EvaluateResultSumaryList[];
-
 
   constructor(private if1003EvaluationResultService: If1003EvaluationResultService) {
   }
@@ -46,9 +52,12 @@ export class If1003EvaluationResultComponent implements OnInit {
 
 
   private setUpDatePicker() {
+    this.searchEvaluationMonthFrom = '2018-11';
     $('#datepicker .date').datepicker({
-      locale: 'ja',
-      format: 'yyyy-mm-dd'
+      format: 'yyyy-mm',
+      language: 'ja',
+      autoclose: true,
+      minViewMode: 'months'
     });
   }
 }
