@@ -1,0 +1,14 @@
+{
+    "scenarioName": "findUser",
+    "request": {
+        "url": "/user/find",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "body": "Taro",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

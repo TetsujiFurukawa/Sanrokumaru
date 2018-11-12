@@ -140,3 +140,9 @@ https://update.angular.io/
 まずバージョン確認
 ng -v
 
+■WireMock
+https://dev.classmethod.jp/server-side/mock-servers/
+http://wiremock.org/
+http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.19.0/wiremock-standalone-2.19.0.jar
+
+java -jar wiremock-standalone-2.19.0.jar
