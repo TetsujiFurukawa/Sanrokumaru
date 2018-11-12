@@ -12,8 +12,8 @@ import { AppComponent } from './component/common/app/app.component';
 import { HeaderComponent } from './component/common/header/header.component';
 import { FooterComponent } from './component/common/footer/footer.component';
 
-import { Sc1001LoginComponent } from './component/sc10/sc1001-login/sc1001-login.component';
-import { Sc1003EvaluationResultComponent } from './component/sc10/sc1003-evaluation-result/sc1003-evaluation-result.component';
+import { If1001LoginComponent } from './component/if10/if1001-login/if1001-login.component';
+import { If1003EvaluationResultComponent } from './component/if10/if1003-evaluation-result/if1003-evaluation-result.component';
 import { SearchInfoComponent } from './component/common/search-info/search-info.component';
 
 // サービス関連
@@ -23,8 +23,8 @@ import { SearchInfoComponent } from './component/common/search-info/search-info.
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    Sc1001LoginComponent,
-    Sc1003EvaluationResultComponent,
+    If1001LoginComponent,
+    If1003EvaluationResultComponent,
     SearchInfoComponent
   ],
   imports: [

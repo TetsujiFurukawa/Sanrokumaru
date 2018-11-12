@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EvaluateResultSumaryList } from '../../../entity/dto/evaluateResultSumaryList';
-import { Sc1003EvaluationResultService } from '../../../service/sc10/sc1003-evaluation-result.service';
+import { If1003EvaluationResultService } from '../../../service/if10/if1003-evaluation-result.service';
 
 import 'bootstrap-datepicker';
 import * as $ from 'jquery';
@@ -8,12 +8,12 @@ import * as $ from 'jquery';
 import { HeaderService } from '../../../service/common/header/header.service';
 
 @Component({
-  selector: 'app-sc1003-evaluation-result',
-  templateUrl: './sc1003-evaluation-result.component.html',
-  styleUrls: ['./sc1003-evaluation-result.component.css'],
-  providers: [Sc1003EvaluationResultService]
+  selector: 'app-if1003-evaluation-result',
+  templateUrl: './if1003-evaluation-result.component.html',
+  styleUrls: ['./if1003-evaluation-result.component.css'],
+  providers: [If1003EvaluationResultService]
 })
-export class Sc1003EvaluationResultComponent implements OnInit {
+export class If1003EvaluationResultComponent implements OnInit {
 
   searchEvaluationMonthFrom: string;
   searchEvaluationMonthTo: string;
@@ -36,12 +36,12 @@ export class Sc1003EvaluationResultComponent implements OnInit {
   evaluateResultSumaryList: EvaluateResultSumaryList[];
 
 
-  constructor(private sc1003EvaluationResultService: Sc1003EvaluationResultService) {
+  constructor(private if1003EvaluationResultService: If1003EvaluationResultService) {
   }
 
   ngOnInit() {
     this.setUpDatePicker();
-    this.evaluateResultSumaryList = this.sc1003EvaluationResultService.getEvaluationResultListSummary();
+    this.evaluateResultSumaryList = this.if1003EvaluationResultService.getEvaluationResultListSummary();
   }
 
 

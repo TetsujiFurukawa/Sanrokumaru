@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Sc1001LoginComponent } from './sc1001-login.component';
+import { If1001LoginComponent } from './if1001-login.component';
 
-describe('Sc1001LoginComponent', () => {
-  let component: Sc1001LoginComponent;
-  let fixture: ComponentFixture<Sc1001LoginComponent>;
+describe('if1001LoginComponent', () => {
+  let component: If1001LoginComponent;
+  let fixture: ComponentFixture<If1001LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [Sc1001LoginComponent]
+      declarations: [If1001LoginComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Sc1001LoginComponent);
+    fixture = TestBed.createComponent(If1001LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

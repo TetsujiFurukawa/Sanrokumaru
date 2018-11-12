@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Sc1001LoginService } from './sc1001-login.service';
+import { if1001LoginService } from './if1001-login.service';
 
-describe('Sc1001LoginService', () => {
+describe('if1001LoginService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: Sc1001LoginService = TestBed.get(Sc1001LoginService);
+    const service: if1001LoginService = TestBed.get(if1001LoginService);
     expect(service).toBeTruthy();
   });
 });

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Information } from '../../../entity/domain/information';
 
 @Component({
-  selector: 'app-sc1001-login',
-  templateUrl: './sc1001-login.component.html',
-  styleUrls: ['./sc1001-login.component.css']
+  selector: 'app-if1001-login',
+  templateUrl: './if1001-login.component.html',
+  styleUrls: ['./if1001-login.component.css']
 })
-export class Sc1001LoginComponent implements OnInit {
+export class If1001LoginComponent implements OnInit {
 
   constructor() { }
 

@@ -8,7 +8,7 @@ import { AppConst } from '../../app-const';
 @Injectable({
   providedIn: 'root'
 })
-export class Sc1001LoginService {
+export class If1001LoginService {
   // お知らせ
   informations: Information[];
 
