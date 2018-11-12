@@ -130,3 +130,13 @@ http://neos21.hatenablog.com/entry/2018/07/26/080000
 
 npm install angular-in-memory-web-api --save
 
+■コンポーネントを追加
+ng g component component/common/searchInfo
+
+■Angular 6 to 7
+下でAngularのバージョンを確認
+https://update.angular.io/
+
+まずバージョン確認
+ng -v
+

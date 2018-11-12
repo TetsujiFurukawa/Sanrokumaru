@@ -144,38 +144,12 @@
           </div>
 
           <!-- 検索情報エリア -->
-          <div class="row col-12">
-            <div class="form-group searchInfoArea col-12 col-sm-4">
-              <label>検索結果：1 ~ 50件（999件）</label>
-              <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  50件
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">30件</a>
-                  <a class="dropdown-item" href="#">50件</a>
-                  <a class="dropdown-item" href="#">100件</a>
-                </div>
-              </div>
-
-            </div>
-            <div class="form-group col-12 offset-sm-1 col-sm-4">
-              <nav aria-label="ページ送り">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">前へ</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">次へ</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          <app-search-info></app-search-info>
 
           <!--検索結果エリア -->
-          <div class="row">
-            <div class="form-group searchResultArea col-12">
+          <div class="row searchResultArea">
+            <div class="form-group col-12">
+
               <table class="table table-hover table-striped table-responsive-xl searchResult">
                 <thead>
                   <tr>
@@ -222,41 +196,16 @@
                     <td class="text-right">{{evaluateResultSumary.Score10}}</td>
                     <td class="text-right">{{evaluateResultSumary.Score11}}</td>
                     <td class="text-right">{{evaluateResultSumary.Score12}}</td>
-
                   </tr>
                 </tbody>
               </table>
+
             </div>
           </div>
 
           <!-- 検索情報エリア -->
-          <div class="row wrapper col-12">
-            <div class="form-group searchInfoArea col-12 col-sm-4">
-              <label>検索結果：1 ~ 50件（999件）</label>
-              <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  50件
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">30件</a>
-                  <a class="dropdown-item" href="#">50件</a>
-                  <a class="dropdown-item" href="#">100件</a>
-                </div>
-              </div>
-            </div>
-            <div class="form-group col-12 offset-sm-1 col-sm-4">
-              <nav aria-label="ページ送り">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">前へ</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">次へ</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          <app-search-info></app-search-info>
+
         </div>
       </div>
     </form>
