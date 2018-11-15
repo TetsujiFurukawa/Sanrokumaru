@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-12">
-    <form #templateVariableName="ngForm" (ngSubmit)="functionName" class="form-horizontal">
+    <form #evaluationResultForm="ngForm" (ngSubmit)="functionName" class="form-horizontal">
 
       <div class="main">
         <!-- screen title -->
@@ -25,8 +25,10 @@
             </div>
             <div id="datepicker" class="form-group col-12 col-sm-3">
               <input class="form-control date" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-                placeholder="yyyy-mm" [(ngModel)]="searchEvaluationMonthFrom">
+                placeholder="yyyy-mm" [(ngModel)]="searchEvaluationMonthFrom" required #searchEvaluationMonthFromInfo="ngModel" />
+              <span *ngIf="searchEvaluationMonthFromInfo.errors?.required">開始月は必須です。</span>
             </div>
+
             <!-- 従業員コード・ランク -->
             <div class="form-group col-12 col-sm-1">
               <label for="employeeCode">従業員コード</label>
