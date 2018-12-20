@@ -1,12 +1,8 @@
 export class AppConst {
 
   // サーバーのURL
-  static readonly URL_PROD_SERVER = 'http://example.com/';
-  static readonly URL_MOCK_SERVER = 'mock-server/';
-
-  // API呼び出しのパス
-  static readonly PATH_DOMAIN_INFORMATION = 'information';
-
+  static readonly URL_PROD_SERVER = 'http://localhost/sanrokumaru/api/';
+  static readonly URL_STG_SERVER = 'http://localhost/sanrokumaru/api/';
 
 
   // ユーザ権限

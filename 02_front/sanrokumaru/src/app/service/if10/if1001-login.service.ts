@@ -21,8 +21,8 @@ export class If1001LoginService {
   getInformations(): void {
 
     // サーバ URL
-    const serverUrl = environment.production ? 'http://example.com/' : 'mock-server/';
-    const path = AppConst.PATH_DOMAIN_INFORMATION;
+    const serverUrl = environment.production ? AppConst.URL_PROD_SERVER : AppConst.URL_STG_SERVER;
+    const path = AppConst + 'if1001';
 
     // サーバ URL とパスを結合して URL を生成し GET 通信する
     this.http.get<Information[]>(serverUrl + path)
