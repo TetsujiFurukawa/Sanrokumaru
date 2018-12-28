@@ -15,6 +15,11 @@
         <!-- login -->
         <div class="row">
           <div class="col-sm-4 offset-sm-4 login">
+            <!-- Mesagges -->
+            <app-messages></app-messages>
+            <app-error-messages></app-error-messages>
+
+            <!-- Input items -->
             <label for="loginUserId">ユーザID</label>
             <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginUserId"
               placeholder="ユーザID">
@@ -27,7 +32,7 @@
             <button id="search" class="btn btn-success mt-3" routerLink="/if1003">ログイン</button>
           </div>
         </div>
-        <!-- information -->
+        <!-- informations -->
         <div class="row">
           <div class="col-sm-6 offset-sm-3 mt-5">
             <table class="table table-hover table-striped searchResult">
