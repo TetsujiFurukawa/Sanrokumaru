@@ -146,3 +146,8 @@ http://wiremock.org/
 http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.19.0/wiremock-standalone-2.19.0.jar
 
 java -jar wiremock-standalone-2.19.0.jar
+
+
+■Angularのhttp
+https://qiita.com/ksh-fthr/items/840ae54472892a87f48d
+
