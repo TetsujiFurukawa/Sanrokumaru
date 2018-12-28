@@ -151,3 +151,11 @@ java -jar wiremock-standalone-2.19.0.jar
 ■Angularのhttp
 https://qiita.com/ksh-fthr/items/840ae54472892a87f48d
 
+
+
+■通信を作成中
+ng generate service service/common/message/message
+ng generate service service/common/message/errorMessage
+
+ng g component component/common/message/messages
+ng g component component/common/message/errorMessages
