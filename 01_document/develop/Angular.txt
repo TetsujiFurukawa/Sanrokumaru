@@ -159,3 +159,9 @@ ng generate service service/common/message/errorMessage
 
 ng g component component/common/message/messages
 ng g component component/common/message/errorMessages
+
+
+■勉強会で聞いた情報
+Angular Language Service
+
+
