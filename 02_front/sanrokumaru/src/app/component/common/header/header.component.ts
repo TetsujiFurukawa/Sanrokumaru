@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private header: HeaderService,
-    private router: Router
+    public router: Router
   ) { }
 
   ngOnInit() { }
