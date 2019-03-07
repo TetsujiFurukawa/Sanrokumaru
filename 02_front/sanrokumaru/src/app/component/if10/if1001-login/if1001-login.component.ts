@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Information } from '../../../entity/domain/information';
+import { InformationService } from '../../../service/information/information.service';
 
 @Component({
   selector: 'app-if1001-login',
@@ -8,7 +9,7 @@ import { Information } from '../../../entity/domain/information';
 })
 export class If1001LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private infomationService: InformationService) { }
 
   // ログインID
   loginId: String;
@@ -20,15 +21,13 @@ export class If1001LoginComponent implements OnInit {
   informations: Information[];
 
   ngOnInit() {
-    // インフォメーションの初期化
-    this.setUpInformations();
+    // 最新インフォメーションを取得取得する
+    this.getInformations();
   }
 
-  // Informationsの初期化
-  private setUpInformations() {
-    this.informations = [
-      { date: '2018/8/1', information: '運用停止のお知らせ', detail: 'メンテナンスのため月末の0:00～2:00まで運用を停止します。' },
-      { date: '2018/2/1', information: '運用開始', detail: '運用を開始します。' },
-    ];
+  // 最新インフォメーションを取得する
+  getInformations(): void {
+    this.informations = this.infomationService.getInformations();
   }
+
 }
