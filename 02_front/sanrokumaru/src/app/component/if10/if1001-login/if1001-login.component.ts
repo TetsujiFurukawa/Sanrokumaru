@@ -25,9 +25,11 @@ export class If1001LoginComponent implements OnInit {
     this.getInformations();
   }
 
-  // 最新インフォメーションを取得する
+  /**
+   * 最新インフォメーションを取得します
+   */
   getInformations(): void {
-    this.informations = this.infomationService.getInformations();
+    this.infomationService.getInformations().subscribe(Informations => this.informations = Informations);
   }
 
 }
