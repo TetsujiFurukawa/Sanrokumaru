@@ -165,3 +165,5 @@ ng g component component/common/message/errorMessages
 Angular Language Service
 
 
+
+g generate service service/information/information

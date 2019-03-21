@@ -1,5 +1,6 @@
 ■起動方法
 cd wiremock-standalone-2.19.0.jarのディレクトリ
+cd C:\papa\00.default\01.develop\Sanrokumaru\04_mockServer
 java -jar wiremock-standalone-2.19.0.jar
 
 ■WireMockの資料

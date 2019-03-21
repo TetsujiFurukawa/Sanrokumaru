@@ -1,0 +1,18 @@
+{
+    "scenarioName": "informations",
+    "request": {
+        "url": "/api/informations",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+        	"informations": [
+            	{"date": "2019/3/1","information":"運用停止のお知らせ","detail": "メンテナンスのため月末の0:00～2:00まで運用を停止します。"}
+            ]
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
