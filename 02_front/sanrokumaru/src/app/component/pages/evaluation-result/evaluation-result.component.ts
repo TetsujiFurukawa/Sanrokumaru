@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EvaluateResultSumaryList } from '../../../entity/dto/evaluateResultSumaryList';
-import { If1003EvaluationResultService } from '../../../service/if10/if1003-evaluation-result.service';
+import { EvaluationResultService } from '../../../service/evaluationResult/evaluation-result.service';
 
 import 'bootstrap-datepicker';
 import * as $ from 'jquery';
@@ -8,12 +8,12 @@ import * as $ from 'jquery';
 import { HeaderService } from '../../../service/common/header/header.service';
 
 @Component({
-  selector: 'app-if1003-evaluation-result',
-  templateUrl: './if1003-evaluation-result.component.html',
-  styleUrls: ['./if1003-evaluation-result.component.css'],
-  providers: [If1003EvaluationResultService]
+  selector: 'app-evaluation-result',
+  templateUrl: './evaluation-result.component.html',
+  styleUrls: ['./evaluation-result.component.css'],
+  providers: [EvaluationResultService]
 })
-export class If1003EvaluationResultComponent implements OnInit {
+export class EvaluationResultComponent implements OnInit {
 
   // 検索条件
   searchEvaluationMonthFrom: string;
@@ -42,12 +42,12 @@ export class If1003EvaluationResultComponent implements OnInit {
   // 検索結果一覧表示用のエンティティ
   evaluateResultSumaryList: EvaluateResultSumaryList[];
 
-  constructor(private if1003EvaluationResultService: If1003EvaluationResultService) {
+  constructor(private evaluationResultService: EvaluationResultService) {
   }
 
   ngOnInit() {
     this.setUpDatePicker();
-    this.evaluateResultSumaryList = this.if1003EvaluationResultService.getEvaluationResultListSummary();
+    this.evaluateResultSumaryList = this.evaluationResultService.getEvaluationResultListSummary();
   }
 
 

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { If1001LoginComponent } from './component/if10/if1001-login/if1001-login.component';
-import { If1003EvaluationResultComponent } from './component/if10/if1003-evaluation-result/if1003-evaluation-result.component';
+import { LoginComponent } from './component/pages/login/login.component';
+import { EvaluationResultComponent } from './component/pages/evaluation-result/evaluation-result.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
       [
-        { path: '', redirectTo: '/if1001', pathMatch: 'full' },
-        { path: 'if1001', component: If1001LoginComponent },
-        { path: 'if1003', component: If1003EvaluationResultComponent }
+        { path: '', redirectTo: '/login', pathMatch: 'full' },
+        { path: 'login', component: LoginComponent },
+        { path: 'evaluation-result', component: EvaluationResultComponent }
       ]
     ),
   ],

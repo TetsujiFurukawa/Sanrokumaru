@@ -10,11 +10,11 @@ import { AppConst } from '../../app-const';
 @Injectable({
   providedIn: 'root'
 })
-export class If1001LoginService {
+export class LoginService {
   // ヘッダ
   private headers: any = new Headers({ 'Content-Type': 'application/json' });
 
-  private serverUrl = 'api/if1001';  // Web APIのURL
+  private serverUrl = 'api/login';  // Web APIのURL
 
   // お知らせ
   private informations: Information[];
