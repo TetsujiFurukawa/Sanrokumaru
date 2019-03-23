@@ -3,11 +3,11 @@ import { Information } from '../../../entity/domain/information';
 import { InformationService } from '../../../service/information/information.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
   constructor(private infomationService: InformationService) { }
 

@@ -1,0 +1,14 @@
+{
+  "welcomeScreen": {
+    "title": "Welcome",
+    "systemName": "Sanrokumar Application",
+    "comment": "for better communications"
+  },
+  "signInScreen": {
+    "signIn": "Sign In",
+    "userId": "User ID",
+    "password": "Password",
+    "signInBtn": "Sign In",
+    "information": "Informations"
+  }
+}

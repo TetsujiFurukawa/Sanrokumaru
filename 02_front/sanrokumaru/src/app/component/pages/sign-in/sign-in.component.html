@@ -1,11 +1,11 @@
 <div class="row">
   <!-- left Part -->
   <div class="col-12 col-sm-4 welcome">
-    <h1>ようこそ</h1>
+    <h1 translate>welcomeScreen.title</h1>
     <br>
-    <h1>Sanrokumaruシステムへ</h1>
+    <h1 translate>welcomeScreen.systemName</h1>
     <br>
-    <h4>より良いコミュニケーションを目指して</h4>
+    <h4 translate>welcomeScreen.comment</h4>
   </div>
 
   <!-- right part -->
@@ -20,16 +20,16 @@
             <app-error-messages></app-error-messages>
 
             <!-- Input items -->
-            <label for="loginUserId">ユーザID</label>
+            <label for="loginUserId" translate>signInScreen.userId</label>
             <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginPassword"
-              placeholder="ユーザID">
-            <!-- <span *ngIf="unitPrice.errors?.required">ユーザIDは必須です。</span> -->
+              placeholder="{{ 'signInScreen.userId' | translate }}">
             <br>
-            <label for="loginPassword">パスワード</label>
+            <label for=" loginPassword" translate>signInScreen.password</label>
             <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword"
-              placeholder="パスワード">
+              placeholder="{{ 'signInScreen.password' | translate }}">
             <br>
-            <button id="search" class="btn btn-success mt-3" routerLink="/evaluation-result">ログイン</button>
+            <button id="search" class="btn btn-success mt-3" routerLink="/evaluation-result"
+              translate>signInScreen.signInBtn</button>
           </div>
         </div>
         <!-- informations -->
@@ -38,7 +38,7 @@
             <table class="table table-hover table-striped searchResult">
               <thead>
                 <tr>
-                  <th colspan="3" class="text-center">お知らせ</th>
+                  <th colspan="3" class="text-center" translate>signInScreen.information</th>
                 </tr>
               </thead>
               <tbody>

@@ -1,0 +1,14 @@
+{
+  "welcomeScreen": {
+    "title": "ようこそ",
+    "systemName": "Sanrokumaruシステムへ",
+    "comment": "より良いコミュニケーションを目指して"
+  },
+  "signInScreen": {
+    "signIn": "サインイン",
+    "userId": "ユーザID",
+    "password": "パスワード",
+    "signInBtn": "サインイン",
+    "information": "お知らせ"
+  }
+}
