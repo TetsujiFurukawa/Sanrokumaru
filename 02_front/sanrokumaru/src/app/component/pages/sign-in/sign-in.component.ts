@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Information } from '../../../entity/domain/information';
 import { InformationService } from '../../../service/information/information.service';
 
@@ -9,27 +10,50 @@ import { InformationService } from '../../../service/information/information.ser
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private infomationService: InformationService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private infomationService: InformationService
+  ) { }
 
-  // ログインID
-  loginId: String;
+  signInForm: FormGroup;
 
-  // ログインパスワード
-  loginPassword: String;
+
 
   // お知らせ
   informations: Information[];
 
   ngOnInit() {
+    this.setUpFormGroup();
     // 最新インフォメーションを取得取得する
     this.getInformations();
+  }
+
+  private setUpFormGroup(): void {
+    // 入力項目
+    this.signInForm = this.formBuilder.group({
+      signiInUserId: ['', Validators.required],
+      signiInPassword: ['']
+    });
   }
 
   /**
    * 最新インフォメーションを取得します
    */
-  getInformations(): void {
+  private getInformations(): void {
     this.infomationService.getInformations().subscribe(Informations => this.informations = Informations);
+  }
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+  }
+
+  // getter
+  public get f() {
+    return this.signInForm.controls;
+  }
+
+  public get signiInUserId() {
+    return this.signInForm.get('signiInUserId');
   }
 
 }

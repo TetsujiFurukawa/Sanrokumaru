@@ -11,25 +11,31 @@
   <!-- right part -->
   <div class="col-12 col-sm-8">
     <div class="container-fluid">
-      <form>
-        <!-- login -->
-        <div class="row">
+      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <!-- signIn -->
+        <div class=" row">
           <div class="col-sm-4 offset-sm-4 login">
             <!-- Mesagges -->
             <app-messages></app-messages>
             <app-error-messages></app-error-messages>
 
             <!-- Input items -->
-            <label for="loginUserId" translate>signInScreen.userId</label>
-            <input class="form-control" id="loginUserId" name="loginUserId" type="text" [(ngModel)]="loginPassword"
-              placeholder="{{ 'signInScreen.userId' | translate }}">
+            <label for="signiInUserId" translate>signInScreen.userId</label>
+            <input class="form-control" id="signiInUserId" name="signiInUserId" type="text"
+              placeholder="{{ 'signInScreen.userId' | translate }}" formControlName="signiInUserId" required>
+            <div *ngIf="signiInUserId.invalid && (signiInUserId.dirty || signiInUserId.touched)">
+              <div *ngIf="signiInUserId.hasError('required')">
+                Name is required.
+              </div>
+            </div>
+
             <br>
-            <label for=" loginPassword" translate>signInScreen.password</label>
-            <input class="form-control" id="loginPassword" name="loginPassword" type="text" [(ngModel)]="loginPassword"
-              placeholder="{{ 'signInScreen.password' | translate }}">
+            <label for="signiInPassword" translate>signInScreen.password</label>
+            <input class="form-control" id="signiInPassword" name="signiInPassword" type="text"
+              placeholder="{{ 'signInScreen.password' | translate }}" formControlName="signiInPassword">
             <br>
-            <button id="search" class="btn btn-success mt-3" routerLink="/evaluation-result"
-              translate>signInScreen.signInBtn</button>
+            <button id="signInBtn" class="btn btn-success mt-3" routerLink="/evaluation-result" type="submit"
+              [disabled]="!signInForm.valid" translate>signInScreen.signInBtn</button>
           </div>
         </div>
         <!-- informations -->
