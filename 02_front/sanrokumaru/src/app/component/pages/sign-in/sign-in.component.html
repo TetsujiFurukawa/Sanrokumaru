@@ -31,11 +31,19 @@
                 The format is incorrect.
               </div>
             </div>
-
             <br>
-            <label for="signiInPassword" translate>signInScreen.password</label>
-            <input class="form-control" id="signiInPassword" name="signiInPassword" type="text"
-              placeholder="{{ 'signInScreen.password' | translate }}" formControlName="signiInPassword">
+
+            <label for="signInPassword" translate>signInScreen.password</label>
+            <input class="form-control" id="signInPassword" name="signInPassword" type="text"
+              placeholder="{{ 'signInScreen.password' | translate }}" formControlName="signInPassword">
+            <div *ngIf="signInPassword.invalid && (signInPassword.dirty || signInPassword.touched)">
+              <div *ngIf="signInPassword.hasError('required')">
+                This field is required.
+              </div>
+              <div *ngIf="signInPassword.hasError('minlength')">
+                The format is incorrect.
+              </div>
+            </div>
             <br>
             <button id="signInBtn" class="btn btn-success mt-3" routerLink="/evaluation-result" type="submit"
               [disabled]="!signInForm.valid" translate>signInScreen.signInBtn</button>

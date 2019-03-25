@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
   private setUpFormGroup(): void {
     // 入力項目
     this.signInForm = this.formBuilder.group({
-      signInUserId: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      signInUserId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       signInPassword: ['', Validators.required]
     });
   }
@@ -46,12 +46,16 @@ export class SignInComponent implements OnInit {
     // TODO: Use EventEmitter with form value
   }
 
-  // get f() {
-  //   return this.signInForm.controls;
-  // }
+  get f() {
+    return this.signInForm.controls;
+  }
 
   public get signInUserId() {
     return this.signInForm.get('signInUserId');
+  }
+
+  public get signInPassword() {
+    return this.signInForm.get('signInPassword');
   }
 
 }
