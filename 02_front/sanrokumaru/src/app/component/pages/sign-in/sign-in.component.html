@@ -22,25 +22,25 @@
             <!-- Input items -->
             <label for="signiInUserId" translate>signInScreen.userId</label>
             <input class="form-control" id="signiInUserId" name="signiInUserId" type="text"
-              placeholder="{{ 'signInScreen.userId' | translate }}" formControlName="signInUserId" required>
-            <div *ngIf="signInUserId.invalid && (signInUserId.dirty || signInUserId.touched)">
-              <div *ngIf="signInUserId.hasError('required')">
+              placeholder="{{ 'signInScreen.userId' | translate }}" [formControl]="signInUserId" required>
+            <span *ngIf="signInUserId.invalid && (signInUserId.dirty || signInUserId.touched)">
+              <span class="errMessage" *ngIf="signInUserId.hasError('required')">
                 This field is required.
-              </div>
-              <div *ngIf="signInUserId.hasError('minlength')">
+              </span>
+              <div class="errMessage" *ngIf="signInUserId.hasError('minlength')">
                 The format is incorrect.
               </div>
-            </div>
+            </span>
             <br>
 
             <label for="signInPassword" translate>signInScreen.password</label>
             <input class="form-control" id="signInPassword" name="signInPassword" type="text"
               placeholder="{{ 'signInScreen.password' | translate }}" formControlName="signInPassword">
             <div *ngIf="signInPassword.invalid && (signInPassword.dirty || signInPassword.touched)">
-              <div *ngIf="signInPassword.hasError('required')">
+              <div class="errMessage" *ngIf="signInPassword.hasError('required')">
                 This field is required.
               </div>
-              <div *ngIf="signInPassword.hasError('minlength')">
+              <div class="errMessage" *ngIf="signInPassword.hasError('minlength')">
                 The format is incorrect.
               </div>
             </div>

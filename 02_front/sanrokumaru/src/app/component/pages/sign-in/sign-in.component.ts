@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Information } from '../../../entity/domain/information';
 import { InformationService } from '../../../service/information/information.service';
 
@@ -10,9 +10,25 @@ import { InformationService } from '../../../service/information/information.ser
 })
 export class SignInComponent implements OnInit {
 
-  signInForm: FormGroup;
+  // ユーザID
+  signInUserId = new FormControl('', [
+    Validators.required,
+    Validators.minLength(8)
+  ]);
 
-  // お知らせ
+  // パスワード
+  signInPassword = new FormControl('', [
+    Validators.required,
+    Validators.minLength(8)
+  ]);
+
+  // サインインのバリデーショングループ
+  signInForm = this.formBuilder.group({
+    signInUserId: this.signInUserId,
+    signInPassword: this.signInPassword
+  });
+
+  // お知らせ欄
   informations: Information[];
 
   constructor(
@@ -20,19 +36,9 @@ export class SignInComponent implements OnInit {
     private infomationService: InformationService
   ) { }
 
-
   ngOnInit() {
-    this.setUpFormGroup();
     // 最新インフォメーションを取得取得する
     this.getInformations();
-  }
-
-  private setUpFormGroup(): void {
-    // 入力項目
-    this.signInForm = this.formBuilder.group({
-      signInUserId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      signInPassword: ['', Validators.required]
-    });
   }
 
   /**
@@ -44,18 +50,6 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-  }
-
-  get f() {
-    return this.signInForm.controls;
-  }
-
-  public get signInUserId() {
-    return this.signInForm.get('signInUserId');
-  }
-
-  public get signInPassword() {
-    return this.signInForm.get('signInPassword');
   }
 
 }
