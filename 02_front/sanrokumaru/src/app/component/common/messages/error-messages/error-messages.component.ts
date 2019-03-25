@@ -8,7 +8,7 @@ import { ErrorMessageService } from '../../../../service/common/message/error-me
 })
 export class ErrorMessagesComponent implements OnInit {
 
-  constructor(private errorMessageService: ErrorMessageService) { }
+  constructor(public errorMessageService: ErrorMessageService) { }
 
   ngOnInit() {
     this.errorMessageService.clear();

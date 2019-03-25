@@ -1,3 +1,1 @@
-<div *ngIf="errorMessageService.errorMessages.length">
-  <div *ngFor='let errorMessage of errorMessageService.errorMessages'> {{errorMessage}} </div>
-</div>
+<p class="errMessage" *ngFor='let message of errorMessageService.errorMessages'> {{message}} </p>

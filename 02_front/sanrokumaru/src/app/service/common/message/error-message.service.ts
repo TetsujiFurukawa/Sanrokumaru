@@ -8,7 +8,7 @@ export class ErrorMessageService {
 
   constructor() { }
 
-  add(errorMessage: string) {
+  public add(errorMessage: string) {
     this.errorMessages.push(errorMessage);
   }
 
