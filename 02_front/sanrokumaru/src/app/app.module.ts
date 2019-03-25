@@ -17,8 +17,8 @@ import { FooterComponent } from './component/common/footer/footer.component';
 import { SignInComponent } from './component/pages/sign-in/sign-in.component';
 import { EvaluationResultComponent } from './component/pages/evaluation-result/evaluation-result.component';
 import { SearchInfoComponent } from './component/common/search-info/search-info.component';
-import { MessagesComponent } from './component/common/message/messages/messages.component';
-import { ErrorMessagesComponent } from './component/common/message/error-messages/error-messages.component';
+import { MessagesComponent } from './component/common/messages/messages/messages.component';
+import { ErrorMessagesComponent } from './component/common/messages/error-messages/error-messages.component';
 
 // 他言語化の設定
 export function HttpLoaderFactory(http: HttpClient) {

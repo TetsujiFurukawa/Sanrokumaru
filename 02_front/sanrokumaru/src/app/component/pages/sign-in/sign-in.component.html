@@ -22,10 +22,13 @@
             <!-- Input items -->
             <label for="signiInUserId" translate>signInScreen.userId</label>
             <input class="form-control" id="signiInUserId" name="signiInUserId" type="text"
-              placeholder="{{ 'signInScreen.userId' | translate }}" formControlName="signiInUserId" required>
-            <div *ngIf="signiInUserId.invalid && (signiInUserId.dirty || signiInUserId.touched)">
-              <div *ngIf="signiInUserId.hasError('required')">
-                Name is required.
+              placeholder="{{ 'signInScreen.userId' | translate }}" formControlName="signInUserId" required>
+            <div *ngIf="signInUserId.invalid && (signInUserId.dirty || signInUserId.touched)">
+              <div *ngIf="signInUserId.hasError('required')">
+                This field is required.
+              </div>
+              <div *ngIf="signInUserId.hasError('minlength')">
+                The format is incorrect.
               </div>
             </div>
 
