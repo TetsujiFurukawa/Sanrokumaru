@@ -10,5 +10,8 @@
     "password": "Password",
     "signInBtn": "Sign In",
     "information": "Informations"
+  },
+  "errMessage": {
+    "http": "Connection with the server failed."
   }
 }

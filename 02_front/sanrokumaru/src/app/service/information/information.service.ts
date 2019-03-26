@@ -8,6 +8,7 @@ import { AppConst } from '../../app-const';
 import { HttpClient } from '@angular/common/http';
 import { ErrorMessageService } from '../common/message/error-message.service';
 import { catchError, tap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class InformationService {
 
   constructor(
     private http: HttpClient,
-    private errorMessageService: ErrorMessageService
+    private errorMessageService: ErrorMessageService,
+    private readonly translateService: TranslateService
   ) { }
 
   getInformations(): Observable<Information[]> {
@@ -28,18 +30,11 @@ export class InformationService {
 
     return this.http.get<Information[]>(this.server + this.webApiUrl, AppConst.httpOptions)
       .pipe(tap(),
-        catchError(this.handleError<any>('updateHero'))
+        catchError(err => {
+          this.errorMessageService.add(this.translateService.instant('errMessage.http'));
+          console.log(err);
+          return of([]);
+        })
       );
-
   }
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      this.errorMessageService.add('サーバとの通信に失敗しました。');
-
-      // 空の結果を返して、アプリを持続可能にする
-      return of(result as T);
-    };
-  }
-
 }

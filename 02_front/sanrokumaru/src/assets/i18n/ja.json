@@ -10,5 +10,8 @@
     "password": "パスワード",
     "signInBtn": "サインイン",
     "information": "お知らせ"
+  },
+  "errMessage": {
+    "http": "サーバとの通信に失敗しました。"
   }
 }
