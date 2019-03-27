@@ -3,6 +3,11 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Information } from '../../../entity/domain/information';
 import { InformationService } from '../../../service/information/information.service';
 import { ErrorMessageService } from '../../../service/common/message/error-message.service';
+import { SignInDto } from 'src/app/entity/dto/sign-in-dto';
+import { SignInService } from 'src/app/service/sign-in/sign-in.service';
+import { SessionService } from 'src/app/service/common/session/session.service';
+import { Session } from 'src/app/service/common/session/session';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -34,10 +39,19 @@ export class SignInComponent implements OnInit {
   // お知らせ欄の変数
   informations: Information[];
 
+  // サインイン用のDTO
+  signInDto = new SignInDto;
+
+  public session = new Session();
+
   constructor(
     private formBuilder: FormBuilder,
     private infomationService: InformationService,
-    private errMessageService: ErrorMessageService
+    private errMessageService: ErrorMessageService,
+    private signInService: SignInService,
+    private sessionService: SessionService,
+    private router: Router
+
   ) { }
 
   ngOnInit() {
@@ -49,11 +63,20 @@ export class SignInComponent implements OnInit {
    * 最新インフォメーションを取得する
    */
   private getInformations(): void {
-    this.infomationService.getInformations().subscribe(Informations => this.informations = Informations);
+    this.infomationService.getInformations().subscribe(informations => this.informations = informations);
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
+    this.signInDto = this.createSignInDto();
+    this.signInService.signIn(this.signInDto).subscribe(session => this.session = session);
+    this.router.navigate(['/evaluation-result']);
+
   }
 
+  private createSignInDto(): SignInDto {
+    this.signInDto.signInUserId = this.signInUserId.value;
+    this.signInDto.signInPassword = this.signInPassword.value;
+
+    return this.signInDto;
+  }
 }

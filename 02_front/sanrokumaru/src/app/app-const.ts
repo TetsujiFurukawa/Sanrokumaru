@@ -11,6 +11,11 @@ export class AppConst {
   static readonly ROLE_ADMIN = 'ROLE_ADMIN';
 
   // httpオプション（プレフライトリクエスト）
-  static readonly httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  static readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    withCredentials: false
+  };
 
 }

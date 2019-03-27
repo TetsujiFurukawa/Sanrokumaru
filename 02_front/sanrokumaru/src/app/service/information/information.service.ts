@@ -29,7 +29,7 @@ export class InformationService {
     console.log(this.server + this.webApiUrl);
 
     return this.http.get<Information[]>(this.server + this.webApiUrl, AppConst.httpOptions)
-      .pipe(tap(),
+      .pipe(
         catchError(err => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           console.log(err);
