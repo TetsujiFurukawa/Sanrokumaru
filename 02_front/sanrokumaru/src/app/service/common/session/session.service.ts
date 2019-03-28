@@ -17,16 +17,23 @@ export class SessionService {
     private router: Router
   ) { }
 
-  public login(): void { // 追加
-    this.session.login = true;
+  public login(session: Session): void { // 追加
+    this.setUpSession(session);
     this.sessionSubject.next(this.session);
     this.router.navigate(['/evaluation-result']);
   }
 
-  logout(): void { // 追加
+  public logout(): void {
     this.sessionSubject.next(this.session.reset());
     this.router.navigate(['/signIn']);
   }
 
+  private setUpSession(session: Session) {
+    this.session.login = session.login;
+    this.session.adimn = session.adimn;
+    this.session.userId = session.userId;
+    this.session.firstName = session.firstName;
+    this.session.lastName = session.lastName;
+  }
 
 }

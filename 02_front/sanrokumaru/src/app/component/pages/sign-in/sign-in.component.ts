@@ -69,7 +69,13 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.signInDto = this.createSignInDto();
     this.signInService.signIn(this.signInDto).subscribe(session => this.session = session);
-    this.router.navigate(['/evaluation-result']);
+    console.log(this.session);
+
+    if (this.session.login) {
+      this.sessionService.login(this.session);
+    }
+
+    // this.router.navigate(['/evaluation-result']);
 
   }
 
