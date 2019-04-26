@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.getInformations();
-    this.errMessageService.add('init');
+
   }
 
   /**
@@ -64,6 +64,7 @@ export class SignInComponent implements OnInit {
    */
   private getInformations(): void {
     this.infomationService.getInformations().subscribe(informations => this.informations = informations);
+
   }
 
   onSubmit() {
@@ -74,8 +75,6 @@ export class SignInComponent implements OnInit {
     if (this.session.login) {
       this.sessionService.login(this.session);
     }
-
-    // this.router.navigate(['/evaluation-result']);
 
   }
 
