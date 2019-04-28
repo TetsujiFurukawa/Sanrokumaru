@@ -2,7 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/utils/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ErrorMessagesComponent
   ],
   imports: [
-    BrowserModule, NgbModule.forRoot(),
+    BrowserModule,
+    BrowserAnimationsModule, MaterialModule,
     FormsModule, AppRoutingModule, HttpClientModule,
     TranslateModule.forRoot({
       loader: {

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EvaluateResultSumaryList } from '../../../entity/dto/evaluateResultSumaryList';
 import { EvaluationResultService } from '../../../service/evaluationResult/evaluation-result.service';
 
-import 'bootstrap-datepicker';
-import * as $ from 'jquery';
+// import 'bootstrap-datepicker';
+// import * as $ from 'jquery';
 
 import { HeaderService } from '../../../service/common/header/header.service';
 
@@ -52,12 +52,12 @@ export class EvaluationResultComponent implements OnInit {
 
 
   private setUpDatePicker() {
-    this.searchEvaluationMonthFrom = '2018-11';
-    $('#datepicker .date').datepicker({
-      format: 'yyyy-mm',
-      language: 'ja',
-      autoclose: true,
-      minViewMode: 'months'
-    });
+    // this.searchEvaluationMonthFrom = '2018-11';
+    // $('#datepicker .date').datepicker({
+    //   format: 'yyyy-mm',
+    //   language: 'ja',
+    //   autoclose: true,
+    //   minViewMode: 'months'
+    // });
   }
 }

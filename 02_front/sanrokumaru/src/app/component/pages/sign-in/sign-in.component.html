@@ -1,74 +1,75 @@
-<div class="row">
-  <!-- left Part -->
-  <div class="col-12 col-sm-4 welcome">
-    <h1 translate>welcomeScreen.title</h1>
-    <br>
-    <h1 translate>welcomeScreen.systemName</h1>
-    <br>
-    <h4 translate>welcomeScreen.comment</h4>
+<div id="signInContent" class="wrapper">
+  <!-- Welcom Area -->
+  <div id="welcome">
+    <mat-grid-list cols="1" rowHeight="10rem">
+      <h1 translate>welcomeScreen.title</h1>
+      <h1 translate>welcomeScreen.systemName</h1>
+      <h2 translate>welcomeScreen.comment</h2>
+    </mat-grid-list>
   </div>
-
-  <!-- right part -->
-  <div class="col-12 col-sm-8">
-    <div class="container-fluid">
-      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-        <!-- signIn -->
-        <div class=" row">
-          <div class="col-sm-4 offset-sm-4 login">
-            <!-- Mesagges -->
-            <app-messages></app-messages>
-            <app-error-messages></app-error-messages>
-
-            <!-- Input items -->
-            <label for="signiInUserId" translate>signInScreen.userId</label>
-            <input class="form-control" id="signiInUserId" name="signiInUserId" type="text"
-              placeholder="{{ 'signInScreen.userId' | translate }}" [formControl]="signInUserId" required>
-            <span *ngIf="signInUserId.invalid && (signInUserId.dirty || signInUserId.touched)">
-              <span class="errMessage" *ngIf="signInUserId.hasError('required')">
-                This field is required.
-              </span>
-              <div class="errMessage" *ngIf="signInUserId.hasError('minlength')">
-                The format is incorrect.
-              </div>
-            </span>
-            <br>
-
-            <label for="signInPassword" translate>signInScreen.password</label>
-            <input class="form-control" id="signInPassword" name="signInPassword" type="text"
-              placeholder="{{ 'signInScreen.password' | translate }}" formControlName="signInPassword">
-            <div *ngIf="signInPassword.invalid && (signInPassword.dirty || signInPassword.touched)">
-              <div class="errMessage" *ngIf="signInPassword.hasError('required')">
-                This field is required.
-              </div>
-              <div class="errMessage" *ngIf="signInPassword.hasError('minlength')">
-                The format is incorrect.
-              </div>
-            </div>
-            <br>
-            <button id="signInBtn" class="btn btn-success mt-3" type="submit" [disabled]="!signInForm.valid"
-              translate>signInScreen.signInBtn</button>
-          </div>
-        </div>
-        <!-- informations -->
-        <div class="row">
-          <div class="col-sm-6 offset-sm-3 mt-5">
-            <table class="table table-hover table-striped searchResult">
-              <thead>
-                <tr>
-                  <th colspan="3" class="text-center" translate>signInScreen.information</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let information of informations">
-                  <td>{{information.date}}</td>
-                  <td>{{information.information}}</td>
-                  <td>{{information.detail}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </form>
-    </div>
+  <!-- Sign In Area -->
+  <div id="signIn">
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+      <!-- error Mesagges -->
+      <app-error-messages></app-error-messages>
+      <!-- Input Items Area-->
+      <mat-card>
+        <mat-grid-list cols="1" rowHeight="7rem">
+          <!-- Sign In User Id -->
+          <mat-grid-tile>
+            <mat-form-field class="form-field">
+              <input id="signInUserId" matInput formControlName="signInUserId"
+                placeholder="{{ 'signInScreen.userId' | translate }}">
+              <mat-error *ngIf="signInUserId.hasError('required')">
+                {{ 'validateErrorMessage.required' | translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <!-- Sign In Password -->
+          <mat-grid-tile>
+            <mat-form-field class="form-field">
+              <input id="signInPassword" matInput formControlName="signInPassword"
+                placeholder="{{ 'signInScreen.password' | translate }}">
+              <mat-error *ngIf="signInPassword.hasError('required')">
+                {{ 'validateErrorMessage.required' | translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <!-- Sign In Button -->
+          <mat-grid-tile>
+            <button mat-raised-button color="primary" id="signInBtn" class="btn btn-success mt-3" type="submit"
+              [disabled]="!signInForm.valid">{{ "signInScreen.signInBtn" | translate }}
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
+    </form>
+  </div>
+  <!-- forgotPassword Area -->
+  <div id="forgotPassword">
+    <a mat-list-item href="..."> {{ "signInScreen.forgotPassword" | translate }} </a>
+  </div>
+  <!-- informations Area-->
+  <div id="informations">
+    <table mat-table [dataSource]="informations" class="mat-elevation-z8">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">
+          {{ "signInScreen.information.date" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="information">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;">{{ "signInScreen.information.detail" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.information}} </td>
+      </ng-container>
+      <ng-container matColumnDef="detail">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "signInScreen.information.information" | translate }}</th>
+        <td mat-cell *matCellDef="let element"> {{element.detail}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayInformationColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayInformationColumns;"></tr>
+    </table>
   </div>
 </div>

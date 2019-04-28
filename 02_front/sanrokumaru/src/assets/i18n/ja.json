@@ -9,9 +9,18 @@
     "userId": "ユーザID",
     "password": "パスワード",
     "signInBtn": "サインイン",
-    "information": "お知らせ"
+    "forgotPassword": "パスワードをお忘れの方はこちら",
+    "information": {
+      "date": "登録日",
+      "information": "お知らせ",
+      "detail": "内容"
+    }
   },
   "errMessage": {
     "http": "サーバとの通信に失敗しました。"
+  },
+  "validateErrorMessage": {
+    "required": "必ず入力してください。",
+    "format": "形式が正しくありません。"
   }
 }

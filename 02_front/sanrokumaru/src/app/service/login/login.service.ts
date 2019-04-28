@@ -48,7 +48,7 @@ export class LoginService {
       console.error(error); // かわりにconsoleに出力
 
       // TODO: ユーザーへの開示のためにエラーの変換処理を改善する
-      this.log(`${operation} failed: ${error.message}`);
+      // this.log(`${operation} failed: ${error.message}`);
 
       // 空の結果を返して、アプリを持続可能にする
       return of(result as T);

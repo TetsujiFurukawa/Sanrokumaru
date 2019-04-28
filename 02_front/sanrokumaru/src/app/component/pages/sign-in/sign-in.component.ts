@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Information } from '../../../entity/domain/information';
 import { InformationService } from '../../../service/information/information.service';
-import { ErrorMessageService } from '../../../service/common/message/error-message.service';
 import { SignInDto } from 'src/app/entity/dto/sign-in-dto';
 import { SignInService } from 'src/app/service/sign-in/sign-in.service';
 import { SessionService } from 'src/app/service/common/session/session.service';
@@ -20,14 +19,12 @@ export class SignInComponent implements OnInit {
 
   // ユーザID
   signInUserId = new FormControl('', [
-    Validators.required,
-    Validators.minLength(8)
+    Validators.required
   ]);
 
   // パスワード
   signInPassword = new FormControl('', [
-    Validators.required,
-    Validators.minLength(8)
+    Validators.required
   ]);
 
   // サインインのフォーム設定
@@ -38,6 +35,7 @@ export class SignInComponent implements OnInit {
 
   // お知らせ欄の変数
   informations: Information[];
+  displayInformationColumns: string[] = ['date', 'information', 'detail'];
 
   // サインイン用のDTO
   signInDto = new SignInDto;
@@ -47,7 +45,6 @@ export class SignInComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private infomationService: InformationService,
-    private errMessageService: ErrorMessageService,
     private signInService: SignInService,
     private sessionService: SessionService,
     private router: Router

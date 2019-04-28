@@ -9,9 +9,17 @@
     "userId": "User ID",
     "password": "Password",
     "signInBtn": "Sign In",
-    "information": "Informations"
-  },
-  "errMessage": {
-    "http": "Connection with the server failed."
+    "forgotPassword": "Forgot your password?",
+    "information": {
+      "date": "date",
+      "information": "detail",
+      "detail": "information"
+    },
+    "errMessage": {
+      "http": "Connection with the server failed."
+    },
+    "validateErrorMessage": {
+      "required": "Please be sure to input.",
+      "format": "The format is incorrect."
+    }
   }
-}

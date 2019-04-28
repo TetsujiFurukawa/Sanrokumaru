@@ -1,0 +1,85 @@
+#signInContent {
+  display: grid;
+  margin: 0;
+  min-height: 100vh;
+  grid-template-rows: M70 1fr;
+  grid-template-columns: 50% 40% 1fr;
+  grid-template-areas:
+    "welcome signIn"
+    "welcome forgotPassword"
+    "welcome informations";
+}
+
+#welcome {
+  grid-area: welcome;
+  margin-right: 7rem;
+  padding-left: 3rem;
+  color: whitesmoke;
+  background-color: #66BB6A;
+  line-height: 7rem;
+  height: 100vh;
+}
+
+#signIn {
+  grid-area: signIn;
+  margin-top: 5rem;
+}
+
+#forgotPassword {
+  grid-area: forgotPassword;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#informations {
+  grid-area: informations;
+}
+
+/* Responsive Setting */
+
+/* pc */
+@media screen and (min-width: 961px) {
+  /*ここにpc用スタイルを記述*/
+}
+
+/* tablet  */
+@media only screen and (min-width: 641px) and (max-width: 960px) {
+  /*ここにtablet用スタイルを記述*/
+}
+
+/* smartPhone */
+@media screen and (max-width: 640px) {
+
+  /*ここにスマホ用スタイルを記述*/
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  #signInContent {
+    grid-template-rows: M100;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "welcome"
+      "signIn"
+      "forgotPassword"
+      "informations";
+  }
+
+  #welcome {
+    margin-right: 0;
+    padding-left: 1rem;
+    font-size: 0.5rem;
+    line-height: 1.5rem;
+    height: 10rem;
+    text-align: center;
+  }
+
+}
