@@ -6,7 +6,7 @@
   },
   "signInScreen": {
     "signIn": "Sign In",
-    "userId": "User ID",
+    "eMailAddress": "E-Mail Address",
     "password": "Password",
     "signInBtn": "Sign In",
     "forgotPassword": "Forgot your password?",
@@ -14,12 +14,13 @@
       "date": "date",
       "information": "detail",
       "detail": "information"
-    },
-    "errMessage": {
-      "http": "Connection with the server failed."
-    },
-    "validateErrorMessage": {
-      "required": "Please be sure to input.",
-      "format": "The format is incorrect."
     }
+  },
+  "errMessage": {
+    "http": "Connection with the server failed."
+  },
+  "validateErrorMessage": {
+    "required": "Please be sure to input.",
+    "format": "The format is incorrect."
   }
+}

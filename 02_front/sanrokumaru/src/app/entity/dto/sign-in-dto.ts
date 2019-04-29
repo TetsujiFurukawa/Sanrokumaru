@@ -1,6 +1,6 @@
 export class SignInDto {
 
-  public signInUserId: string;
+  public signInEMailAddress: string;
 
   public signInPassword: string;
 

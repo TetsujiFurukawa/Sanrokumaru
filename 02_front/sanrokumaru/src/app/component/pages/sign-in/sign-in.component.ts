@@ -17,9 +17,10 @@ export class SignInComponent implements OnInit {
   // 通信エラー時のメッセージ
   errMessage: string;
 
-  // ユーザID
-  signInUserId = new FormControl('', [
-    Validators.required
+  // E-Mailアドレス
+  signInEMailAddress = new FormControl('', [
+    Validators.required,
+    Validators.email
   ]);
 
   // パスワード
@@ -29,7 +30,7 @@ export class SignInComponent implements OnInit {
 
   // サインインのフォーム設定
   signInForm = this.formBuilder.group({
-    signInUserId: this.signInUserId,
+    signInEMailAddress: this.signInEMailAddress,
     signInPassword: this.signInPassword
   });
 
@@ -76,7 +77,7 @@ export class SignInComponent implements OnInit {
   }
 
   private createSignInDto(): SignInDto {
-    this.signInDto.signInUserId = this.signInUserId.value;
+    this.signInDto.signInEMailAddress = this.signInEMailAddress.value;
     this.signInDto.signInPassword = this.signInPassword.value;
 
     return this.signInDto;

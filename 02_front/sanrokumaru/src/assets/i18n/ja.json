@@ -6,7 +6,7 @@
   },
   "signInScreen": {
     "signIn": "サインイン",
-    "userId": "ユーザID",
+    "eMailAddress": "E-Mailアドレス",
     "password": "パスワード",
     "signInBtn": "サインイン",
     "forgotPassword": "パスワードをお忘れの方はこちら",

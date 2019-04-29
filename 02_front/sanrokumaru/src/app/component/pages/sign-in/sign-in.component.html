@@ -18,17 +18,20 @@
           <!-- Sign In User Id -->
           <mat-grid-tile>
             <mat-form-field class="form-field">
-              <input id="signInUserId" matInput formControlName="signInUserId"
-                placeholder="{{ 'signInScreen.userId' | translate }}">
-              <mat-error *ngIf="signInUserId.hasError('required')">
+              <input id="signInEMailAddress" matInput type="text" formControlName="signInEMailAddress" inputmode="email"
+                placeholder="{{ 'signInScreen.eMailAddress' | translate }}">
+              <mat-error *ngIf="signInEMailAddress.hasError('required')">
                 {{ 'validateErrorMessage.required' | translate }}
+              </mat-error>
+              <mat-error *ngIf="signInEMailAddress.hasError('email')">
+                {{ 'validateErrorMessage.format' | translate }}
               </mat-error>
             </mat-form-field>
           </mat-grid-tile>
           <!-- Sign In Password -->
           <mat-grid-tile>
             <mat-form-field class="form-field">
-              <input id="signInPassword" matInput formControlName="signInPassword"
+              <input id="signInPassword" matInput type="password" formControlName="signInPassword"
                 placeholder="{{ 'signInScreen.password' | translate }}">
               <mat-error *ngIf="signInPassword.hasError('required')">
                 {{ 'validateErrorMessage.required' | translate }}
