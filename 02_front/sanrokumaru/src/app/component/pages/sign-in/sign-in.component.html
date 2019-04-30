@@ -2,9 +2,15 @@
   <!-- Welcom Area -->
   <div id="welcome">
     <mat-grid-list cols="1" rowHeight="10rem">
-      <h1 translate>welcomeScreen.title</h1>
-      <h1 translate>welcomeScreen.systemName</h1>
-      <h2 translate>welcomeScreen.comment</h2>
+      <mat-grid-tile>
+        <h1 translate>welcomeScreen.title</h1>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h1 translate>welcomeScreen.systemName</h1>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <h2 translate>welcomeScreen.comment</h2>
+      </mat-grid-tile>
     </mat-grid-list>
   </div>
   <!-- Sign In Area -->
@@ -14,37 +20,39 @@
       <app-error-messages></app-error-messages>
       <!-- Input Items Area-->
       <mat-card>
-        <mat-grid-list cols="1" rowHeight="7rem">
-          <!-- Sign In User Id -->
-          <mat-grid-tile>
-            <mat-form-field class="form-field">
-              <input id="signInEMailAddress" matInput type="text" formControlName="signInEMailAddress" inputmode="email"
-                placeholder="{{ 'signInScreen.eMailAddress' | translate }}">
-              <mat-error *ngIf="signInEMailAddress.hasError('required')">
-                {{ 'validateErrorMessage.required' | translate }}
-              </mat-error>
-              <mat-error *ngIf="signInEMailAddress.hasError('email')">
-                {{ 'validateErrorMessage.format' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          <!-- Sign In Password -->
-          <mat-grid-tile>
-            <mat-form-field class="form-field">
-              <input id="signInPassword" matInput type="password" formControlName="signInPassword"
-                placeholder="{{ 'signInScreen.password' | translate }}">
-              <mat-error *ngIf="signInPassword.hasError('required')">
-                {{ 'validateErrorMessage.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          <!-- Sign In Button -->
-          <mat-grid-tile>
-            <button mat-raised-button color="primary" id="signInBtn" class="btn btn-success mt-3" type="submit"
-              [disabled]="!signInForm.valid">{{ "signInScreen.signInBtn" | translate }}
-            </button>
-          </mat-grid-tile>
-        </mat-grid-list>
+        <mat-card-content>
+          <mat-grid-list cols="1" rowHeight="7rem">
+            <!-- Sign In User Id -->
+            <mat-grid-tile>
+              <mat-form-field class="form-field">
+                <input id="signInEMailAddress" matInput type="email" formControlName="signInEMailAddress"
+                  placeholder="{{ 'signInScreen.eMailAddress' | translate }}">
+                <mat-error *ngIf="signInEMailAddress.hasError('required')">
+                  {{ 'validateErrorMessage.required' | translate }}
+                </mat-error>
+                <mat-error *ngIf="signInEMailAddress.hasError('email')">
+                  {{ 'validateErrorMessage.format' | translate }}
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <!-- Sign In Password -->
+            <mat-grid-tile>
+              <mat-form-field class="form-field">
+                <input id="signInPassword" matInput type="password" formControlName="signInPassword"
+                  placeholder="{{ 'signInScreen.password' | translate }}">
+                <mat-error *ngIf="signInPassword.hasError('required')">
+                  {{ 'validateErrorMessage.required' | translate }}
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <!-- Sign In Button -->
+            <mat-grid-tile>
+              <button mat-raised-button color="primary" id="signInBtn" class="btn btn-success mt-3" type="submit"
+                [disabled]="!signInForm.valid">{{ "signInScreen.signInBtn" | translate }}
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
       </mat-card>
     </form>
   </div>
