@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HeaderService } from '../../../service/common/header/header.service';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() public sidenavToggle = new EventEmitter();
+
   constructor(
     private header: HeaderService,
     public router: Router
@@ -17,4 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() { }
 
+  public onToggleSidenav = () => {
+    this.sidenavToggle.emit();
+  }
 }

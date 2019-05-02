@@ -20,6 +20,7 @@ import { EvaluationResultComponent } from './component/pages/evaluation-result/e
 import { SearchInfoComponent } from './component/common/search-info/search-info.component';
 import { MessagesComponent } from './component/common/messages/messages/messages.component';
 import { ErrorMessagesComponent } from './component/common/messages/error-messages/error-messages.component';
+import { SidenavComponent } from './component/common/sidenav/sidenav.component';
 
 // 他言語化の設定
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EvaluationResultComponent,
     SearchInfoComponent,
     MessagesComponent,
-    ErrorMessagesComponent
+    ErrorMessagesComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

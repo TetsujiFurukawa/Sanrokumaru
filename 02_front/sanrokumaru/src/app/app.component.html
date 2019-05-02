@@ -1,5 +1,31 @@
-<div class="container-fluid">
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+  </mat-sidenav>
+
+  <!-- <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')"
+    *ngIf="this.router.url!=='/signIn'">Sidenav content
+  </mat-sidenav> -->
+  <mat-sidenav-content>
+    <!-- <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <p>
+      <mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox>
+    </p>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    <p>Events:</p>
+    <div class="example-events">
+      <div *ngFor="let e of events">{{e}}</div>
+    </div> -->
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <div class="container-fluid">
   <app-header></app-header>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
-</div>
+</div> -->
