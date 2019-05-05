@@ -1,9 +1,14 @@
-/* Master Styles */
 @charset "UTF-8";
 
+/* Import the default Angular Material theme */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-/* Basic Setting */
+/* Import the Style Sheet files of Material Desgin Icons */
+@import '~material-design-icons/iconfont/material-icons.css';
+
+/* ------------------------------------------------------------ */
+/* Basic Setting                                                */
+/* ------------------------------------------------------------ */
 html {
   font-size: 0.8rem;
 }

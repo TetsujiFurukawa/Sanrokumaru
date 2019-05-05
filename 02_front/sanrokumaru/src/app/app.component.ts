@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'sanrokumaru';
-  events: string[] = [];
-  opened: boolean;
 
   constructor(
     translate: TranslateService,

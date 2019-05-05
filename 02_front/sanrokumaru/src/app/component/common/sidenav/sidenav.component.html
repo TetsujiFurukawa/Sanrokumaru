@@ -1,46 +1,27 @@
 <mat-nav-list>
   <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
-    <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+    <mat-icon class="matIcon">home</mat-icon>{{ 'menu.home' | translate }}
   </a>
 
-  <mat-list-item [matMenuTriggerFor]="menu1">
-    <mat-icon>navigate_next</mat-icon>
-    <a matline>評価</a>
-  </mat-list-item>
-  <mat-menu #menu1="matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">社員一覧</button>
-  </mat-menu>
+  <ng-container *ngFor="let item of availableMenuListDtoLists">
+    <a mat-list-item [matMenuTriggerFor]="appMenu">
+      <mat-icon class="matIcon">navigate_next</mat-icon>{{ item.propertyId | translate }}
+    </a>
+    <mat-menu #appMenu="matMenu">
+      <ng-container *ngFor="let subitem of item.availableMenuDto">
+        <button mat-menu-item (click)="onSidenavClose()"
+          routerLink="/{{subitem.apiName}}">{{ subitem.propertyId | translate }}</button>
+      </ng-container>
+    </mat-menu>
+  </ng-container>
 
-  <mat-list-item [matMenuTriggerFor]="menu2">
-    <mat-icon>navigate_next</mat-icon>
-    <a matline>評価確認</a>
-  </mat-list-item>
-  <mat-menu #menu2="matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">社員一覧</button>
-    <button mat-menu-item (click)="onSidenavClose()">評価結果一覧</button>
-  </mat-menu>
+  <a mat-list-item routerLink="/account-setting" (click)="onSidenavClose()">
+    <mat-icon class="matIcon">account_circle</mat-icon> <span
+      class="nav-caption">{{ 'menu.accountSetting' | translate }}</span>
+  </a>
 
-  <mat-list-item [matMenuTriggerFor]="menu3">
-    <mat-icon>navigate_next</mat-icon>
-    <a matline>管理者</a>
-  </mat-list-item>
-  <mat-menu #menu3="matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">企業情報登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">社員情報登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">社員情報一括登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">社員一覧</button>
-    <button mat-menu-item (click)="onSidenavClose()">質問登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">評価者登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">評価者一括登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">評価ルール登録</button>
-    <button mat-menu-item (click)="onSidenavClose()">評価状況確認</button>
+  <a mat-list-item routerLink="/sign-out" (click)="onSidenavClose()">
+    <mat-icon class="matIcon">exit_to_app</mat-icon> <span class="nav-caption">{{ 'menu.signOut' | translate }}</span>
+  </a>
 
-  </mat-menu>
-  <mat-list-item [matMenuTriggerFor]="menu4">
-    <mat-icon>navigate_next</mat-icon>
-    <a matline>全権</a>
-  </mat-list-item>
-  <mat-menu #menu4="matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">企業情報一覧</button>
-  </mat-menu>
 </mat-nav-list>

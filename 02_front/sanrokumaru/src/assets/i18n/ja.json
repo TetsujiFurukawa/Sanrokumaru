@@ -16,6 +16,28 @@
       "detail": "内容"
     }
   },
+  "menu": {
+    "home": "ホーム",
+    "evaluate": "評価",
+    "evaluatedResult": "評価確認",
+    "administrator": "管理者",
+    "allAdministrator": "全社の管理者",
+    "accountSetting": "アカウント設定",
+    "signOut": "サインアウト"
+  },
+  "subMenu": {
+    "employeeLists": "社員一覧",
+    "evaluatedResultLists": "評価結果一覧",
+    "companyRegistration": "企業情報登録",
+    "employeeRegistration": "社員情報登録",
+    "employeeBatchRegistration": "社員情報一括登録",
+    "questionRegistration": "質問登録",
+    "evaluatorRegistration": "評価者登録",
+    "evaluatorBatchRegistration": "評価者一括登録",
+    "evaluationRuleRegistration": "評価ルール登録",
+    "evaluationStatusCheck": "評価状況確認",
+    "companyLists": "企業情報一覧"
+  },
   "errMessage": {
     "http": "サーバとの通信に失敗しました。"
   },
