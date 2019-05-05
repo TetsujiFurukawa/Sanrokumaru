@@ -5,7 +5,7 @@
 
   <ng-container *ngFor="let item of availableMenuListDtoLists">
     <mat-list-item [matMenuTriggerFor]="appMenu">
-      <mat-icon class="matIcon">arrow_drop_down</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
       <a matline>{{ item.propertyId | translate }}</a>
     </mat-list-item>
     <mat-menu #appMenu="matMenu">
@@ -17,11 +17,11 @@
   </ng-container>
 
   <a mat-list-item routerLink="/account-setting" (click)="onSidenavClose()">
-    <mat-icon class="matIcon">account_circle</mat-icon> {{ 'menu.accountSetting' | translate }}
+    <mat-icon>account_circle</mat-icon> {{ 'menu.accountSetting' | translate }}
   </a>
 
   <a mat-list-item routerLink="/sign-out" (click)="onSidenavClose()">
-    <mat-icon class="matIcon">exit_to_app</mat-icon> {{ 'menu.signOut' | translate }}
+    <mat-icon>exit_to_app</mat-icon> {{ 'menu.signOut' | translate }}
   </a>
 
 </mat-nav-list>

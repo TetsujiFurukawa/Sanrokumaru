@@ -11,11 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -32,11 +33,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatCheckboxModule
+    MatListModule
   ],
   exports: [
     MatGridListModule,
@@ -49,11 +50,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatCheckboxModule
+    MatListModule
   ]
 })
 export class MaterialModule { }
