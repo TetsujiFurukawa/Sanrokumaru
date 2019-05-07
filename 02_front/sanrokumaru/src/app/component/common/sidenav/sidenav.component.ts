@@ -25,17 +25,19 @@ export class SidenavComponent implements OnInit {
 
   }
 
-  public onSidenavClose = () => {
-    this.sidenavClose.emit();
-  }
-
   /**
-   * メニューを取得する
+   * メニューを取得する。
    */
   private getAvailableMenu(): void {
     this.sidenavService.getAvailableMenu()
       .subscribe(availableMenuListDtoLists => this.availableMenuListDtoLists = availableMenuListDtoLists);
-    console.log('aaa');
+  }
+
+  /**
+   * メニュー選択後に親コンポーネントに対してクローズイベントを発生する。
+   */
+  public onSidenavClose() {
+    this.sidenavClose.emit();
   }
 
 }

@@ -9,7 +9,6 @@ import { AppConst } from '../../../app-const';
 import { environment } from '../../../../environments/environment';
 import { ErrorMessageService } from '../../common/message/error-message.service';
 
-import { AvailableMenuDto } from 'src/app/entity/dto/available-menu-dto';
 import { AvailableMenuListDto } from 'src/app/entity/dto/available-menu-list-dto';
 
 @Injectable({
