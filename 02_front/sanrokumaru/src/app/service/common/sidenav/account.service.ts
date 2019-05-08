@@ -7,14 +7,14 @@ import { catchError } from 'rxjs/operators';
 
 import { AppConst } from '../../../app-const';
 import { environment } from '../../../../environments/environment';
-import { ErrorMessageService } from '../../common/message/error-message.service';
+import { ErrorMessageService } from '../message/error-message.service';
 
-import { AvailableMenuListDto } from 'src/app/entity/dto/available-menu-list-dto';
+import { AvailableMenuListDto } from '../../../entity/dto/available-menu-list-dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SidenavService {
+export class AccountService {
 
   private server = environment.production ? AppConst.URL_PROD_SERVER : AppConst.URL_DEV_SERVER;
   private webApiUrl = 'availableMenu';

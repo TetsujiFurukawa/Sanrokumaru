@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SidenavService } from 'src/app/service/common/sidenav/sidenav.service';
+import { AccountService } from 'src/app/service/common/account/account.service';
 import { AvailableMenuListDto } from 'src/app/entity/dto/available-menu-list-dto';
 
 @Component({
@@ -15,7 +15,7 @@ export class SidenavComponent implements OnInit {
   public availableMenuListDtoLists: AvailableMenuListDto[];
 
   constructor(
-    private sidenavService: SidenavService,
+    private accountService: AccountService,
 
   ) { }
 
@@ -29,7 +29,7 @@ export class SidenavComponent implements OnInit {
    * メニューを取得する。
    */
   private getAvailableMenu(): void {
-    this.sidenavService.getAvailableMenu()
+    this.accountService.getAvailableMenu()
       .subscribe(availableMenuListDtoLists => this.availableMenuListDtoLists = availableMenuListDtoLists);
   }
 

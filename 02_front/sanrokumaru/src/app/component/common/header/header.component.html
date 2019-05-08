@@ -1,8 +1,32 @@
 <div *ngIf="this.router.url!=='/signIn'">
   <mat-toolbar>
-    <button mat-icon-button (click)="onToggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1>Sanrokumaru</h1>
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button routerLink="/account-setting">
+        <div style="font-size: 2rem;">Sanrokumaru</div>
+      </button>
+
+      <ng-container *ngFor="let item of availableMenuListDtoLists">
+        <button mat-button [matMenuTriggerFor]="appMenu">{{ item.propertyId | translate }}</button>
+        <mat-menu #appMenu="matMenu">
+          <ng-container *ngFor="let subitem of item.availableMenuDto">
+            <button mat-menu-item routerLink="/{{subitem.apiName}}">
+              {{ subitem.propertyId | translate }}
+            </button>
+          </ng-container>
+        </mat-menu>
+      </ng-container>
+
+      <button mat-button routerLink="/account-setting" style="right: 4rem;position: absolute;">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <button mat-button routerLink="/account-setting" style="right: 0.5rem;position: absolute;">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+
+    </mat-toolbar-row>
   </mat-toolbar>
 </div>
