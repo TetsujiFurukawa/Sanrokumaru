@@ -1,4 +1,13 @@
-.mat-toolbar {
+/* .mat-toolbar {
+  color: whitesmoke;
+  background-color: #66BB6A;
+} */
+
+mat-toolbar {
+  height: 64px;
+  position: fixed;
+  z-index: 100;
+  width: 100% !important;
   color: whitesmoke;
   background-color: #66BB6A;
 }
