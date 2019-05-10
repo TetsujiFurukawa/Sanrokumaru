@@ -4,26 +4,30 @@
       <button mat-icon-button (click)="onToggleSidenav()">
         <mat-icon>menu</mat-icon>
       </button>
-      <button mat-button routerLink="/account-setting">
-        <div style="font-size: 2rem;">Sanrokumaru</div>
+      <button mat-button routerLink="/account-setting" class="btnMenu">
+        <div class="systemName">Sanrokumaru</div>
       </button>
 
-      <ng-container *ngFor="let item of availableMenuListDtoLists">
-        <button mat-button [matMenuTriggerFor]="appMenu">{{ item.propertyId | translate }}</button>
-        <mat-menu #appMenu="matMenu">
-          <ng-container *ngFor="let subitem of item.availableMenuDto">
-            <button mat-menu-item routerLink="/{{subitem.apiName}}">
-              {{ subitem.propertyId | translate }}
-            </button>
-          </ng-container>
-        </mat-menu>
-      </ng-container>
+      <div class="toolBarMenu">
+        <ng-container *ngFor="let item of availableMenuListDtoLists">
+          <button mat-button [matMenuTriggerFor]="appMenu" class="btnMenu">
+            <div class="btnMenu">{{ item.propertyId | translate }}</div>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <ng-container *ngFor="let subitem of item.availableMenuDto">
+              <button mat-menu-item routerLink="/{{subitem.apiName}}">
+                {{ subitem.propertyId | translate }}
+              </button>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+      </div>
 
-      <button mat-button routerLink="/account-setting" style="right: 4rem;position: absolute;">
+      <button mat-button routerLink="/account-setting" class="btnAccount">
         <mat-icon>account_circle</mat-icon>
       </button>
 
-      <button mat-button routerLink="/account-setting" style="right: 0.5rem;position: absolute;">
+      <button mat-button routerLink="/account-setting" class="btnSignOut">
         <mat-icon>exit_to_app</mat-icon>
       </button>
 

@@ -37,17 +37,12 @@
 
 /* Responsive Setting */
 
-/* pc */
-@media screen and (min-width: 961px) {
-  /*ここにpc用スタイルを記述*/
-}
-
-/* tablet  */
-@media only screen and (min-width: 641px) and (max-width: 960px) {
+/* Tablet PC  */
+@media only screen and (min-width: 641px) {
   /*ここにtablet用スタイルを記述*/
 }
 
-/* smartPhone */
+/* SmartPhone */
 @media screen and (max-width: 640px) {
 
   /*ここにスマホ用スタイルを記述*/
@@ -81,5 +76,4 @@
     height: 10rem;
     text-align: center;
   }
-
 }
