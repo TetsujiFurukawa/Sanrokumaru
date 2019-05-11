@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { DateAdapter } from '@angular/material';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +13,15 @@ export class AppComponent {
   title = 'sanrokumaru';
 
   constructor(
-    translate: TranslateService,
+    private translate: TranslateService,
+    // private dateAdapter: DateAdapter<any>,
+    // private momentDateAdapter: MomentDateAdapter,
     public router: Router
   ) {
     // 言語の初期設定
-    translate.setDefaultLang('en');
-    translate.use('ja');
+    this.translate.setDefaultLang('en');
+    this.translate.use('ja');
+    // this.dateAdapter.setLocale('ja-JP');
   }
 
 }

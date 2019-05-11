@@ -16,6 +16,25 @@
       "detail": "内容"
     }
   },
+  "evaluationResultScreen": {
+    "monthFrom": "開始年月",
+    "employeeCode": "従業員コード",
+    "employeeRank": "ランク",
+    "employeeDepartment1": "部署1",
+    "employeeDepartment2": "部署2",
+    "employeeDepartment3": "部署3",
+    "employeeLastName": "姓",
+    "employeeFirstName": "名",
+    "evaluationTarget": "評価対象",
+    "evaluationTargetOptions": {
+      "noOption": "指定なし",
+      "targetPersonOnly": "評価対象者のみ表示",
+      "notevaluated": "未評価の評価対象者のみ表示(評価残)"
+    },
+    "retiree": "退職者",
+    "clearBtn": "クリア",
+    "searchBtn": "検索"
+  },
   "menu": {
     "home": "ホーム",
     "evaluate": "評価",

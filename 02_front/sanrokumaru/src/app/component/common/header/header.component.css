@@ -1,5 +1,5 @@
 mat-toolbar {
-  height: 64px;
+  height: 40px;
   position: fixed;
   z-index: 100;
   width: 100% !important;
@@ -7,31 +7,36 @@ mat-toolbar {
   background-color: #66BB6A;
 }
 
+.toolbar {
+  max-height: 40px;
+  min-height: 40px;
+}
+
+.systemName {
+  letter-spacing: 0rem;
+  min-width: 5px;
+  padding: 3px 10px 3px 10px;
+  font-size: 2rem;
+}
+
+.btnMenu {
+  min-width: 5px;
+  padding: 3px 6px 3px 6px;
+  font-size: 1.2rem;
+}
+
 .btnAccount {
   min-width: 5px;
-  padding: 10px;
+  padding: 3px 10px 3px 10px;
   right: 4rem;
   position: absolute;
 }
 
 .btnSignOut {
   min-width: 5px;
-  padding: 10px;
+  padding: 3px 10px 3px 10px;
   right: 0.5rem;
   position: absolute;
-}
-
-.systemName {
-  letter-spacing: 0rem;
-  min-width: 5px;
-  padding: 10px;
-  font-size: 2rem;
-}
-
-.btnMenu {
-  min-width: 5px;
-  padding: 10px 6px 10px 6px;
-  font-size: 1.2rem;
 }
 
 /* Tablet PC  */

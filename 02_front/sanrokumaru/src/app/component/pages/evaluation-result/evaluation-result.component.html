@@ -1,199 +1,163 @@
-<!-- タイトル -->
-
-<div class="row">
-  <div class="col-12">
-    <form #evaluationResultForm="ngForm" (ngSubmit)="functionName" class="form-horizontal">
-
-      <div class="main">
-        <!-- screen title -->
-        <div class="container-fluid">
-
-          <!-- タイトル欄 -->
-          <div class="row titleArea">
-            <h6>評価結果一覧</h6>
+<div class="wrapper mainBody">
+  <form [formGroup]="mainForm">
+    <!-- タイトル欄 -->
+    <div class="titleArea">
+      評価結果一覧
+    </div>
+    <!-- 検索条件欄 -->
+    <mat-card>
+      <mat-card-content>
+        <app-error-messages></app-error-messages>
+        <div id="searchConditionsArea">
+          <!-- -------------------- 1 -------------------- -->
+          <div id="searchCondition1">
+            <mat-form-field>
+              <input id="monthFrom" matInput [matDatepicker]="dp"
+                placeholder="{{ 'evaluationResultScreen.monthFrom' | translate }}" formControlName="monthFrom">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>
           </div>
-
-          <!-- 検索条件欄 -->
-          <div class="row searchConditionArea">
-
-            <!-- -------------------- 1段目 -------------------- -->
-            <!-- 開始月 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="searchEvaluationMonthFrom">
-                開始月<span class="required">*</span>
-              </label>
-            </div>
-            <div id="datepicker" class="form-group col-12 col-sm-3">
-              <input class="form-control date" id="searchEvaluationMonthFrom" name="searchEvaluationMonthFrom" type="text"
-                placeholder="yyyy-mm" [(ngModel)]="searchEvaluationMonthFrom" required #searchEvaluationMonthFromInfo="ngModel" />
-              <span *ngIf="searchEvaluationMonthFromInfo.errors?.required">開始月は必須です。</span>
-            </div>
-
-            <!-- 従業員コード・ランク -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeCode">従業員コード</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control form-control" id="employeeCode" name="employeeCode" type="text" placeholder="従業員コード"
-                [(ngModel)]="employeeCode">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeRank">ランク</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeRank" name="employeeRank" type="text" placeholder="ランク"
-                [(ngModel)]="employeeRank">
-            </div>
-
-            <!-- -------------------- 2段目 -------------------- -->
-            <!-- 部署 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeDepartment1">部署1</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeDepartment1" name="employeeDepartment1" type="text" placeholder="部署1"
-                [(ngModel)]="employeeDepartment1">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeDepartment2">部署2</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeDepartment2" name="employeeDepartment2" type="text" placeholder="部署2"
-                [(ngModel)]="employeeDepartment2">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeDepartment3">部署3</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeDepartment3" name="employeeDepartment3" type="text" placeholder="部署3"
-                [(ngModel)]="employeeDepartment3">
-            </div>
-
-            <!-- -------------------- 3段目 -------------------- -->
-            <!-- 姓・名 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeLastName">姓</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeLastName" name="employeeLastName" type="text" placeholder="姓"
-                [(ngModel)]="employeeLastName">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-              <label for="employeeFirstName">名</label>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <input class="form-control" id="employeeFirstName" name="employeeFirstName" type="text" placeholder="名"
-                [(ngModel)]="employeeFirstName">
-            </div>
-            <div class="form-group col-12 col-sm-1">
-            </div>
-            <div class="form-group col-12 col-sm-3">
-            </div>
-
-            <!-- -------------------- 4段目 -------------------- -->
-            <!-- 評価対象 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">評価対象</label>
-            </div>
-            <div class="form-group col-12 col-sm-11">
-              <ng-container *ngFor="let item of evaluattionTargetOption; index as i">
-                <label>
-                  <input type="radio" name="evaluattionTarget" [(ngModel)]="selectedEvaluattionTarget" [value]="item.value"
-                    [checked]="selectedEvaluattionTarget == item.value" (change)="show(i)">
-                  {{item.label}} &nbsp;
-                </label>
+          <div id="searchCondition2">
+            <mat-form-field class="form-field">
+              <input id="employeeCode" matInput type="text" formControlName="employeeCode"
+                placeholder="{{ 'evaluationResultScreen.employeeCode' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition3">
+            <mat-form-field class="form-field">
+              <input id="employeeRank" matInput type="text" formControlName="employeeRank"
+                placeholder="{{ 'evaluationResultScreen.employeeRank' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition4">
+            <mat-form-field class="form-field">
+              <input id="employeeDepartment1" matInput type="text" formControlName="employeeDepartment1"
+                placeholder="{{ 'evaluationResultScreen.employeeDepartment1' | translate }}">
+            </mat-form-field>
+          </div>
+          <!-- -------------------- 5 -------------------- -->
+          <div id="searchCondition5">
+            <mat-form-field class="form-field">
+              <input id="employeeDepartment2" matInput type="text" formControlName="employeeDepartment2"
+                placeholder="{{ 'evaluationResultScreen.employeeDepartment2' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition6">
+            <mat-form-field class="form-field">
+              <input id="employeeDepartment3" matInput type="text" formControlName="employeeDepartment3"
+                placeholder="{{ 'evaluationResultScreen.employeeDepartment3' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition7">
+            <mat-form-field class="form-field">
+              <input id="employeeLastName" matInput type="text" formControlName="employeeLastName"
+                placeholder="{{ 'evaluationResultScreen.employeeLastName' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition8">
+            <mat-form-field class="form-field">
+              <input id="employeeFirstName" matInput type="text" formControlName="employeeFirstName"
+                placeholder="{{ 'evaluationResultScreen.employeeFirstName' | translate }}">
+            </mat-form-field>
+          </div>
+          <div id="searchCondition9">
+            <label class="labelFor">{{ 'evaluationResultScreen.evaluationTarget' | translate }}</label>
+            <mat-radio-group id="evaluationTarget" aria-labelledby="evaluationTargetGroupLabel"
+              formControlName="evaluationTarget">
+              <ng-container *ngFor="let item of evaluationTargetOption; index as i">
+                <mat-radio-button value="{{ item.value }}">{{ item.label | translate }}</mat-radio-button>
               </ng-container>
-            </div>
-
-            <!-- -------------------- 5段目 -------------------- -->
-            <!-- 退職者 -->
-            <div class="form-group col-12 col-sm-1">
-              <label for="loginUserId">退職者</label>
-            </div>
-            <div class="form-group col-12 col-sm-11">
-              <ng-container *ngFor="let item of retireeOption; index as i">
-                <label>
-                  <input type="checkbox" name=" retiree{{i}}" [(ngModel)]=" retireeOption[i].selected" [value]="item.value"
-                    (change)="show()">
-                  {{item.label}}
-                </label>
-              </ng-container>
-            </div>
+            </mat-radio-group>
           </div>
-
-          <!-- ボタンのエリア -->
-          <div class="row searchButtonArea">
-            <div class="form-group col-12 offset-sm-6 col-sm-3">
-              <button type="submit" id="btnClear" class="form-control btn btn-success">クリア</button>
-            </div>
-            <div class="form-group col-12 col-sm-3">
-              <button type="submit" id="btnSubmit" class="form-control btn  btn-success">検索</button>
-            </div>
+          <!-- -------------------- 10 -------------------- -->
+          <div id="searchCondition10">
+            <label class="labelFor">{{ 'evaluationResultScreen.retiree'  | translate}}</label>
+            <mat-checkbox id="evaluationTarget" formControlName="retiree"></mat-checkbox>
           </div>
-
-          <!-- 検索情報エリア -->
-          <app-search-info></app-search-info>
-
-          <!--検索結果エリア -->
-          <div class="row searchResultArea">
-
-            <table class="table table-hover table-striped table-responsive-xl searchResult">
-              <thead>
-                <tr>
-                  <th rowspan="2" class="text-center">社員番号</th>
-                  <th rowspan="2" class="text-center">氏名</th>
-                  <th rowspan="2" class="text-center">部署</th>
-                  <th rowspan="2" class="text-center">ランク</th>
-                  <th rowspan="2" class="text-center">メールアドレス</th>
-                  <th colspan="13" class="text-center">総合点</th>
-                </tr>
-                <tr>
-                  <th class="text-center">総合</th>
-                  <th class="text-center">4月</th>
-                  <th class="text-center">5月</th>
-                  <th class="text-center">6月</th>
-                  <th class="text-center">7月</th>
-                  <th class="text-center">8月</th>
-                  <th class="text-center">9月</th>
-                  <th class="text-center">10月</th>
-                  <th class="text-center">11月</th>
-                  <th class="text-center">12月</th>
-                  <th class="text-center">1月</th>
-                  <th class="text-center">2月</th>
-                  <th class="text-center">3月</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let evaluateResultSumary of evaluateResultSumaryList">
-                  <td>{{evaluateResultSumary.employeeCode}}</td>
-                  <td>{{evaluateResultSumary.employeeName}}</td>
-                  <td>{{evaluateResultSumary.employeeDepartment}}</td>
-                  <td class="text-center">{{evaluateResultSumary.Rank}}</td>
-                  <td>{{evaluateResultSumary.mailaddress}}</td>
-                  <td class="text-right">{{evaluateResultSumary.totalScore}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score01}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score02}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score03}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score04}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score05}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score06}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score07}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score08}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score09}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score10}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score11}}</td>
-                  <td class="text-right">{{evaluateResultSumary.Score12}}</td>
-                </tr>
-              </tbody>
-            </table>
-
+          <div id="searchCondition11">
           </div>
-
-          <!-- 検索情報エリア -->
-          <app-search-info></app-search-info>
-
+          <div id="searchCondition12">
+          </div>
         </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- ボタンのエリア -->
+    <div id="searchButtonArea">
+      <div id="clearBtnArea">
+        <button mat-raised-button color="primary" id="clearBtn" class="btn"
+          type="submit">{{ "evaluationResultScreen.clearBtn" | translate }}
+        </button>
       </div>
-    </form>
-  </div>
+      <div id="searchBtnArea">
+        <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit"
+          [disabled]="!mainForm.valid">{{ "evaluationResultScreen.searchBtn" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- 検索情報エリア -->
+    <app-search-info></app-search-info>
+
+    <!--検索結果エリア -->
+    <div class="row searchResultArea">
+
+      <table class="table table-hover table-striped table-responsive-xl searchResult">
+        <thead>
+          <tr>
+            <th rowspan="2" class="text-center">社員番号</th>
+            <th rowspan="2" class="text-center">氏名</th>
+            <th rowspan="2" class="text-center">部署</th>
+            <th rowspan="2" class="text-center">ランク</th>
+            <th rowspan="2" class="text-center">メールアドレス</th>
+            <th colspan="13" class="text-center">総合点</th>
+          </tr>
+          <tr>
+            <th class="text-center">総合</th>
+            <th class="text-center">4月</th>
+            <th class="text-center">5月</th>
+            <th class="text-center">6月</th>
+            <th class="text-center">7月</th>
+            <th class="text-center">8月</th>
+            <th class="text-center">9月</th>
+            <th class="text-center">10月</th>
+            <th class="text-center">11月</th>
+            <th class="text-center">12月</th>
+            <th class="text-center">1月</th>
+            <th class="text-center">2月</th>
+            <th class="text-center">3月</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let evaluateResultSumary of evaluateResultSumaryList">
+            <td>{{evaluateResultSumary.employeeCode}}</td>
+            <td>{{evaluateResultSumary.employeeName}}</td>
+            <td>{{evaluateResultSumary.employeeDepartment}}</td>
+            <td class="text-center">{{evaluateResultSumary.Rank}}</td>
+            <td>{{evaluateResultSumary.mailaddress}}</td>
+            <td class="text-right">{{evaluateResultSumary.totalScore}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score01}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score02}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score03}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score04}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score05}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score06}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score07}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score08}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score09}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score10}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score11}}</td>
+            <td class="text-right">{{evaluateResultSumary.Score12}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- 検索情報エリア -->
+    <app-search-info></app-search-info>
+  </form>
 </div>
