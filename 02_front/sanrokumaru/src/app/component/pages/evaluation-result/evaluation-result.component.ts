@@ -34,7 +34,7 @@ export const MY_FORMATS = {
   styleUrls: ['./evaluation-result.component.css'],
   providers: [EvaluationResultService,
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }, { provide: MAT_DATE_LOCALE, useValue: 'ja-JP' }]
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
 })
 export class EvaluationResultComponent implements OnInit {
 
@@ -87,10 +87,12 @@ export class EvaluationResultComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private evaluationResultService: EvaluationResultService) {
+    private evaluationResultService: EvaluationResultService,
+    private adapter: DateAdapter<any>) {
   }
 
   ngOnInit() {
+    this.adapter.setLocale('ja-JP');
     // this.setUpDatePicker();
     // this.evaluateResultSumaryList = this.evaluationResultService.getEvaluationResultListSummary();
   }
