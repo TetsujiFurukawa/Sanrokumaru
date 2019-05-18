@@ -21,6 +21,7 @@ import { SearchInfoComponent } from './component/common/search-info/search-info.
 import { MessagesComponent } from './component/common/messages/messages/messages.component';
 import { ErrorMessagesComponent } from './component/common/messages/error-messages/error-messages.component';
 import { SidenavComponent } from './component/common/sidenav/sidenav.component';
+import { MatDatepickerMonthComponent } from './component/common/date/mat-datepicker-month/mat-datepicker-month.component';
 
 // 他言語化の設定
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchInfoComponent,
     MessagesComponent,
     ErrorMessagesComponent,
-    SidenavComponent
+    SidenavComponent,
+    MatDatepickerMonthComponent
   ],
   imports: [
     BrowserModule,

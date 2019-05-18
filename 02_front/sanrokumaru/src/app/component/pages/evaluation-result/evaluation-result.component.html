@@ -11,14 +11,9 @@
         <div id="searchConditionsArea">
           <!-- -------------------- 1 -------------------- -->
           <div id="searchCondition1">
-            <mat-form-field>
-              <input id="monthFrom" matInput [matDatepicker]="dp"
-                placeholder="{{ 'evaluationResultScreen.monthFrom' | translate }}" formControlName="monthFrom">
-              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-              <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
-                (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
-              </mat-datepicker>
-            </mat-form-field>
+            <app-mat-datepicker-month [locale]='locale' [displayName]=displayNameMonthFrom
+              (event)="onReceiveEventFromChild($event)">
+            </app-mat-datepicker-month>
           </div>
           <div id="searchCondition2">
             <mat-form-field class="form-field">
@@ -75,11 +70,7 @@
           <!-- -------------------- 10 -------------------- -->
           <div id="searchCondition10">
             <label class="labelFor">{{ 'evaluationResultScreen.retiree'  | translate}}</label>
-            <mat-checkbox id="evaluationTarget" formControlName="retiree"></mat-checkbox>
-          </div>
-          <div id="searchCondition11">
-          </div>
-          <div id="searchCondition12">
+            <mat-checkbox id="retiree" formControlName="retiree"></mat-checkbox>
           </div>
         </div>
       </mat-card-content>

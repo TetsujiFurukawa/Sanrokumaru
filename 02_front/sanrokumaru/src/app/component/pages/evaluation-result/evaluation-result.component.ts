@@ -17,42 +17,42 @@ const moment = _rollupMoment || _moment;
 
 import { HeaderService } from '../../../service/common/header/header.service';
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'YYYY/MM',
-  },
-  display: {
-    dateInput: 'YYYY/MM',
-    monthYearLabel: 'YYYY MMM',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY MMMM',
-  },
-};
+// export const MY_FORMATS = {
+//   parse: {
+//     dateInput: 'YYYY/MM',
+//   },
+//   display: {
+//     dateInput: 'YYYY/MM',
+//     monthYearLabel: 'YYYY MMM',
+//     dateA11yLabel: 'LL',
+//     monthYearA11yLabel: 'YYYY MMMM',
+//   },
+// };
 @Component({
   selector: 'app-evaluation-result',
   templateUrl: './evaluation-result.component.html',
   styleUrls: ['./evaluation-result.component.css'],
-  providers: [EvaluationResultService,
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
+  providers: [EvaluationResultService]
 })
 export class EvaluationResultComponent implements OnInit {
 
-  // E-Mailアドレス
-  monthFrom = new FormControl(moment());
-  employeeCode = new FormControl('', []);
-  employeeRank = new FormControl('', []);
-  employeeDepartment1 = new FormControl('', []);
-  employeeDepartment2 = new FormControl('', []);
-  employeeDepartment3 = new FormControl('', []);
-  employeeLastName = new FormControl('', []);
-  employeeFirstName = new FormControl('', []);
-  evaluationTarget = new FormControl('0', []);
-  retiree = new FormControl('', []);
+  public monthFrom = new FormControl(moment());
+  public employeeCode = new FormControl('', []);
+  public employeeRank = new FormControl('', []);
+  public employeeDepartment1 = new FormControl('', []);
+  public employeeDepartment2 = new FormControl('', []);
+  public employeeDepartment3 = new FormControl('', []);
+  public employeeLastName = new FormControl('', []);
+  public employeeFirstName = new FormControl('', []);
+  public evaluationTarget = new FormControl('0', []);
+  public retiree = new FormControl('', []);
+  public locale: String = 'ja-JP';
+  public displayNameMonthFrom: String = 'evaluationResultScreen.monthFrom';
 
+  public testMonth = new FormControl(moment());
 
   // サインインのフォーム設定
-  mainForm = this.formBuilder.group({
+  public mainForm = this.formBuilder.group({
     monthFrom: this.monthFrom,
     employeeCode: this.employeeCode,
     employeeRank: this.employeeRank,
@@ -63,7 +63,6 @@ export class EvaluationResultComponent implements OnInit {
     employeeFirstName: this.employeeFirstName,
     evaluationTarget: this.evaluationTarget,
     retiree: this.retiree
-
   });
 
   // 検索条件
@@ -93,31 +92,12 @@ export class EvaluationResultComponent implements OnInit {
 
   ngOnInit() {
     this.adapter.setLocale('ja-JP');
-    // this.setUpDatePicker();
-    // this.evaluateResultSumaryList = this.evaluationResultService.getEvaluationResultListSummary();
   }
 
-
-  private setUpDatePicker() {
-    // this.searchEvaluationMonthFrom = '2018-11';
-    // $('#datepicker .date').datepicker({
-    //   format: 'yyyy-mm',
-    //   language: 'ja',
-    //   autoclose: true,
-    //   minViewMode: 'months'
-    // });
+  onReceiveEventFromChild(eventData: String) {
+    this.testMonth.setValue(eventData);
+    this.monthFrom.setValue(eventData);
+    console.log('monthFrom:' + (this.monthFrom.value).format('YYYYMM'));
   }
 
-  chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue = this.monthFrom.value;
-    ctrlValue.year(normalizedYear.year());
-    this.monthFrom.setValue(ctrlValue);
-  }
-
-  chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.monthFrom.value;
-    ctrlValue.month(normalizedMonth.month());
-    this.monthFrom.setValue(ctrlValue);
-    datepicker.close();
-  }
 }
