@@ -11,7 +11,7 @@
         <div id="searchConditionsArea">
           <!-- -------------------- 1 -------------------- -->
           <div id="searchCondition1">
-            <app-mat-datepicker-month [locale]='locale' [displayName]=displayNameMonthFrom
+            <app-mat-datepicker-month [locale]='locale' [placeholder]='displayNameMonthFrom'
               (event)="onReceiveEventFromChild($event)">
             </app-mat-datepicker-month>
           </div>
@@ -91,10 +91,10 @@
     </div>
 
     <!-- 検索情報エリア -->
-    <app-search-info></app-search-info>
+    <!-- <app-search-info></app-search-info> -->
 
     <!--検索結果エリア -->
-    <div class="row searchResultArea">
+    <!-- <div class="row searchResultArea">
 
       <table class="table table-hover table-striped table-responsive-xl searchResult">
         <thead>
@@ -146,9 +146,9 @@
         </tbody>
       </table>
 
-    </div>
+    </div> -->
 
     <!-- 検索情報エリア -->
-    <app-search-info></app-search-info>
+    <!-- <app-search-info></app-search-info> -->
   </form>
 </div>

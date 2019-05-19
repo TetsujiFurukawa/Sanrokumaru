@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -35,7 +36,7 @@ export const MY_FORMATS = {
 export class MatDatepickerMonthComponent implements OnInit {
 
   @Input() locale: String;
-  @Input() displayName: string;
+  @Input() placeholder: string;
   @Output() event = new EventEmitter<String>();
 
   yearMonth = new FormControl(moment());
@@ -67,5 +68,7 @@ export class MatDatepickerMonthComponent implements OnInit {
     this.event.emit(this.yearMonth.value);
     datepicker.close();
   }
-
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.event.emit(this.yearMonth.value);
+  }
 }
