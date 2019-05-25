@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorMessageService } from '../../../../service/common/message/error-message.service';
+import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 
 @Component({
   selector: 'app-error-messages',

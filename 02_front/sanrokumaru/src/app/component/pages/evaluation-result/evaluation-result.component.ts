@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { EvaluateResultSumaryList } from '../../../entity/dto/evaluateResultSumaryList';
-import { EvaluationResultService } from '../../../service/evaluationResult/evaluation-result.service';
+import { EvaluateResultSumaryList } from 'src/app/entity/evaluation/SearchEvaluationResultDto';
+import { EvaluationResultService } from 'src/app/service/evaluation/evaluation-result.service';
 
 @Component({
   selector: 'app-evaluation-result',

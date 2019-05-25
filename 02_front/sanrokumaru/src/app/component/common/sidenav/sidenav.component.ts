@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AccountService } from 'src/app/service/common/account/account.service';
-import { AvailableMenuListDto } from 'src/app/entity/dto/available-menu-list-dto';
+import { AccountService } from 'src/app/service/account/account.service';
+import { AvailableMenuListDto } from 'src/app/entity/account/available-menu-list-dto';
 
 @Component({
   selector: 'app-sidenav',

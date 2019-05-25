@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
-import { Information } from 'src/app/entity/domain/information';
-import { SignInDto } from 'src/app/entity/dto/sign-in-dto';
-import { Session } from '../common/session/session';
-import { ErrorMessageService } from '../common/message/error-message.service';
+import { Information } from 'src/app/entity/information/information';
+import { SignInDto } from 'src/app/entity/signIn/sign-in-dto';
+import { Session } from 'src/app/service/session/session';
+import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 
 @Injectable({
   providedIn: 'root'

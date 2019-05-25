@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Information } from '../../../entity/domain/information';
-import { InformationService } from '../../../service/information/information.service';
-import { SignInDto } from 'src/app/entity/dto/sign-in-dto';
-import { SignInService } from 'src/app/service/sign-in/sign-in.service';
-import { SessionService } from 'src/app/service/common/session/session.service';
-import { Session } from 'src/app/service/common/session/session';
+import { Information } from 'src/app/entity/information/information';
+import { InformationService } from 'src/app/service/information/information.service';
+import { SignInDto } from 'src/app/entity/signIn/sign-in-dto';
+import { SignInService } from 'src/app/service/signIn/sign-in.service';
+import { SessionService } from 'src/app/service/session/session.service';
+import { Session } from 'src/app/service/session/session';
 import { Router } from '@angular/router';
 
 @Component({

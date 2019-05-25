@@ -5,11 +5,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { AppConst } from '../../../app-const';
-import { environment } from '../../../../environments/environment';
-import { ErrorMessageService } from '../message/error-message.service';
+import { AppConst } from 'src/app/app-const';
+import { environment } from 'src/environments/environment';
+import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 
-import { AvailableMenuListDto } from '../../../entity/dto/available-menu-list-dto';
+import { AvailableMenuListDto } from 'src/app/entity/account/available-menu-list-dto';
 
 @Injectable({
   providedIn: 'root'

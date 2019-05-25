@@ -7,13 +7,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { AppConst } from 'src/app/app-const';
 
+import { EvaluateResultSumaryList } from 'src/app/entity/evaluation/SearchEvaluationResultDto';
 import { Information } from 'src/app/entity/information/information';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class InformationService {
+export class EvaluationResultService {
 
   private server = environment.production ? AppConst.URL_PROD_SERVER : AppConst.URL_DEV_SERVER;
   private webApiUrl = 'informations';
@@ -37,4 +37,5 @@ export class InformationService {
         })
       );
   }
+
 }
