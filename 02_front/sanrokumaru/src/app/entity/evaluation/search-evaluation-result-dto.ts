@@ -1,4 +1,4 @@
-export class EvaluateResultSumaryList {
+export class SearchEvaluationResultDto {
   employeeCode: string;
   employeeName: string;
   employeeDepartment: string;

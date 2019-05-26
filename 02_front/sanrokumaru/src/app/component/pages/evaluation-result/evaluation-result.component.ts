@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { EvaluateResultSumaryList } from 'src/app/entity/evaluation/SearchEvaluationResultDto';
-import { EvaluationResultService } from 'src/app/service/evaluation/evaluation-result.service';
+import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
+import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
+import { SearchEvaluattionResultListDto } from 'src/app/entity/evaluation/search-evaluattion-result-list-dto';
 
 @Component({
   selector: 'app-evaluation-result',
   templateUrl: './evaluation-result.component.html',
   styleUrls: ['./evaluation-result.component.css'],
-  providers: [EvaluationResultService]
+  providers: [EvaluationService]
 })
 export class EvaluationResultComponent implements OnInit {
 
@@ -38,9 +39,6 @@ export class EvaluationResultComponent implements OnInit {
     retiree: this.retiree
   });
 
-  // 検索条件
-  searchEvaluationMonthFrom: string;
-
   // 評価対象ラジオボタン
   evaluationTargetOption = [
     { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
@@ -55,14 +53,21 @@ export class EvaluationResultComponent implements OnInit {
   // ];
 
   // 検索結果一覧表示用のエンティティ
-  evaluateResultSumaryList: EvaluateResultSumaryList[];
+  // evaluateResultSumaryList: EvaluateResultSumaryList[];
+
+  searchEvaluattionResultListDto: SearchEvaluattionResultListDto[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private evaluationResultService: EvaluationResultService) {
-  }
+    private evaluationService: EvaluationService
+  ) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.evaluationService.getEvaluationResult().subscribe(searchEvaluattionResultListDto =>
+      this.searchEvaluattionResultListDto = searchEvaluattionResultListDto);
   }
 
   onReceiveEventFromChild(eventData: String) {
