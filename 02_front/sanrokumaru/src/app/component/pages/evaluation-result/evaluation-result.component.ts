@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
 import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
 import { SearchEvaluattionResultListDto } from 'src/app/entity/evaluation/search-evaluattion-result-list-dto';
 
@@ -55,7 +54,7 @@ export class EvaluationResultComponent implements OnInit {
   // 検索結果一覧表示用のエンティティ
   // evaluateResultSumaryList: EvaluateResultSumaryList[];
 
-  searchEvaluattionResultListDto: SearchEvaluattionResultListDto[];
+  searchEvaluattionResultListDto: SearchEvaluattionResultListDto;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,13 +64,23 @@ export class EvaluationResultComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClear() {
+
+  }
+
   onSubmit() {
     this.evaluationService.getEvaluationResult().subscribe(searchEvaluattionResultListDto =>
       this.searchEvaluattionResultListDto = searchEvaluattionResultListDto);
+
   }
 
   onReceiveEventFromChild(eventData: String) {
     this.monthFrom.setValue(eventData);
   }
+
+  onReceiveEventFromPagenator(eventData: String) {
+    this.monthFrom.setValue(eventData);
+  }
+
 
 }

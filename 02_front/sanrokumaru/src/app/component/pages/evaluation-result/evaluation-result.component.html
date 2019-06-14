@@ -79,12 +79,12 @@
     <!-- ボタンのエリア -->
     <div id="searchButtonArea">
       <div id="clearBtnArea">
-        <button mat-raised-button color="primary" id="clearBtn" class="btn"
+        <button mat-raised-button color="primary" id="clearBtn" class="btn" (click)="onClear()"
           type="submit">{{ "evaluationResultScreen.clearBtn" | translate }}
         </button>
       </div>
       <div id="searchBtnArea">
-        <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit"
+        <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit" (click)="onSubmit()"
           [disabled]="!mainForm.valid">{{ "evaluationResultScreen.searchBtn" | translate }}
         </button>
       </div>
@@ -92,6 +92,7 @@
 
 
     <!-- 検索情報エリア -->
+    <mat-paginator [length]="100" [pageSize]="50" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
     <!-- <app-search-info></app-search-info> -->
 
     <!--検索結果エリア -->

@@ -17,7 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class EvaluationService {
 
   private server = environment.production ? AppConst.URL_PROD_SERVER : AppConst.URL_DEV_SERVER;
-  private webApiUrl = 'informations';
+  private webApiUrl = 'evaluationResult';
 
   constructor(
     private http: HttpClient,
@@ -25,16 +25,15 @@ export class EvaluationService {
     private readonly translateService: TranslateService
   ) { }
 
-  public getEvaluationResult(): Observable<SearchEvaluattionResultListDto[]> {
+  public getEvaluationResult(): Observable<SearchEvaluattionResultListDto> {
 
     console.log(this.server + this.webApiUrl);
 
-    return this.http.get<SearchEvaluattionResultListDto[]>(this.server + this.webApiUrl, AppConst.httpOptions)
+    return this.http.get<SearchEvaluattionResultListDto>(this.server + this.webApiUrl, AppConst.httpOptions)
       .pipe(
         catchError(err => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
-          console.log(err);
-          return of([]);
+          return of(null as any);
         })
       );
   }
