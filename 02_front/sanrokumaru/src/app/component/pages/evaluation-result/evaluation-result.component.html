@@ -80,7 +80,7 @@
       <!-- Button Area -->
       <div id="searchButtonArea">
         <div id="paginatorArea">
-          <mat-paginator [length]="100" [pageSize]="50" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+          <mat-paginator [length]="resultsLength" [pageSize]="50" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
         </div>
         <div id="clearBtnArea">
           <button mat-raised-button color="primary" id="clearBtn" class="btn" (click)="onClear()"
@@ -96,12 +96,12 @@
 
       <!-- evaluationResult Area-->
       <div id="evaluationResult">
-        <!-- <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+        <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
           <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
           <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
             GitHub's API rate limit has been reached. It will be reset in one minute.
           </div>
-        </div> -->
+        </div>
 
         <table mat-table [dataSource]="searchEvaluationResultDtos" class="mat-elevation-z8">
           <ng-container matColumnDef="employeeCode">
@@ -206,7 +206,6 @@
           <tr mat-row *matRowDef="let row; columns: displayEvaluationResultColumns;"></tr>
         </table>
       </div>
-
     </form>
   </div>
 </div>

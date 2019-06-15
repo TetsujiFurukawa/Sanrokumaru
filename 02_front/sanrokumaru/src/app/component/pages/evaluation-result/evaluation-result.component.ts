@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
 import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
+import { MatPaginator } from '@angular/material';
+import { merge, of } from 'rxjs';
+import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-evaluation-result',
@@ -47,7 +50,6 @@ export class EvaluationResultComponent implements OnInit {
     { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
   ];
 
-  // searchEvaluattionResultListDto: SearchEvaluattionResultListDto;
   public totalNoOfRow: number;
   public searchEvaluationResultDtos: SearchEvaluationResultDto[];
   public displayEvaluationResultColumns: string[] = [
@@ -62,6 +64,12 @@ export class EvaluationResultComponent implements OnInit {
     'evaluatePoint07', 'evaluatePoint08', 'evaluatePoint09', 'evaluatePoint10', 'evaluatePoint11', 'evaluatePoint12'
   ];
 
+  public resultsLength = 0;
+  public isLoadingResults = false;
+  public isRateLimitReached = false;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private formBuilder: FormBuilder,
     private evaluationService: EvaluationService
@@ -75,9 +83,35 @@ export class EvaluationResultComponent implements OnInit {
   }
 
   onSearch() {
-    this.evaluationService.getEvaluationResult().subscribe(searchEvaluationResultListDto => {
-      this.searchEvaluationResultDtos = searchEvaluationResultListDto.searchEvaluationResultDtos;
-    });
+
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          this.isLoadingResults = true;
+          return this.evaluationService.getEvaluationResult();
+
+        }),
+        map(data => {
+          // Flip flag to show that loading has finished.
+          this.isLoadingResults = false;
+          this.isRateLimitReached = false;
+          this.resultsLength = data.resultsLength;
+          return data.searchEvaluationResultDtos;
+
+        }),
+        catchError(() => {
+          this.isLoadingResults = false;
+          // Catch if the GitHub API has reached its rate limit. Return empty data.
+          this.isRateLimitReached = true;
+          return of(null as any);
+
+        })
+      ).subscribe(data => this.searchEvaluationResultDtos = data);
+
   }
 
+  // this.evaluationService.getEvaluationResult().subscribe(searchEvaluationResultListDto => {
+  //   this.searchEvaluationResultDtos = searchEvaluationResultListDto.searchEvaluationResultDtos;
+  // });
 }
