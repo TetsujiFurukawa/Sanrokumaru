@@ -33,7 +33,26 @@
     },
     "retiree": "退職者",
     "clearBtn": "クリア",
-    "searchBtn": "検索"
+    "searchBtn": "検索",
+    "searchResult": {
+      "employeeName": "氏名",
+      "employeeDepartment": "部署",
+      "employeeEMailAddress": "メールアドレス",
+      "evaluateYear": "評価年",
+      "evaluateTotalPoint": "合計点",
+      "evaluatePoint01": "1月",
+      "evaluatePoint02": "2月",
+      "evaluatePoint03": "3月",
+      "evaluatePoint04": "4月",
+      "evaluatePoint05": "5月",
+      "evaluatePoint06": "6月",
+      "evaluatePoint07": "7月",
+      "evaluatePoint08": "8月",
+      "evaluatePoint09": "9月",
+      "evaluatePoint10": "10月",
+      "evaluatePoint11": "11月",
+      "evaluatePoint12": "12月"
+    }
   },
   "menu": {
     "home": "ホーム",

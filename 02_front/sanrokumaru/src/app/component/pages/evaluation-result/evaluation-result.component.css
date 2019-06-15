@@ -61,24 +61,26 @@
 
 #searchButtonArea {
   display: grid;
-  margin-top: 0.5rem;
-  grid-template-rows: 3rem;
-  grid-template-columns: 20% 30% 30% 1fr;
+  padding-top: 0.5rem;
+  align-items: center;
+  justify-items: right;
+  grid-template-columns: 60% 20% 20% 1fr;
   grid-template-areas:
-    ". clearBtnArea searchBtnArea"
+    "paginatorArea clearBtnArea searchBtnArea"
+}
+
+#paginatorArea {
+  grid-area: paginatorArea;
+  justify-self: left;
 }
 
 #clearBtnArea {
-  text-align: center;
   grid-area: clearBtnArea;
 }
 
 #searchBtnArea {
-  text-align: center;
   grid-area: searchBtnArea;
 }
-
-
 
 .example-month-picker .mat-calendar-period-button {
   pointer-events: none;
@@ -104,9 +106,9 @@
   }
 
   #searchButtonArea {
-    grid-template-columns: 10% 40% 40% 1fr;
+    grid-template-columns: 10% 60% 60% 1fr;
     grid-template-areas:
-      ". clearBtnArea searchBtnArea"
+      "paginatorArea clearBtnArea searchBtnArea"
   }
 
 }

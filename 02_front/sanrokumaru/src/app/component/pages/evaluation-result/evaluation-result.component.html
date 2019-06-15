@@ -1,156 +1,212 @@
-<div class="wrapper mainBody">
-  <form [formGroup]="mainForm">
-    <!-- タイトル欄 -->
-    <div class="titleArea">
-      評価結果一覧
-    </div>
-    <!-- 検索条件欄 -->
-    <mat-card>
-      <mat-card-content>
-        <app-error-messages></app-error-messages>
-        <div id="searchConditionsArea">
-          <!-- -------------------- 1 -------------------- -->
-          <div id="searchCondition1">
-            <app-mat-datepicker-month [locale]='locale' [placeholder]='displayNameMonthFrom'
-              (event)="onReceiveEventFromChild($event)">
-            </app-mat-datepicker-month>
+<div class="mainColor">
+  <div class="wrapper mainBody">
+    <form [formGroup]="mainForm">
+      <!-- Screen Title Area -->
+      <div class="titleArea">
+        評価結果一覧
+      </div>
+
+      <!-- Search Conditions Area -->
+      <mat-card>
+        <mat-card-content>
+          <app-error-messages></app-error-messages>
+          <div id="searchConditionsArea">
+            <!-- -------------------- 1 -------------------- -->
+            <div id="searchCondition1">
+              <app-mat-datepicker-month [locale]='locale' [placeholder]='displayNameMonthFrom'>
+              </app-mat-datepicker-month>
+            </div>
+            <div id="searchCondition2">
+              <mat-form-field class="form-field">
+                <input id="employeeCode" matInput type="text" formControlName="employeeCode"
+                  placeholder="{{ 'evaluationResultScreen.employeeCode' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition3">
+              <mat-form-field class="form-field">
+                <input id="employeeRank" matInput type="text" formControlName="employeeRank"
+                  placeholder="{{ 'evaluationResultScreen.employeeRank' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition4">
+              <mat-form-field class="form-field">
+                <input id="employeeDepartment1" matInput type="text" formControlName="employeeDepartment1"
+                  placeholder="{{ 'evaluationResultScreen.employeeDepartment1' | translate }}">
+              </mat-form-field>
+            </div>
+            <!-- -------------------- 5 -------------------- -->
+            <div id="searchCondition5">
+              <mat-form-field class="form-field">
+                <input id="employeeDepartment2" matInput type="text" formControlName="employeeDepartment2"
+                  placeholder="{{ 'evaluationResultScreen.employeeDepartment2' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition6">
+              <mat-form-field class="form-field">
+                <input id="employeeDepartment3" matInput type="text" formControlName="employeeDepartment3"
+                  placeholder="{{ 'evaluationResultScreen.employeeDepartment3' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition7">
+              <mat-form-field class="form-field">
+                <input id="employeeLastName" matInput type="text" formControlName="employeeLastName"
+                  placeholder="{{ 'evaluationResultScreen.employeeLastName' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition8">
+              <mat-form-field class="form-field">
+                <input id="employeeFirstName" matInput type="text" formControlName="employeeFirstName"
+                  placeholder="{{ 'evaluationResultScreen.employeeFirstName' | translate }}">
+              </mat-form-field>
+            </div>
+            <div id="searchCondition9">
+              <label class="labelFor">{{ 'evaluationResultScreen.evaluationTarget' | translate }}</label>
+              <mat-radio-group id="evaluationTarget" aria-labelledby="evaluationTargetGroupLabel"
+                formControlName="evaluationTarget">
+                <ng-container *ngFor="let item of evaluationTargetOption; index as i">
+                  <mat-radio-button value="{{ item.value }}">{{ item.label | translate }}</mat-radio-button>
+                </ng-container>
+              </mat-radio-group>
+            </div>
+            <!-- -------------------- 10 -------------------- -->
+            <div id="searchCondition10">
+              <label class="labelFor">{{ 'evaluationResultScreen.retiree'  | translate}}</label>
+              <mat-checkbox id="retiree" formControlName="retiree"></mat-checkbox>
+            </div>
           </div>
-          <div id="searchCondition2">
-            <mat-form-field class="form-field">
-              <input id="employeeCode" matInput type="text" formControlName="employeeCode"
-                placeholder="{{ 'evaluationResultScreen.employeeCode' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition3">
-            <mat-form-field class="form-field">
-              <input id="employeeRank" matInput type="text" formControlName="employeeRank"
-                placeholder="{{ 'evaluationResultScreen.employeeRank' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition4">
-            <mat-form-field class="form-field">
-              <input id="employeeDepartment1" matInput type="text" formControlName="employeeDepartment1"
-                placeholder="{{ 'evaluationResultScreen.employeeDepartment1' | translate }}">
-            </mat-form-field>
-          </div>
-          <!-- -------------------- 5 -------------------- -->
-          <div id="searchCondition5">
-            <mat-form-field class="form-field">
-              <input id="employeeDepartment2" matInput type="text" formControlName="employeeDepartment2"
-                placeholder="{{ 'evaluationResultScreen.employeeDepartment2' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition6">
-            <mat-form-field class="form-field">
-              <input id="employeeDepartment3" matInput type="text" formControlName="employeeDepartment3"
-                placeholder="{{ 'evaluationResultScreen.employeeDepartment3' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition7">
-            <mat-form-field class="form-field">
-              <input id="employeeLastName" matInput type="text" formControlName="employeeLastName"
-                placeholder="{{ 'evaluationResultScreen.employeeLastName' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition8">
-            <mat-form-field class="form-field">
-              <input id="employeeFirstName" matInput type="text" formControlName="employeeFirstName"
-                placeholder="{{ 'evaluationResultScreen.employeeFirstName' | translate }}">
-            </mat-form-field>
-          </div>
-          <div id="searchCondition9">
-            <label class="labelFor">{{ 'evaluationResultScreen.evaluationTarget' | translate }}</label>
-            <mat-radio-group id="evaluationTarget" aria-labelledby="evaluationTargetGroupLabel"
-              formControlName="evaluationTarget">
-              <ng-container *ngFor="let item of evaluationTargetOption; index as i">
-                <mat-radio-button value="{{ item.value }}">{{ item.label | translate }}</mat-radio-button>
-              </ng-container>
-            </mat-radio-group>
-          </div>
-          <!-- -------------------- 10 -------------------- -->
-          <div id="searchCondition10">
-            <label class="labelFor">{{ 'evaluationResultScreen.retiree'  | translate}}</label>
-            <mat-checkbox id="retiree" formControlName="retiree"></mat-checkbox>
-          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Button Area -->
+      <div id="searchButtonArea">
+        <div id="paginatorArea">
+          <mat-paginator [length]="100" [pageSize]="50" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
         </div>
-      </mat-card-content>
-    </mat-card>
-
-    <!-- ボタンのエリア -->
-    <div id="searchButtonArea">
-      <div id="clearBtnArea">
-        <button mat-raised-button color="primary" id="clearBtn" class="btn" (click)="onClear()"
-          type="submit">{{ "evaluationResultScreen.clearBtn" | translate }}
-        </button>
+        <div id="clearBtnArea">
+          <button mat-raised-button color="primary" id="clearBtn" class="btn" (click)="onClear()"
+            type="submit">{{ "evaluationResultScreen.clearBtn" | translate }}
+          </button>
+        </div>
+        <div id="searchBtnArea">
+          <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit" (click)="onSearch()"
+            [disabled]="!mainForm.valid">{{ "evaluationResultScreen.searchBtn" | translate }}
+          </button>
+        </div>
       </div>
-      <div id="searchBtnArea">
-        <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit" (click)="onSubmit()"
-          [disabled]="!mainForm.valid">{{ "evaluationResultScreen.searchBtn" | translate }}
-        </button>
+
+      <!-- evaluationResult Area-->
+      <div id="evaluationResult">
+        <!-- <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+          <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+            GitHub's API rate limit has been reached. It will be reset in one minute.
+          </div>
+        </div> -->
+
+        <table mat-table [dataSource]="searchEvaluationResultDtos" class="mat-elevation-z8">
+          <ng-container matColumnDef="employeeCode">
+            <th mat-header-cell *matHeaderCellDef style="width: 10%;">
+              {{ "evaluationResultScreen.employeeCode" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.employeeCode}} </td>
+          </ng-container>
+          <ng-container matColumnDef="employeeName">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.employeeName" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="employeeDepartment">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.employeeDepartment" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.employeeDepartment}} </td>
+          </ng-container>
+          <ng-container matColumnDef="employeeRank">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.employeeRank" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.employeeRank}} </td>
+          </ng-container>
+          <ng-container matColumnDef="employeeEMailAddress">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.employeeEMailAddress" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.employeeEMailAddress}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluateYear">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluateYear" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluateYear}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluateTotalPoint">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluateTotalPoint" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluateTotalPoint}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint01">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint01" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint01}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint02">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint02" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint02}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint03">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint03" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint03}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint04">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint04" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint04}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint05">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint05" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint05}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint06">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint06" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint06}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint07">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint07" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint07}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint08">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint08" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint08}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint09">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint09" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint09}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint10">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint10" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint10}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint11">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint11" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint11}} </td>
+          </ng-container>
+          <ng-container matColumnDef="evaluatePoint12">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ "evaluationResultScreen.searchResult.evaluatePoint12" | translate }}</th>
+            <td mat-cell *matCellDef="let element"> {{element.evaluatePoint12}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayEvaluationResultColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayEvaluationResultColumns;"></tr>
+        </table>
       </div>
-    </div>
 
-
-    <!-- 検索情報エリア -->
-    <mat-paginator [length]="100" [pageSize]="50" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
-    <!-- <app-search-info></app-search-info> -->
-
-    <!--検索結果エリア -->
-    <!-- <div class="row searchResultArea">
-
-      <table class="table table-hover table-striped table-responsive-xl searchResult">
-        <thead>
-          <tr>
-            <th rowspan="2" class="text-center">社員番号</th>
-            <th rowspan="2" class="text-center">氏名</th>
-            <th rowspan="2" class="text-center">部署</th>
-            <th rowspan="2" class="text-center">ランク</th>
-            <th rowspan="2" class="text-center">メールアドレス</th>
-            <th colspan="13" class="text-center">総 合点</th>
-          </tr>
-          <tr>
-            <th class="text-center">総合</th>
-            <th class="text-center">4月</th>
-            <th class="text-center">5月</th>
-            <th class="text-center">6月</th>
-            <th class="text-center">7月</th>
-            <th class="text-center">8月</th>
-            <th class="text-center">9月</th>
-            <th class="text-center">10月</th>
-            <th class="text-center">11月</th>
-            <th class="text-center">12月</th>
-            <th class="text-center">1月</th>
-            <th class="text-center">2月</th>
-            <th class="text-center">3月</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let evaluateResultSumary of evaluateResultSumaryList">
-            <td>{{evaluateResultSumary.employeeCode}}</td>
-            <td>{{evaluateResultSumary.employeeName}}</td>
-            <td>{{evaluateResultSumary.employeeDepartment}}</td>
-            <td class="text-center">{{evaluateResultSumary.Rank}}</td>
-            <td>{{evaluateResultSumary.mailaddress}}</td>
-            <td class="text-right">{{evaluateResultSumary.totalScore}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score01}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score02}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score03}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score04}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score05}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score06}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score07}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score08}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score09}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score10}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score11}}</td>
-            <td class="text-right">{{evaluateResultSumary.Score12}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div> -->
-
-    <!-- 検索情報エリア -->
-    <!-- <app-search-info></app-search-info> -->
-  </form>
+    </form>
+  </div>
 </div>

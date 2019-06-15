@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
-import { SearchEvaluattionResultListDto } from 'src/app/entity/evaluation/search-evaluattion-result-list-dto';
+import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
 
 @Component({
   selector: 'app-evaluation-result',
@@ -11,6 +11,7 @@ import { SearchEvaluattionResultListDto } from 'src/app/entity/evaluation/search
 })
 export class EvaluationResultComponent implements OnInit {
 
+  // These are the search condition settings.
   public monthFrom = new FormControl('', []);
   public employeeCode = new FormControl('', []);
   public employeeRank = new FormControl('', []);
@@ -21,10 +22,7 @@ export class EvaluationResultComponent implements OnInit {
   public employeeFirstName = new FormControl('', []);
   public evaluationTarget = new FormControl('0', []);
   public retiree = new FormControl('', []);
-  public locale: String = 'ja-JP';
-  public displayNameMonthFrom: String = 'evaluationResultScreen.monthFrom';
 
-  // サインインのフォーム設定
   public mainForm = this.formBuilder.group({
     monthFrom: this.monthFrom,
     employeeCode: this.employeeCode,
@@ -38,23 +36,31 @@ export class EvaluationResultComponent implements OnInit {
     retiree: this.retiree
   });
 
-  // 評価対象ラジオボタン
+  // These are the display name monthFrom settings.
+  public locale: String = 'ja-JP';
+  public displayNameMonthFrom: String = 'evaluationResultScreen.monthFrom';
+
+  // These are the evaluation target option settings.
   evaluationTargetOption = [
     { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
     { label: 'evaluationResultScreen.evaluationTargetOptions.targetPersonOnly', value: '1' },
     { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
   ];
 
-  // 退職者チェックボックス
-  // selectedRetiree;
-  // retireeOption = [
-  //   { label: '退職者を含む', value: '9', selected: false }
-  // ];
-
-  // 検索結果一覧表示用のエンティティ
-  // evaluateResultSumaryList: EvaluateResultSumaryList[];
-
-  searchEvaluattionResultListDto: SearchEvaluattionResultListDto;
+  // searchEvaluattionResultListDto: SearchEvaluattionResultListDto;
+  public totalNoOfRow: number;
+  public searchEvaluationResultDtos: SearchEvaluationResultDto[];
+  public displayEvaluationResultColumns: string[] = [
+    'employeeCode',
+    'employeeName',
+    'employeeDepartment',
+    'employeeRank',
+    'employeeEMailAddress',
+    'evaluateYear',
+    'evaluateTotalPoint',
+    'evaluatePoint01', 'evaluatePoint02', 'evaluatePoint03', 'evaluatePoint04', 'evaluatePoint05', 'evaluatePoint06',
+    'evaluatePoint07', 'evaluatePoint08', 'evaluatePoint09', 'evaluatePoint10', 'evaluatePoint11', 'evaluatePoint12'
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -68,19 +74,10 @@ export class EvaluationResultComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    this.evaluationService.getEvaluationResult().subscribe(searchEvaluattionResultListDto =>
-      this.searchEvaluattionResultListDto = searchEvaluattionResultListDto);
-
+  onSearch() {
+    this.evaluationService.getEvaluationResult().subscribe(searchEvaluationResultListDto => {
+      this.searchEvaluationResultDtos = searchEvaluationResultListDto.searchEvaluationResultDtos;
+    });
   }
-
-  onReceiveEventFromChild(eventData: String) {
-    this.monthFrom.setValue(eventData);
-  }
-
-  onReceiveEventFromPagenator(eventData: String) {
-    this.monthFrom.setValue(eventData);
-  }
-
 
 }
