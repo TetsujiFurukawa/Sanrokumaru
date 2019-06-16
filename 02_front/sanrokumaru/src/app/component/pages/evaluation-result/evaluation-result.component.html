@@ -96,14 +96,11 @@
 
       <!-- evaluationResult Area-->
       <div id="evaluationResult">
-        <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
-          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-          <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-            GitHub's API rate limit has been reached. It will be reset in one minute.
-          </div>
+        <div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+          <mat-spinner class="loading-spinner" *ngIf="isLoadingResults"></mat-spinner>
         </div>
 
-        <table mat-table [dataSource]="searchEvaluationResultDtos" class="mat-elevation-z8">
+        <table mat-table *ngIf="resultsLength>0" [dataSource]="searchEvaluationResultDtos" class="mat-elevation-z8">
           <ng-container matColumnDef="employeeCode">
             <th mat-header-cell *matHeaderCellDef style="width: 10%;">
               {{ "evaluationResultScreen.employeeCode" | translate }}
