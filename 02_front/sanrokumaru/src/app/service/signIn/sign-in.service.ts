@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AppConst } from 'src/app/app-const';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
@@ -26,7 +26,12 @@ export class SignInService {
 
   signIn(signInDto: SignInDto): Observable<Session> {
 
-    return this.http.get<Session>(this.server + this.webApiUrl, AppConst.httpOptions
+    return this.http.get<Session>(this.server + this.webApiUrl,
+      {
+        headers: new HttpHeaders().set('Content-Type', AppConst.HTTP_CONTENT_TYPE),
+        withCredentials: AppConst.HTTP_WITH_CREDENTIALS
+      }
+
       // map(res => this.session)
     );
   }

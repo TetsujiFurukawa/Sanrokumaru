@@ -2,7 +2,7 @@ import { BaseSearchDto } from '../base-search-dto';
 
 export class SearchEvaluationConditionDto extends BaseSearchDto {
 
-  monthFrom: string;
+  yearFrom: string;
   employeeCode: string;
   employeeRank: string;
   employeeDepartment1: string;

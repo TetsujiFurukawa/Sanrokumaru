@@ -5,7 +5,7 @@ import { Information } from 'src/app/entity/information/information';
 import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 import { environment } from 'src/environments/environment';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -27,7 +27,13 @@ export class InformationService {
 
     console.log(this.server + this.webApiUrl);
 
-    return this.http.get<Information[]>(this.server + this.webApiUrl, AppConst.httpOptions)
+    return this.http.get<Information[]>(this.server + this.webApiUrl,
+      {
+        headers: new HttpHeaders().set('Content-Type', AppConst.HTTP_CONTENT_TYPE),
+        withCredentials: AppConst.HTTP_WITH_CREDENTIALS
+      }
+
+    )
       .pipe(
         catchError(err => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));

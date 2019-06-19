@@ -18,7 +18,7 @@ import { AppConst } from 'src/app/app-const';
 export class EvaluationResultComponent implements OnInit {
 
   // These are the search condition settings.
-  public monthFrom = new FormControl('', []);
+  public yearFrom = new FormControl('', []);
   public employeeCode = new FormControl('', []);
   public employeeRank = new FormControl('', []);
   public employeeDepartment1 = new FormControl('', []);
@@ -30,7 +30,7 @@ export class EvaluationResultComponent implements OnInit {
   public retiree = new FormControl('', []);
 
   public mainForm = this.formBuilder.group({
-    monthFrom: this.monthFrom,
+    monthFrom: this.yearFrom,
     employeeCode: this.employeeCode,
     employeeRank: this.employeeRank,
     employeeDepartment1: this.employeeDepartment1,
@@ -44,7 +44,7 @@ export class EvaluationResultComponent implements OnInit {
 
   // These are the display name monthFrom settings.
   public locale: String = AppConst.LANG;
-  public displayNameMonthFrom: String = 'evaluationResultScreen.monthFrom';
+  public displayNameMonthFrom: String = 'evaluationResultScreen.yearFrom';
 
   // These are the evaluation target option settings.
   evaluationTargetOption = [
@@ -82,7 +82,7 @@ export class EvaluationResultComponent implements OnInit {
   }
 
   onReceiveEventFromChild(eventData: String) {
-    this.monthFrom.setValue(eventData);
+    this.yearFrom.setValue(eventData);
   }
   private onClear() {
 
@@ -119,14 +119,14 @@ export class EvaluationResultComponent implements OnInit {
   }
 
   private setupSearchConditionDto(): SearchEvaluationConditionDto {
-    console.log(this.monthFrom.value);
+    console.log(this.yearFrom.value);
 
     const pagenatorDto: PagenatorDto = new PagenatorDto();
     pagenatorDto.pageSize = this.paginator.pageSize;
     pagenatorDto.pageIndex = this.paginator.pageIndex;
 
     const searchEvaluationConditionDto: SearchEvaluationConditionDto = new SearchEvaluationConditionDto();
-    searchEvaluationConditionDto.monthFrom = this.monthFrom.value;
+    searchEvaluationConditionDto.yearFrom = this.yearFrom.value;
     searchEvaluationConditionDto.employeeCode = this.employeeCode.value;
     searchEvaluationConditionDto.employeeRank = this.employeeRank.value;
     searchEvaluationConditionDto.employeeDepartment1 = this.employeeDepartment1.value;
@@ -143,7 +143,7 @@ export class EvaluationResultComponent implements OnInit {
   }
 
   clearSearchCondition() {
-    throw new Error('Method not implemented.');
+    // todo
   }
 
   private clearSearchResultList() {

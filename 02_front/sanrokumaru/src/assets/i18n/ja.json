@@ -17,7 +17,7 @@
     }
   },
   "evaluationResultScreen": {
-    "monthFrom": "開始年月",
+    "yearFrom": "開始年",
     "employeeCode": "従業員コード",
     "employeeRank": "ランク",
     "employeeDepartment1": "部署1",

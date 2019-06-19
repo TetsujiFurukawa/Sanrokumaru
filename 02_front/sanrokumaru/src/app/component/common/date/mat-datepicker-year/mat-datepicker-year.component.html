@@ -1,0 +1,9 @@
+<form [formGroup]="mainForm">
+  <mat-form-field>
+    <input id="year" matInput [matDatepicker]="dp" placeholder="{{ this.placeholder | translate }}"
+      formControlName="year" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+    <mat-datepicker-toggle matSuffix [for]=" dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event, dp)" panelClass="year-picker">
+    </mat-datepicker>
+  </mat-form-field>
+</form>

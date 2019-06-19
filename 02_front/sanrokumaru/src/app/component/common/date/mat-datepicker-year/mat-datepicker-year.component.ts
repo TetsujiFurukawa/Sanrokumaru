@@ -4,32 +4,24 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-// Depending on whether rollup is used, moment needs to be imported differently.
-// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
-// syntax. However, rollup creates a synthetic default module and we thus need to import it using
-// the `default as` syntax.
 import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment, Moment } from 'moment';
 
 const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'YYYY/MM',
+    dateInput: 'YYYY'
   },
   display: {
-    dateInput: 'YYYY/MM',
-    monthYearLabel: 'YYYY MMM',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY MMMM',
+    dateInput: 'YYYY'
   },
 };
 
 @Component({
-  selector: 'app-mat-datepicker-month',
-  templateUrl: './mat-datepicker-month.component.html',
-  styleUrls: ['./mat-datepicker-month.component.css'],
+  selector: 'app-mat-datepicker-year',
+  templateUrl: './mat-datepicker-year.component.html',
+  styleUrls: ['./mat-datepicker-year.component.css'],
   providers: [{ provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
   { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
 })
@@ -39,10 +31,10 @@ export class MatDatepickerMonthComponent implements OnInit {
   @Input() placeholder: string;
   @Output() event = new EventEmitter<String>();
 
-  yearMonth = new FormControl(moment());
+  year = new FormControl(moment());
 
   mainForm = this.formBuilder.group({
-    yearMonth: this.yearMonth,
+    year: this.year,
   });
 
   constructor(
@@ -52,23 +44,18 @@ export class MatDatepickerMonthComponent implements OnInit {
 
   ngOnInit() {
     this.adapter.setLocale(this.locale);
-    this.event.emit(this.yearMonth.value);
+    this.event.emit(this.year.value);
   }
 
-  chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue = this.yearMonth.value;
+  chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.year.value;
     ctrlValue.year(normalizedYear.year());
-    this.yearMonth.setValue(ctrlValue);
-  }
-
-  chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.yearMonth.value;
-    ctrlValue.month(normalizedMonth.month());
-    this.yearMonth.setValue(ctrlValue);
-    this.event.emit(this.yearMonth.value);
+    this.year.setValue(ctrlValue);
+    this.event.emit(this.year.value);
     datepicker.close();
   }
+
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.event.emit(this.yearMonth.value);
+    this.event.emit(this.year.value);
   }
 }
