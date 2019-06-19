@@ -4,7 +4,10 @@ import { EvaluationService } from 'src/app/service/evaluation/evaluation.service
 import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
 import { MatPaginator } from '@angular/material';
 import { merge, of } from 'rxjs';
-import { startWith, switchMap, map, catchError } from 'rxjs/operators';
+import { startWith, switchMap, map, catchError, finalize } from 'rxjs/operators';
+import { SearchEvaluationConditionDto } from 'src/app/entity/evaluation/search-evaluation-condition-dto';
+import { PagenatorDto } from 'src/app/entity/pagenator/pagenator-dto';
+import { AppConst } from 'src/app/app-const';
 
 @Component({
   selector: 'app-evaluation-result',
@@ -40,7 +43,7 @@ export class EvaluationResultComponent implements OnInit {
   });
 
   // These are the display name monthFrom settings.
-  public locale: String = 'ja-JP';
+  public locale: String = AppConst.LANG;
   public displayNameMonthFrom: String = 'evaluationResultScreen.monthFrom';
 
   // These are the evaluation target option settings.
@@ -78,40 +81,76 @@ export class EvaluationResultComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClear() {
+  onReceiveEventFromChild(eventData: String) {
+    this.monthFrom.setValue(eventData);
+  }
+  private onClear() {
+
+    this.clearSearchCondition();
+    this.clearSearchResultList();
 
   }
 
-  onSearch() {
+  private onSearch() {
 
     merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.evaluationService.getEvaluationResult();
-
+          return this.evaluationService.getEvaluationResult(this.setupSearchConditionDto());
         }),
+
         map(data => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = false;
           this.resultsLength = data.resultsLength;
           return data.searchEvaluationResultDtos;
-
         }),
+
         catchError(() => {
           this.isLoadingResults = false;
-          // Catch if the GitHub API has reached its rate limit. Return empty data.
-          this.isRateLimitReached = true;
+          this.isRateLimitReached = false;
           return of(null as any);
-
         })
+
       ).subscribe(data => this.searchEvaluationResultDtos = data);
+  }
+
+  private setupSearchConditionDto(): SearchEvaluationConditionDto {
+    console.log(this.monthFrom.value);
+
+    const pagenatorDto: PagenatorDto = new PagenatorDto();
+    pagenatorDto.pageSize = this.paginator.pageSize;
+    pagenatorDto.pageIndex = this.paginator.pageIndex;
+
+    const searchEvaluationConditionDto: SearchEvaluationConditionDto = new SearchEvaluationConditionDto();
+    searchEvaluationConditionDto.monthFrom = this.monthFrom.value;
+    searchEvaluationConditionDto.employeeCode = this.employeeCode.value;
+    searchEvaluationConditionDto.employeeRank = this.employeeRank.value;
+    searchEvaluationConditionDto.employeeDepartment1 = this.employeeDepartment1.value;
+    searchEvaluationConditionDto.employeeDepartment2 = this.employeeDepartment2.value;
+    searchEvaluationConditionDto.employeeDepartment3 = this.employeeDepartment3.value;
+    searchEvaluationConditionDto.employeeLastName = this.employeeLastName.value;
+    searchEvaluationConditionDto.employeeFirstName = this.employeeFirstName.value;
+    searchEvaluationConditionDto.evaluationTarget = this.evaluationTarget.value;
+    searchEvaluationConditionDto.retiree = this.retiree.value;
+    searchEvaluationConditionDto.pagenatorDto = pagenatorDto;
+
+    return searchEvaluationConditionDto;
 
   }
 
-  // this.evaluationService.getEvaluationResult().subscribe(searchEvaluationResultListDto => {
-  //   this.searchEvaluationResultDtos = searchEvaluationResultListDto.searchEvaluationResultDtos;
-  // });
+  clearSearchCondition() {
+    throw new Error('Method not implemented.');
+  }
+
+  private clearSearchResultList() {
+
+    this.searchEvaluationResultDtos = null;
+    this.resultsLength = 0;
+
+  }
+
 }

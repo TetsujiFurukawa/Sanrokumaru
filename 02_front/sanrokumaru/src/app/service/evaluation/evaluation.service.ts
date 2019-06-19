@@ -7,9 +7,10 @@ import {
 import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 import { environment } from 'src/environments/environment';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { SearchEvaluationConditionDto } from 'src/app/entity/evaluation/search-evaluation-condition-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,17 @@ export class EvaluationService {
     private readonly translateService: TranslateService
   ) { }
 
-  public getEvaluationResult(): Observable<SearchEvaluattionResultListDto> {
+  public getEvaluationResult(searchEvaluationConditionDto: SearchEvaluationConditionDto): Observable<SearchEvaluattionResultListDto> {
 
     console.log(this.server + this.webApiUrl);
 
-    return this.http.get<SearchEvaluattionResultListDto>(this.server + this.webApiUrl, AppConst.httpOptions)
+    return this.http.get<SearchEvaluattionResultListDto>(this.server + this.webApiUrl,
+      {
+        headers: new HttpHeaders().set('Content-Type', AppConst.HTTP_CONTENT_TYPE),
+        withCredentials: AppConst.HTTP_WITH_CREDENTIALS,
+        params: new HttpParams().set('searchEvaluationConditionDto', JSON.stringify(SearchEvaluationConditionDto))
+      }
+    )
       .pipe(
         catchError(err => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
