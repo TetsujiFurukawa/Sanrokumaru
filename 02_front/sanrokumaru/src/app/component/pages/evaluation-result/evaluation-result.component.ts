@@ -109,6 +109,7 @@ export class EvaluationResultComponent implements OnInit {
           this.isLoadingResults = false;
           this.isRateLimitReached = false;
           this.resultsLength = data.resultsLength;
+          this.paginator.pageIndex = data.pageIndex;
           return data.searchEvaluationResultDtos;
         }),
 
