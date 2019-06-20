@@ -82,12 +82,8 @@
   grid-area: searchBtnArea;
 }
 
-.example-month-picker .mat-calendar-period-button {
-  pointer-events: none;
-}
-
-.example-month-picker .mat-calendar-arrow {
-  display: none;
+#evaluationResult {
+  grid-area: evaluationResult;
 }
 
 /* Tablet PC  */
@@ -110,6 +106,7 @@
     grid-template-areas:
       "paginatorArea clearBtnArea searchBtnArea"
   }
+
 
 }
 
@@ -136,6 +133,11 @@
     grid-template-columns: 5% 45% 45% 1fr;
     grid-template-areas:
       ". clearBtnArea searchBtnArea"
+  }
+
+  .example-container {
+    height: 400px;
+    overflow: auto;
   }
 
 }

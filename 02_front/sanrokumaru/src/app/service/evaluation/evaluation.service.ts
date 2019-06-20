@@ -1,5 +1,5 @@
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { AppConst } from 'src/app/app-const';
 import {
   SearchEvaluattionResultListDto
@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SearchEvaluationConditionDto } from 'src/app/entity/evaluation/search-evaluation-condition-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +25,17 @@ export class EvaluationService {
     private readonly translateService: TranslateService
   ) { }
 
-  public getEvaluationResult(searchEvaluationConditionDto: SearchEvaluationConditionDto): Observable<SearchEvaluattionResultListDto> {
+  public getEvaluationResult(httpParams: HttpParams): Observable<SearchEvaluattionResultListDto> {
 
     console.log(this.server + this.webApiUrl);
+    // console.log('SearchEvaluationConditionDto:' + JSON.stringify(searchEvaluationConditionDto));
 
     return this.http.get<SearchEvaluattionResultListDto>(this.server + this.webApiUrl,
       {
         headers: new HttpHeaders().set('Content-Type', AppConst.HTTP_CONTENT_TYPE),
         withCredentials: AppConst.HTTP_WITH_CREDENTIALS,
-        params: new HttpParams().set('searchEvaluationConditionDto', JSON.stringify(SearchEvaluationConditionDto))
+        params: httpParams
+        // params: new HttpParams().set('searchEvaluationConditionDto', JSON.stringify(searchEvaluationConditionDto))
       }
     )
       .pipe(

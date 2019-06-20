@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatDatepickerMonthComponent } from './mat-datepicker-year.component';
+import { MatDatepickerYearComponent } from './mat-datepicker-year.component';
 
-describe('MatDatepickerMonthComponent', () => {
-  let component: MatDatepickerMonthComponent;
-  let fixture: ComponentFixture<MatDatepickerMonthComponent>;
+describe('MatDatepickerYearComponent', () => {
+  let component: MatDatepickerYearComponent;
+  let fixture: ComponentFixture<MatDatepickerYearComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MatDatepickerMonthComponent]
+      declarations: [MatDatepickerYearComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MatDatepickerMonthComponent);
+    fixture = TestBed.createComponent(MatDatepickerYearComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
 import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
 import { MatPaginator } from '@angular/material';
 import { merge, of } from 'rxjs';
-import { startWith, switchMap, map, catchError, finalize } from 'rxjs/operators';
-import { SearchEvaluationConditionDto } from 'src/app/entity/evaluation/search-evaluation-condition-dto';
-import { PagenatorDto } from 'src/app/entity/pagenator/pagenator-dto';
-import { AppConst } from 'src/app/app-const';
+import { startWith, switchMap, map, catchError } from 'rxjs/operators';
+import { formatDate } from '@angular/common';
+import { MatDatepickerYearComponent } from '../../common/date/mat-datepicker-year/mat-datepicker-year.component';
+import { HttpParams } from '@angular/common/http';
+import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 @Component({
   selector: 'app-evaluation-result',
@@ -30,7 +31,7 @@ export class EvaluationResultComponent implements OnInit {
   public retiree = new FormControl('', []);
 
   public mainForm = this.formBuilder.group({
-    monthFrom: this.yearFrom,
+    yearFrom: this.yearFrom,
     employeeCode: this.employeeCode,
     employeeRank: this.employeeRank,
     employeeDepartment1: this.employeeDepartment1,
@@ -42,9 +43,9 @@ export class EvaluationResultComponent implements OnInit {
     retiree: this.retiree
   });
 
-  // These are the display name monthFrom settings.
-  public locale: String = AppConst.LANG;
-  public displayNameMonthFrom: String = 'evaluationResultScreen.yearFrom';
+  // These are the display name yearFrom settings.
+  // public locale: String = AppConst.LANG;
+  public displayNameYearFrom: String = 'evaluationResultScreen.yearFrom';
 
   // These are the evaluation target option settings.
   evaluationTargetOption = [
@@ -71,9 +72,11 @@ export class EvaluationResultComponent implements OnInit {
   public isLoadingResults = false;
   public isRateLimitReached = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
+  @ViewChild(MatDatepickerYearComponent) private matDatepickerYearComponent: MatDatepickerYearComponent;
 
   constructor(
+    @Inject(LOCALE_ID) public locale: string,
     private formBuilder: FormBuilder,
     private evaluationService: EvaluationService
   ) { }
@@ -98,7 +101,7 @@ export class EvaluationResultComponent implements OnInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.evaluationService.getEvaluationResult(this.setupSearchConditionDto());
+          return this.evaluationService.getEvaluationResult(this.craeteHttpParams());
         }),
 
         map(data => {
@@ -118,32 +121,45 @@ export class EvaluationResultComponent implements OnInit {
       ).subscribe(data => this.searchEvaluationResultDtos = data);
   }
 
-  private setupSearchConditionDto(): SearchEvaluationConditionDto {
-    console.log(this.yearFrom.value);
+  private craeteHttpParams(): HttpParams {
+    const conditions = {
 
-    const pagenatorDto: PagenatorDto = new PagenatorDto();
-    pagenatorDto.pageSize = this.paginator.pageSize;
-    pagenatorDto.pageIndex = this.paginator.pageIndex;
+      yearFrom: formatDate(this.yearFrom.value, 'yyyy', this.locale),
+      employeeCode: this.employeeCode.value,
+      employeeRank: this.employeeRank.value,
+      employeeDepartment1: this.employeeDepartment1.value,
+      employeeDepartment2: this.employeeDepartment2.value,
+      employeeDepartment3: this.employeeDepartment3.value,
+      employeeLastName: this.employeeLastName.value,
+      employeeFirstName: this.employeeFirstName.value,
+      evaluationTarget: this.evaluationTarget.value,
+      retiree: this.retiree.value,
 
-    const searchEvaluationConditionDto: SearchEvaluationConditionDto = new SearchEvaluationConditionDto();
-    searchEvaluationConditionDto.yearFrom = this.yearFrom.value;
-    searchEvaluationConditionDto.employeeCode = this.employeeCode.value;
-    searchEvaluationConditionDto.employeeRank = this.employeeRank.value;
-    searchEvaluationConditionDto.employeeDepartment1 = this.employeeDepartment1.value;
-    searchEvaluationConditionDto.employeeDepartment2 = this.employeeDepartment2.value;
-    searchEvaluationConditionDto.employeeDepartment3 = this.employeeDepartment3.value;
-    searchEvaluationConditionDto.employeeLastName = this.employeeLastName.value;
-    searchEvaluationConditionDto.employeeFirstName = this.employeeFirstName.value;
-    searchEvaluationConditionDto.evaluationTarget = this.evaluationTarget.value;
-    searchEvaluationConditionDto.retiree = this.retiree.value;
-    searchEvaluationConditionDto.pagenatorDto = pagenatorDto;
+      pageSize: this.paginator.pageSize.toString(),
+      pageIndex: this.paginator.pageIndex.toString()
 
-    return searchEvaluationConditionDto;
+    };
+
+    const paramsOptions = <HttpParamsOptions>{ fromObject: conditions };
+    const params = new HttpParams(paramsOptions);
+
+    return params;
 
   }
 
   clearSearchCondition() {
-    // todo
+
+    this.matDatepickerYearComponent.reset();
+    this.employeeCode.setValue('');
+    this.employeeRank.setValue('');
+    this.employeeDepartment1.setValue('');
+    this.employeeDepartment2.setValue('');
+    this.employeeDepartment3.setValue('');
+    this.employeeLastName.setValue('');
+    this.employeeFirstName.setValue('');
+    this.evaluationTarget.setValue('0');
+    this.retiree.setValue('');
+
   }
 
   private clearSearchResultList() {

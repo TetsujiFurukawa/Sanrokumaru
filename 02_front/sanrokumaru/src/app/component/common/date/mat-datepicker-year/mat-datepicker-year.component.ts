@@ -25,7 +25,7 @@ export const MY_FORMATS = {
   providers: [{ provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
   { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
 })
-export class MatDatepickerMonthComponent implements OnInit {
+export class MatDatepickerYearComponent implements OnInit {
 
   @Input() locale: String;
   @Input() placeholder: string;
@@ -46,8 +46,11 @@ export class MatDatepickerMonthComponent implements OnInit {
     this.adapter.setLocale(this.locale);
     this.event.emit(this.year.value);
   }
+  public reset() {
+    this.year.setValue(moment());
+  }
 
-  chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
+  private chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.year.value;
     ctrlValue.year(normalizedYear.year());
     this.year.setValue(ctrlValue);
@@ -55,7 +58,9 @@ export class MatDatepickerMonthComponent implements OnInit {
     datepicker.close();
   }
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+  private addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.event.emit(this.year.value);
   }
+
+
 }
