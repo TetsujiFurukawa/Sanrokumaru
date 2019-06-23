@@ -54,7 +54,6 @@ export class EvaluationResultComponent implements OnInit {
     { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
   ];
 
-  public totalNoOfRow: number;
   public searchEvaluationResultDtos: SearchEvaluationResultDto[];
   public displayEvaluationResultColumns: string[] = [
     'employeeCode',
@@ -70,7 +69,6 @@ export class EvaluationResultComponent implements OnInit {
 
   public resultsLength = 0;
   public isLoadingResults = false;
-  public isRateLimitReached = false;
 
   @ViewChild(MatPaginator) public paginator: MatPaginator;
   @ViewChild(MatDatepickerYearComponent) private matDatepickerYearComponent: MatDatepickerYearComponent;
@@ -107,7 +105,6 @@ export class EvaluationResultComponent implements OnInit {
         map(data => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
-          this.isRateLimitReached = false;
           this.resultsLength = data.resultsLength;
           this.paginator.pageIndex = data.pageIndex;
           return data.searchEvaluationResultDtos;
@@ -115,7 +112,6 @@ export class EvaluationResultComponent implements OnInit {
 
         catchError(() => {
           this.isLoadingResults = false;
-          this.isRateLimitReached = false;
           return of(null as any);
         })
 
@@ -148,7 +144,7 @@ export class EvaluationResultComponent implements OnInit {
 
   }
 
-  clearSearchCondition() {
+  private clearSearchCondition() {
 
     this.matDatepickerYearComponent.reset();
     this.employeeCode.setValue('');

@@ -1,9 +1,7 @@
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppConst } from 'src/app/app-const';
-import {
-  SearchEvaluattionResultListDto
-} from 'src/app/entity/evaluation/search-evaluattion-result-list-dto';
+import { SearchEvaluationResultListDto } from 'src/app/entity/evaluation/search-evaluation-result-list-dto';
 import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 import { environment } from 'src/environments/environment';
 
@@ -25,25 +23,16 @@ export class EvaluationService {
     private readonly translateService: TranslateService
   ) { }
 
-  public getEvaluationResult(httpParams: HttpParams): Observable<SearchEvaluattionResultListDto> {
+  public getEvaluationResult(httpParams: HttpParams): Observable<SearchEvaluationResultListDto> {
 
-    console.log(this.server + this.webApiUrl);
-    // console.log('SearchEvaluationConditionDto:' + JSON.stringify(searchEvaluationConditionDto));
-
-    return this.http.get<SearchEvaluattionResultListDto>(this.server + this.webApiUrl,
-      {
-        headers: new HttpHeaders().set('Content-Type', AppConst.HTTP_CONTENT_TYPE),
-        withCredentials: AppConst.HTTP_WITH_CREDENTIALS,
-        params: httpParams
-        // params: new HttpParams().set('searchEvaluationConditionDto', JSON.stringify(searchEvaluationConditionDto))
-      }
-    )
+    return this.http.get<SearchEvaluationResultListDto>(this.server + this.webApiUrl, { params: httpParams })
       .pipe(
         catchError(err => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })
       );
+
   }
 
 }
