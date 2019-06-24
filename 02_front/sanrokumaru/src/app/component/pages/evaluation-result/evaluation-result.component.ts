@@ -99,7 +99,7 @@ export class EvaluationResultComponent implements OnInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.evaluationService.getEvaluationResult(this.craeteHttpParams());
+          return this.evaluationService.getEvaluationResult(this.createHttpParams());
         }),
 
         map(data => {
@@ -118,7 +118,7 @@ export class EvaluationResultComponent implements OnInit {
       ).subscribe(data => this.searchEvaluationResultDtos = data);
   }
 
-  private craeteHttpParams(): HttpParams {
+  private createHttpParams(): HttpParams {
     const conditions = {
 
       yearFrom: formatDate(this.yearFrom.value, 'yyyy', this.locale),
