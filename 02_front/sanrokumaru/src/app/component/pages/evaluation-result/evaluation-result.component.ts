@@ -8,7 +8,8 @@ import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { MatDatepickerYearComponent } from '../../common/date/mat-datepicker-year/mat-datepicker-year.component';
 import { HttpParams } from '@angular/common/http';
-import { HttpParamsOptions } from '@angular/common/http/src/params';
+// import { HttpParamsOptions } from '@angular/common/http/src/params';
+// import { HttpParamsOptions } from '@angular/common/http';
 
 @Component({
   selector: 'app-evaluation-result',
@@ -70,8 +71,8 @@ export class EvaluationResultComponent implements OnInit {
   public resultsLength = 0;
   public isLoadingResults = false;
 
-  @ViewChild(MatPaginator) public paginator: MatPaginator;
-  @ViewChild(MatDatepickerYearComponent) private matDatepickerYearComponent: MatDatepickerYearComponent;
+  @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
+  @ViewChild(MatDatepickerYearComponent, { static: true }) private matDatepickerYearComponent: MatDatepickerYearComponent;
 
   constructor(
     @Inject(LOCALE_ID) public locale: string,
@@ -137,7 +138,8 @@ export class EvaluationResultComponent implements OnInit {
 
     };
 
-    const paramsOptions = <HttpParamsOptions>{ fromObject: conditions };
+    // const paramsOptions = <HttpParamsOptions>{ fromObject: conditions };
+    const paramsOptions = <any>{ fromObject: conditions };
     const params = new HttpParams(paramsOptions);
 
     return params;
