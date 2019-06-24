@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
 import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
 import { merge, of } from 'rxjs';
 import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
