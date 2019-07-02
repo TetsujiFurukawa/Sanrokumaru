@@ -3,7 +3,7 @@
     <form [formGroup]="mainForm">
       <!-- Screen Title Area -->
       <div class="titleArea">
-        {{ 'evaluationResultScreen.title' | translate }}
+        {{ 'companyListScreen.title' | translate }}
       </div>
 
       <!-- Search Conditions Area -->
@@ -13,66 +13,20 @@
           <div id="searchConditionsArea">
             <!-- -------------------- 1 -------------------- -->
             <div id="searchCondition1">
-              <app-mat-datepicker-year [locale]='locale' [placeholder]='displayNameYearFrom'
-                (event)=" onReceiveEventFromChild($event)">
-              </app-mat-datepicker-year>
+              <mat-form-field class="form-field">
+                <input id="companyName" matInput type="text" formControlName="companyName"
+                  placeholder="{{ 'companyListScreen.companyName' | translate }}">
+              </mat-form-field>
             </div>
             <div id="searchCondition2">
               <mat-form-field class="form-field">
-                <input id="employeeCode" matInput type="text" formControlName="employeeCode"
-                  placeholder="{{ 'evaluationResultScreen.employeeCode' | translate }}">
+                <input id="companyKana" matInput type="text" formControlName="companyKana"
+                  placeholder="{{ 'companyListScreen.companyKana' | translate }}">
               </mat-form-field>
             </div>
             <div id="searchCondition3">
-              <mat-form-field class="form-field">
-                <input id="employeeRank" matInput type="text" formControlName="employeeRank"
-                  placeholder="{{ 'evaluationResultScreen.employeeRank' | translate }}">
-              </mat-form-field>
-            </div>
-            <div id="searchCondition4">
-              <mat-form-field class="form-field">
-                <input id="employeeDepartment1" matInput type="text" formControlName="employeeDepartment1"
-                  placeholder="{{ 'evaluationResultScreen.employeeDepartment1' | translate }}">
-              </mat-form-field>
-            </div>
-            <!-- -------------------- 5 -------------------- -->
-            <div id="searchCondition5">
-              <mat-form-field class="form-field">
-                <input id="employeeDepartment2" matInput type="text" formControlName="employeeDepartment2"
-                  placeholder="{{ 'evaluationResultScreen.employeeDepartment2' | translate }}">
-              </mat-form-field>
-            </div>
-            <div id="searchCondition6">
-              <mat-form-field class="form-field">
-                <input id="employeeDepartment3" matInput type="text" formControlName="employeeDepartment3"
-                  placeholder="{{ 'evaluationResultScreen.employeeDepartment3' | translate }}">
-              </mat-form-field>
-            </div>
-            <div id="searchCondition7">
-              <mat-form-field class="form-field">
-                <input id="employeeLastName" matInput type="text" formControlName="employeeLastName"
-                  placeholder="{{ 'evaluationResultScreen.employeeLastName' | translate }}">
-              </mat-form-field>
-            </div>
-            <div id="searchCondition8">
-              <mat-form-field class="form-field">
-                <input id="employeeFirstName" matInput type="text" formControlName="employeeFirstName"
-                  placeholder="{{ 'evaluationResultScreen.employeeFirstName' | translate }}">
-              </mat-form-field>
-            </div>
-            <div id="searchCondition9">
-              <label class="labelFor">{{ 'evaluationResultScreen.evaluationTarget' | translate }}</label>
-              <mat-radio-group id="evaluationTarget" aria-labelledby="evaluationTargetGroupLabel"
-                formControlName="evaluationTarget">
-                <ng-container *ngFor="let item of evaluationTargetOption; index as i">
-                  <mat-radio-button value="{{ item.value }}">{{ item.label | translate }}</mat-radio-button>
-                </ng-container>
-              </mat-radio-group>
-            </div>
-            <!-- -------------------- 10 -------------------- -->
-            <div id="searchCondition10">
-              <label class="labelFor">{{ 'evaluationResultScreen.retiree'  | translate}}</label>
-              <mat-checkbox id="retiree" formControlName="retiree"></mat-checkbox>
+              <label class="labelFor">{{ 'companyListScreen.isDeleted'  | translate}}</label>
+              <mat-checkbox id="isDeleted" formControlName="isDeleted"></mat-checkbox>
             </div>
           </div>
         </mat-card-content>

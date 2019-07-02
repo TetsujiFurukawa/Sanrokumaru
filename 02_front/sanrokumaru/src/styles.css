@@ -209,3 +209,149 @@ th {
 .errMessage {
   color: red;
 }
+
+/* List style settings */
+
+#searchConditionsArea {
+  display: grid;
+  margin: 0;
+  grid-template-rows: 3rem 3rem 2rem;
+  grid-template-columns: 25% 25% 25% 1fr;
+  grid-template-areas:
+    "searchCondition1 searchCondition2 searchCondition3 searchCondition4"
+    "searchCondition5 searchCondition6 searchCondition7 searchCondition8"
+    "searchCondition9 searchCondition9 searchCondition9 searchCondition10"
+}
+
+#searchCondition1 {
+  grid-area: searchCondition1;
+}
+
+#searchCondition2 {
+  grid-area: searchCondition2;
+}
+
+#searchCondition3 {
+  grid-area: searchCondition3;
+}
+
+#searchCondition4 {
+  grid-area: searchCondition4;
+}
+
+#searchCondition5 {
+  grid-area: searchCondition5;
+}
+
+#searchCondition6 {
+  grid-area: searchCondition6;
+}
+
+#searchCondition7 {
+  grid-area: searchCondition7;
+}
+
+#searchCondition8 {
+  grid-area: searchCondition8;
+}
+
+#searchCondition9 {
+  margin-top: 1rem;
+  grid-area: searchCondition9;
+}
+
+#searchCondition10 {
+  margin-top: 1rem;
+  grid-area: searchCondition10;
+}
+
+#searchCondition11 {
+  grid-area: searchCondition11;
+}
+
+#searchCondition12 {
+  grid-area: searchCondition12;
+}
+
+#searchButtonArea {
+  display: grid;
+  padding-top: 0.5rem;
+  align-items: center;
+  justify-items: right;
+  grid-template-columns: 60% 20% 20% 1fr;
+  grid-template-areas:
+    "paginatorArea clearBtnArea searchBtnArea"
+}
+
+#paginatorArea {
+  grid-area: paginatorArea;
+  justify-self: left;
+}
+
+#clearBtnArea {
+  grid-area: clearBtnArea;
+}
+
+#searchBtnArea {
+  grid-area: searchBtnArea;
+}
+
+#evaluationResult {
+  grid-area: evaluationResult;
+}
+
+/* Tablet PC  */
+@media only screen and (min-width: 641px) and (max-width: 1000px) {
+  #searchConditionsArea {
+    display: grid;
+    margin: 0;
+    grid-template-rows: 3rem 3rem 3rem 2rem;
+    grid-template-columns: 33% 33% 1fr;
+    grid-template-areas:
+      "searchCondition1 searchCondition2 searchCondition3"
+      "searchCondition4 searchCondition5 searchCondition6"
+      "searchCondition7 searchCondition8 searchCondition8"
+      "searchCondition9 searchCondition9 searchCondition9"
+      "searchCondition10 searchCondition10 searchCondition10"
+  }
+
+  #searchButtonArea {
+    grid-template-columns: 10% 60% 60% 1fr;
+    grid-template-areas:
+      "paginatorArea clearBtnArea searchBtnArea"
+  }
+
+
+}
+
+/* SmartPhone */
+@media screen and (max-width: 640px) {
+
+  #searchConditionsArea {
+    grid-template-rows: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 4rem 3rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "searchCondition1"
+      "searchCondition2"
+      "searchCondition3"
+      "searchCondition4"
+      "searchCondition5"
+      "searchCondition6"
+      "searchCondition7"
+      "searchCondition8"
+      "searchCondition9"
+      "searchCondition10"
+  }
+
+  #searchButtonArea {
+    grid-template-columns: 5% 45% 45% 1fr;
+    grid-template-areas:
+      ". clearBtnArea searchBtnArea"
+  }
+
+  .example-container {
+    height: 400px;
+    overflow: auto;
+  }
+
+}

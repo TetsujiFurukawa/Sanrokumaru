@@ -16,10 +16,17 @@
       "detail": "内容"
     }
   },
+  "companyListScreen": {
+    "title": "企業一覧",
+    "companyName": "企業名",
+    "companyKana": "企業かな",
+    "isDeleted": "終了"
+  },
   "evaluationResultScreen": {
+    "title": "評価結果一覧",
     "yearFrom": "開始年",
     "employeeCode": "従業員コード",
-    "employeeRank": "ランク",
+    "isDeleted": "ランク",
     "employeeDepartment1": "部署1",
     "employeeDepartment2": "部署2",
     "employeeDepartment3": "部署3",
