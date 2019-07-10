@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms';
-import { SearchEvaluationResultDto } from 'src/app/entity/evaluation/search-evaluation-result-dto';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDatepickerYearComponent } from '../../common/date/mat-datepicker-year/mat-datepicker-year.component';
-import { EvaluationService } from 'src/app/service/evaluation/evaluation.service';
 import { merge, of } from 'rxjs';
-import { startWith, switchMap, map, catchError } from 'rxjs/operators';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
+import { CompanyService } from 'src/app/service/company/company.service';
+
 import { HttpParams } from '@angular/common/http';
-import { formatDate } from '@angular/common';
+import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { AppComponent } from 'src/app/app.component';
+import { AppConst } from 'src/app/app-const';
 
 @Component({
   selector: 'app-company-list',
@@ -17,72 +18,44 @@ import { formatDate } from '@angular/common';
 export class CompanyListComponent implements OnInit {
 
   // These are the search condition settings.
-  public yearFrom = new FormControl('', []);
-  public employeeCode = new FormControl('', []);
-  public employeeRank = new FormControl('', []);
-  public employeeDepartment1 = new FormControl('', []);
-  public employeeDepartment2 = new FormControl('', []);
-  public employeeDepartment3 = new FormControl('', []);
-  public employeeLastName = new FormControl('', []);
-  public employeeFirstName = new FormControl('', []);
-  public evaluationTarget = new FormControl('0', []);
-  public retiree = new FormControl('', []);
+  public companyName = new FormControl('', []);
+  public companyKana = new FormControl('', []);
+  public deleted = new FormControl('', []);
 
   public mainForm = this.formBuilder.group({
-    yearFrom: this.yearFrom,
-    employeeCode: this.employeeCode,
-    employeeRank: this.employeeRank,
-    employeeDepartment1: this.employeeDepartment1,
-    employeeDepartment2: this.employeeDepartment2,
-    employeeDepartment3: this.employeeDepartment3,
-    employeeLastName: this.employeeLastName,
-    employeeFirstName: this.employeeFirstName,
-    evaluationTarget: this.evaluationTarget,
-    retiree: this.retiree
+    companyName: this.companyName,
+    companyKana: this.companyKana,
+    deleted: this.deleted
   });
 
-  // These are the display name yearFrom settings.
-  // public locale: String = AppConst.LANG;
-  public displayNameYearFrom: String = 'evaluationResultScreen.yearFrom';
-
-  // These are the evaluation target option settings.
-  evaluationTargetOption = [
-    { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
-    { label: 'evaluationResultScreen.evaluationTargetOptions.targetPersonOnly', value: '1' },
-    { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
-  ];
-
-  public searchEvaluationResultDtos: SearchEvaluationResultDto[];
-  public displayEvaluationResultColumns: string[] = [
-    'employeeCode',
-    'employeeName',
-    'employeeDepartment',
-    'employeeRank',
-    'employeeEMailAddress',
-    'evaluateYear',
-    'evaluateTotalPoint',
-    'evaluatePoint01', 'evaluatePoint02', 'evaluatePoint03', 'evaluatePoint04', 'evaluatePoint05', 'evaluatePoint06',
-    'evaluatePoint07', 'evaluatePoint08', 'evaluatePoint09', 'evaluatePoint10', 'evaluatePoint11', 'evaluatePoint12'
+  public searchCompanyDtos: SearchCompanyDto[];
+  public displayCompanyListColumns: string[] = [
+    'companySeq',
+    'companyName',
+    'companyKana',
+    'companyAddress1',
+    'deleted',
+    'createUser',
+    'createTime',
+    'updateUser',
+    'updateTime',
   ];
 
   public resultsLength = 0;
   public isLoadingResults = false;
 
   @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
-  @ViewChild(MatDatepickerYearComponent, { static: true }) private matDatepickerYearComponent: MatDatepickerYearComponent;
 
   constructor(
-    @Inject(LOCALE_ID) public locale: string,
+    @Inject(LOCALE_ID) private locale: string,
     private formBuilder: FormBuilder,
-    private evaluationService: EvaluationService
+    private companyService: CompanyService
   ) { }
 
   ngOnInit() {
+    this.locale = AppConst.LOCALE;
   }
 
-  onReceiveEventFromChild(eventData: String) {
-    this.yearFrom.setValue(eventData);
-  }
   private onClear() {
 
     this.clearSearchCondition();
@@ -97,7 +70,7 @@ export class CompanyListComponent implements OnInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.evaluationService.getEvaluationResult(this.createHttpParams());
+          return this.companyService.getCompanyList(this.createHttpParams());
         }),
 
         map(data => {
@@ -105,7 +78,7 @@ export class CompanyListComponent implements OnInit {
           this.isLoadingResults = false;
           this.resultsLength = data.resultsLength;
           this.paginator.pageIndex = data.pageIndex;
-          return data.searchEvaluationResultDtos;
+          return data.searchCompanyDtos;
         }),
 
         catchError(() => {
@@ -113,29 +86,21 @@ export class CompanyListComponent implements OnInit {
           return of(null as any);
         })
 
-      ).subscribe(data => this.searchEvaluationResultDtos = data);
+      ).subscribe(data => this.searchCompanyDtos = data);
+
   }
 
   private createHttpParams(): HttpParams {
-    const conditions = {
 
-      yearFrom: formatDate(this.yearFrom.value, 'yyyy', this.locale),
-      employeeCode: this.employeeCode.value,
-      employeeRank: this.employeeRank.value,
-      employeeDepartment1: this.employeeDepartment1.value,
-      employeeDepartment2: this.employeeDepartment2.value,
-      employeeDepartment3: this.employeeDepartment3.value,
-      employeeLastName: this.employeeLastName.value,
-      employeeFirstName: this.employeeFirstName.value,
-      evaluationTarget: this.evaluationTarget.value,
-      retiree: this.retiree.value,
+    const conditions = {
+      companyName: this.companyName.value,
+      companyKana: this.companyKana.value,
+      deleted: this.deleted.value,
 
       pageSize: this.paginator.pageSize.toString(),
       pageIndex: this.paginator.pageIndex.toString()
-
     };
 
-    // const paramsOptions = <HttpParamsOptions>{ fromObject: conditions };
     const paramsOptions = <any>{ fromObject: conditions };
     const params = new HttpParams(paramsOptions);
 
@@ -145,22 +110,15 @@ export class CompanyListComponent implements OnInit {
 
   private clearSearchCondition() {
 
-    this.matDatepickerYearComponent.reset();
-    this.employeeCode.setValue('');
-    this.employeeRank.setValue('');
-    this.employeeDepartment1.setValue('');
-    this.employeeDepartment2.setValue('');
-    this.employeeDepartment3.setValue('');
-    this.employeeLastName.setValue('');
-    this.employeeFirstName.setValue('');
-    this.evaluationTarget.setValue('0');
-    this.retiree.setValue('');
+    this.companyName.setValue('');
+    this.companyKana.setValue('');
+    this.deleted.setValue('');
 
   }
 
   private clearSearchResultList() {
 
-    this.searchEvaluationResultDtos = null;
+    this.searchCompanyDtos = null;
     this.resultsLength = 0;
 
   }

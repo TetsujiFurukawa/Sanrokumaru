@@ -15,7 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AccountService {
 
   private server = environment.production ? AppConst.URL_PROD_SERVER : AppConst.URL_DEV_SERVER;
-  private webApiUrl = 'availableMenu';
+  private webApiUrl = 'available-menu-list';
 
   constructor(
     private http: HttpClient,

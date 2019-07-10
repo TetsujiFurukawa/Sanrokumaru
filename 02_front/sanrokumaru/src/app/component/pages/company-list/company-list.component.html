@@ -25,8 +25,8 @@
               </mat-form-field>
             </div>
             <div id="searchCondition3">
-              <label class="labelFor">{{ 'companyListScreen.isDeleted'  | translate}}</label>
-              <mat-checkbox id="isDeleted" formControlName="isDeleted"></mat-checkbox>
+              <label class="labelFor">{{ 'companyListScreen.deleted'  | translate}}</label>
+              <mat-checkbox id="deleted" formControlName="deleted"></mat-checkbox>
             </div>
           </div>
         </mat-card-content>
@@ -39,12 +39,12 @@
         </div>
         <div id="clearBtnArea">
           <button mat-raised-button color="primary" id="clearBtn" class="btn" (click)="onClear()"
-            type="submit">{{ "evaluationResultScreen.clearBtn" | translate }}
+            type="submit">{{ "companyListScreen.clearBtn" | translate }}
           </button>
         </div>
         <div id="searchBtnArea">
-          <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit" (click)="onSearch()"
-            [disabled]="!mainForm.valid">{{ "evaluationResultScreen.searchBtn" | translate }}
+          <button mat-raised-button color="primary" id="searchBtn" class="btn" type="submit"
+            (click)="onSearch()">{{ "companyListScreen.searchBtn" | translate }}
           </button>
         </div>
       </div>
@@ -56,107 +56,69 @@
         </div>
 
         <div class="example-container">
-          <table mat-table *ngIf="resultsLength>0" [dataSource]="searchEvaluationResultDtos">
-            <ng-container matColumnDef="employeeCode">
+          <table mat-table *ngIf="resultsLength>0" [dataSource]="searchCompanyDtos">
+            <ng-container matColumnDef="companySeq">
               <th mat-header-cell *matHeaderCellDef style="width: 10%;">
-                {{ "evaluationResultScreen.employeeCode" | translate }}
+                {{ "companyListScreen.searchResult.companySeq" | translate }}
               </th>
-              <td mat-cell *matCellDef="let element"> {{element.employeeCode}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.companySeq}} </td>
             </ng-container>
-            <ng-container matColumnDef="employeeName">
+            <ng-container matColumnDef="companyName">
               <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.employeeName" | translate }}
+                {{ "companyListScreen.companyName" | translate }}
               </th>
-              <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
             </ng-container>
-            <ng-container matColumnDef="employeeDepartment">
+            <ng-container matColumnDef="companyKana">
               <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.employeeDepartment" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.employeeDepartment}} </td>
+                {{ "companyListScreen.companyKana" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.companyKana}} </td>
             </ng-container>
-            <ng-container matColumnDef="employeeRank">
+            <ng-container matColumnDef="companyAddress1">
               <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.employeeRank" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.employeeRank}} </td>
+                {{ "companyListScreen.searchResult.companyAddress1" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.companyAddress1}} </td>
             </ng-container>
-            <ng-container matColumnDef="employeeEMailAddress">
+            <ng-container matColumnDef="numOfEmployee">
               <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.employeeEMailAddress" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.employeeEMailAddress}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluateYear">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluateYear" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluateYear}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluateTotalPoint">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluateTotalPoint" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluateTotalPoint}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint01">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint01" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint01}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint02">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint02" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint02}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint03">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint03" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint03}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint04">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint04" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint04}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint05">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint05" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint05}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint06">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint06" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint06}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint07">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint07" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint07}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint08">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint08" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint08}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint09">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint09" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint09}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint10">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint10" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint10}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint11">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint11" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint11}} </td>
-            </ng-container>
-            <ng-container matColumnDef="evaluatePoint12">
-              <th mat-header-cell *matHeaderCellDef>
-                {{ "evaluationResultScreen.searchResult.evaluatePoint12" | translate }}</th>
-              <td mat-cell *matCellDef="let element"> {{element.evaluatePoint12}} </td>
+                {{ "companyListScreen.searchResult.numOfEmployee" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.numOfEmployee}} </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayEvaluationResultColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayEvaluationResultColumns;"></tr>
+            <ng-container matColumnDef="deleted">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.deleted" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.deleted}} </td>
+            </ng-container>
+            <ng-container matColumnDef="evaluationSetting">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.searchResult.evaluationSetting" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.evaluationSetting}} </td>
+            </ng-container>
+            <ng-container matColumnDef="createTime">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.searchResult.createTime" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.createTime|date:'medium':'ja-JP'}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="createUser">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.searchResult.createUser" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.createUser}} </td>
+            </ng-container>
+            <ng-container matColumnDef="updateTime">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.searchResult.updateTime" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.updateTime|date:'medium'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="updateUser">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ "companyListScreen.searchResult.updateUser" | translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.updateUser}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayCompanyListColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayCompanyListColumns;"></tr>
           </table>
         </div>
       </div>

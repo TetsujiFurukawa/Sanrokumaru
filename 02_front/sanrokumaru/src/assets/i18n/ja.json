@@ -20,7 +20,20 @@
     "title": "企業一覧",
     "companyName": "企業名",
     "companyKana": "企業かな",
-    "isDeleted": "終了"
+    "deleted": "終了",
+    "newBtn": "新規",
+    "clearBtn": "クリア",
+    "searchBtn": "検索",
+    "searchResult": {
+      "companySeq": "企業コード",
+      "companyAddress1": "都道府県",
+      "numOfEmployee": "従業員数",
+      "evaluationSetting": "評価方式",
+      "createTime": "登録日時",
+      "createUser": "登録者",
+      "updateTime": "更新日時",
+      "updateUser": "更新者"
+    }
   },
   "evaluationResultScreen": {
     "title": "評価結果一覧",

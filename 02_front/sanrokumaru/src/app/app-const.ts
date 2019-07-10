@@ -15,6 +15,12 @@ export class AppConst {
   static readonly HTTP_WITH_CREDENTIALS = false;
 
   // default lang
-  static readonly LANG = 'ja-JP';
+  static readonly LOCALE = 'ja-JP';
 
+  // These are the evaluation target option settings.
+  static readonly evaluationTargetOption = [
+    { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
+    { label: 'evaluationResultScreen.evaluationTargetOptions.targetPersonOnly', value: '1' },
+    { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
+  ];
 }

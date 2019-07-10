@@ -8,6 +8,7 @@ import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { MatDatepickerYearComponent } from '../../common/date/mat-datepicker-year/mat-datepicker-year.component';
 import { HttpParams } from '@angular/common/http';
+import { AppConst } from 'src/app/app-const';
 // import { HttpParamsOptions } from '@angular/common/http/src/params';
 // import { HttpParamsOptions } from '@angular/common/http';
 
@@ -49,11 +50,7 @@ export class EvaluationResultComponent implements OnInit {
   public displayNameYearFrom: String = 'evaluationResultScreen.yearFrom';
 
   // These are the evaluation target option settings.
-  evaluationTargetOption = [
-    { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
-    { label: 'evaluationResultScreen.evaluationTargetOptions.targetPersonOnly', value: '1' },
-    { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
-  ];
+  evaluationTargetOption = AppConst.evaluationTargetOption;
 
   public searchEvaluationResultDtos: SearchEvaluationResultDto[];
   public displayEvaluationResultColumns: string[] = [
@@ -81,6 +78,11 @@ export class EvaluationResultComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setupLocale();
+  }
+
+  private setupLocale() {
+    this.locale = AppConst.LOCALE;
   }
 
   onReceiveEventFromChild(eventData: String) {
