@@ -118,7 +118,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayCompanyListColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayCompanyListColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayCompanyListColumns;" (click)="listClicked(row)"></tr>
           </table>
         </div>
       </div>

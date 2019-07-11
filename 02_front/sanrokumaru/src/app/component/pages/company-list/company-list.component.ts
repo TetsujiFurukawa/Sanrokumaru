@@ -58,6 +58,12 @@ export class CompanyListComponent implements OnInit {
     this.setUpLocale();
   }
 
+  public listClicked(searchCompanyDto: SearchCompanyDto) {
+    console.log(searchCompanyDto.companySeq);
+
+  }
+
+
   private setUpLocale() {
     this.locale = AppConst.LOCALE;
     this.timezone = AppConst.TIMEZONE;
