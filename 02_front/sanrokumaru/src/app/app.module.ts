@@ -24,10 +24,15 @@ import { MatDatepickerYearComponent } from './component/common/date/mat-datepick
 import { CompanyListComponent } from './component/pages/company-list/company-list.component';
 import { CompanyDetailComponent } from './component/pages/company-detail/company-detail.component';
 
+import { registerLocaleData } from '@angular/common';
+import localeJa from '@angular/common/locales/ja';
+
 // 他言語化の設定
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+// dateのpipe用の他言語設定
+registerLocaleData(localeJa, 'ja-JP');
 
 // モジュール定義
 @NgModule({

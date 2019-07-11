@@ -7,7 +7,6 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
-import { AppComponent } from 'src/app/app.component';
 import { AppConst } from 'src/app/app-const';
 
 @Component({
@@ -44,16 +43,24 @@ export class CompanyListComponent implements OnInit {
   public resultsLength = 0;
   public isLoadingResults = false;
 
+  // timezone & locale
+  public locale: string;
+  public timezone: string;
+
   @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
   constructor(
-    @Inject(LOCALE_ID) private locale: string,
     private formBuilder: FormBuilder,
     private companyService: CompanyService
   ) { }
 
   ngOnInit() {
+    this.setUpLocale();
+  }
+
+  private setUpLocale() {
     this.locale = AppConst.LOCALE;
+    this.timezone = AppConst.TIMEZONE;
   }
 
   private onClear() {

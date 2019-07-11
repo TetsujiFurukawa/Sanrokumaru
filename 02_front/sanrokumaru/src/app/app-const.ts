@@ -17,6 +17,9 @@ export class AppConst {
   // default lang
   static readonly LOCALE = 'ja-JP';
 
+  // default timezone
+  static readonly TIMEZONE = 'UTC/Asia/Tokyo';
+
   // These are the evaluation target option settings.
   static readonly evaluationTargetOption = [
     { label: 'evaluationResultScreen.evaluationTargetOptions.noOption', value: '0' },
