@@ -26,4 +26,5 @@ export class AppConst {
     { label: 'evaluationResultScreen.evaluationTargetOptions.targetPersonOnly', value: '1' },
     { label: 'evaluationResultScreen.evaluationTargetOptions.notevaluated', value: '2' }
   ];
+
 }

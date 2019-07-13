@@ -8,6 +8,7 @@ import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { AppConst } from 'src/app/app-const';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
@@ -15,7 +16,6 @@ import { AppConst } from 'src/app/app-const';
   styleUrls: ['./company-list.component.css']
 })
 export class CompanyListComponent implements OnInit {
-
   // These are the search condition settings.
   public companyName = new FormControl('', []);
   public companyKana = new FormControl('', []);
@@ -51,18 +51,13 @@ export class CompanyListComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.setUpLocale();
   }
-
-  public listClicked(searchCompanyDto: SearchCompanyDto) {
-    console.log(searchCompanyDto.companySeq);
-
-  }
-
 
   private setUpLocale() {
     this.locale = AppConst.LOCALE;
@@ -70,14 +65,11 @@ export class CompanyListComponent implements OnInit {
   }
 
   private onClear() {
-
     this.clearSearchCondition();
     this.clearSearchResultList();
-
   }
 
   private onSearch() {
-
     merge(this.paginator.page)
       .pipe(
         startWith({}),
@@ -100,11 +92,9 @@ export class CompanyListComponent implements OnInit {
         })
 
       ).subscribe(data => this.searchCompanyDtos = data);
-
   }
 
   private createHttpParams(): HttpParams {
-
     const conditions = {
       companyName: this.companyName.value,
       companyKana: this.companyKana.value,
@@ -118,22 +108,20 @@ export class CompanyListComponent implements OnInit {
     const params = new HttpParams(paramsOptions);
 
     return params;
-
   }
 
   private clearSearchCondition() {
-
     this.companyName.setValue('');
     this.companyKana.setValue('');
     this.deleted.setValue('');
-
   }
 
   private clearSearchResultList() {
-
     this.searchCompanyDtos = null;
     this.resultsLength = 0;
-
+  }
+  private listClicked(searchCompanyDto: SearchCompanyDto) {
+    this.router.navigate(['/company-detail', searchCompanyDto.companySeq]);
   }
 
 }

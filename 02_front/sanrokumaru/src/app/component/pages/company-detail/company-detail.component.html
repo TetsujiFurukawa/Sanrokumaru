@@ -1,1 +1,121 @@
-<p>company-detail works!</p>
+<div class="mainColor">
+  <div class="wrapper mainBody">
+    <form [formGroup]="mainForm">
+      <div class="editingArea">
+        <mat-card>
+          <mat-card-content>
+            <app-error-messages></app-error-messages>
+            <!-- Screen Title Area -->
+            <div class="titleArea">
+              {{ 'companyDetailScreen.title' | translate }}
+            </div>
+            <div class="subTitleArea">
+              {{ 'companyDetailScreen.subTitle01' | translate }}
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="companySeq" matInput type="text" formControlName="companySeq"
+                  placeholder="{{ 'companyDetailScreen.companySeq' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field" style="width: 30rem;">
+                <input id="companyName" matInput type="text" formControlName="companyName"
+                  placeholder="{{ 'companyDetailScreen.companyName' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field" style="width: 30rem;">
+                <input id="companyKana" matInput type="text" formControlName="companyKana"
+                  placeholder="{{ 'companyDetailScreen.companyKana' | translate }}">
+              </mat-form-field>
+            </div>
+
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="companyPostalCode" matInput type="text" formControlName="companyPostalCode"
+                  placeholder="{{ 'companyDetailScreen.companyPostalCode' | translate }}">
+              </mat-form-field>
+            </div>
+
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="companyAddress1" matInput type="text" formControlName="companyAddress1"
+                  placeholder="{{ 'companyDetailScreen.companyAddress1' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field" style="width: 50rem;">
+                <input id="companyAddress2" matInput type="text" formControlName="companyAddress2"
+                  placeholder="{{ 'companyDetailScreen.companyAddress2' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="companyAddress3" matInput type="text" formControlName="companyAddress3"
+                  placeholder="{{ 'companyDetailScreen.companyAddress3' | translate }}">
+              </mat-form-field>
+            </div>
+
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="companyPhoneNumber" matInput type="text" formControlName="companyPhoneNumber"
+                  placeholder="{{ 'companyDetailScreen.companyPhoneNumber' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="departmentInCharge1" matInput type="text" formControlName="departmentInCharge1"
+                  placeholder="{{ 'companyDetailScreen.departmentInCharge1' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="departmentInCharge2" matInput type="text" formControlName="departmentInCharge2"
+                  placeholder="{{ 'companyDetailScreen.departmentInCharge2' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="departmentInCharge3" matInput type="text" formControlName="departmentInCharge3"
+                  placeholder="{{ 'companyDetailScreen.departmentInCharge3' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="personInChargeFirstName" matInput type="text" formControlName="personInChargeFirstName"
+                  placeholder="{{ 'companyDetailScreen.personInChargeFirstName' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="personInChargeLastName" matInput type="text" formControlName="personInChargeLastName"
+                  placeholder="{{ 'companyDetailScreen.personInChargeLastName' | translate }}">
+              </mat-form-field>
+            </div>
+            <div class="editingInputArea">
+              <mat-form-field class="form-field">
+                <input id="personInChargeEmailAddress" matInput type="text" formControlName="personInChargeEmailAddress"
+                  placeholder="{{ 'companyDetailScreen.personInChargeEmailAddress' | translate }}">
+              </mat-form-field>
+            </div>
+
+            <div class="editingInputArea">
+              <label class="labelFor">{{ 'companyDetailScreen.deleted'  | translate}}</label>
+              <mat-checkbox id="deleted" formControlName="deleted"></mat-checkbox>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <!-- Button Area -->
+        <div class="editingButtonArea">
+          <button mat-raised-button color="primary" id="backBtn" class="btn" type="submit"
+            (click)="onBack()">{{ "commonScreen.backBtn" | translate }}
+          </button>
+          <button mat-raised-button color="primary" id="updateBtn" class="btn" style="margin-left: 2rem;" type="submit"
+            (click)="onUpdate()">{{ "commonScreen.updateBtn" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

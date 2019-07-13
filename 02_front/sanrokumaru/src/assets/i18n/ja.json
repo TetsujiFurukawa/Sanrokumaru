@@ -35,10 +35,31 @@
       "updateUser": "更新者"
     }
   },
+  "companyDetailScreen": {
+    "title": "企業情報登録画面",
+    "subTitle01": "企業情報",
+    "companySeq": "企業コード",
+    "companyName": "企業名",
+    "companyKana": "企業かな",
+    "companyPostalCode": "郵便番号",
+    "companyAddress1": "都道府県",
+    "companyAddress2": "市区町村、番地",
+    "companyAddress3": "ビル名",
+    "companyPhoneNumber": "電話番号",
+    "departmentInCharge1": "部署１",
+    "departmentInCharge2": "部署２",
+    "departmentInCharge3": "部署３",
+    "personInChargeFirstName": "姓",
+    "personInChargeLastName": "名",
+    "personInChargeEmailAddress": "メールアドレス",
+    "deleted01": "使用終了",
+    "deleted02": "終了日"
+  },
   "evaluationResultScreen": {
     "title": "評価結果一覧",
     "yearFrom": "開始年",
     "employeeCode": "従業員コード",
+    "employeeRank": "ランク",
     "isDeleted": "ランク",
     "employeeDepartment1": "部署1",
     "employeeDepartment2": "部署2",
@@ -73,6 +94,10 @@
       "evaluatePoint11": "11月",
       "evaluatePoint12": "12月"
     }
+  },
+  "commonScreen": {
+    "backBtn": "戻る",
+    "updateBtn": "更新"
   },
   "menu": {
     "home": "ホーム",

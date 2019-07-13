@@ -300,6 +300,17 @@ th {
   grid-area: evaluationResult;
 }
 
+/* Editing Screen */
+.editingArea {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.editingButtonArea {
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
 /* Tablet PC  */
 @media only screen and (min-width: 641px) and (max-width: 1000px) {
   #searchConditionsArea {
@@ -354,4 +365,8 @@ th {
     overflow: auto;
   }
 
+  .editingArea {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 }

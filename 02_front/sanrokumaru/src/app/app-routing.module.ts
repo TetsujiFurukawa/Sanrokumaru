@@ -13,7 +13,7 @@ import { SignInComponent } from './component/pages/sign-in/sign-in.component';
         { path: '', redirectTo: '/signIn', pathMatch: 'full' },
         { path: 'signIn', component: SignInComponent },
         { path: 'company-list', component: CompanyListComponent },
-        { path: 'company-detail', component: CompanyDetailComponent },
+        { path: 'company-detail/:id', component: CompanyDetailComponent },
         { path: 'evaluation-result', component: EvaluationResultComponent }
       ]
     ),
