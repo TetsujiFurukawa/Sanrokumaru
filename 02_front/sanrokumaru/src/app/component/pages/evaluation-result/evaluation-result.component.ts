@@ -9,14 +9,14 @@ import { formatDate } from '@angular/common';
 import { MatDatepickerYearComponent } from '../../common/date/mat-datepicker-year/mat-datepicker-year.component';
 import { HttpParams } from '@angular/common/http';
 import { AppConst } from 'src/app/app-const';
+import { Title } from '@angular/platform-browser';
 // import { HttpParamsOptions } from '@angular/common/http/src/params';
 // import { HttpParamsOptions } from '@angular/common/http';
 
 @Component({
   selector: 'app-evaluation-result',
   templateUrl: './evaluation-result.component.html',
-  styleUrls: ['./evaluation-result.component.css'],
-  providers: [EvaluationService]
+  styleUrls: ['./evaluation-result.component.css']
 })
 export class EvaluationResultComponent implements OnInit {
 
@@ -74,15 +74,21 @@ export class EvaluationResultComponent implements OnInit {
   constructor(
     @Inject(LOCALE_ID) public locale: string,
     private formBuilder: FormBuilder,
+    private title: Title,
     private evaluationService: EvaluationService
   ) { }
 
   ngOnInit() {
     this.setupLocale();
+    this.setUpBrowserTitle();
   }
 
   private setupLocale() {
     this.locale = AppConst.LOCALE;
+  }
+
+  private setUpBrowserTitle() {
+    this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_EVALUATION_RESULT);
   }
 
   onReceiveEventFromChild(eventData: String) {

@@ -2,6 +2,12 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class AppConst {
 
+  static readonly APP_TITLE = '360 | ';
+  static readonly APP_SUB_TITLE_SIGN_IN = 'Sign In';
+  static readonly APP_SUB_TITLE_EVALUATION_RESULT = 'Evaluation Result';
+  static readonly APP_SUB_TITLE_COMPANY_LIST = 'Company List';
+  static readonly APP_SUB_TITLE_COMPANY_Detail = 'Company Detail';
+
   // web server url
   static readonly URL_PROD_SERVER = 'http://localhost/api/';
   static readonly URL_DEV_SERVER = 'http://localhost:8080/api/';

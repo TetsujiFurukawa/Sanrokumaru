@@ -306,10 +306,32 @@ th {
   margin-right: 20%;
 }
 
+.subTitleArea {
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.editingInputArea {
+  padding-left: 1rem;
+}
+
 .editingButtonArea {
   margin-top: 0.5rem;
   text-align: right;
 }
+
+.inputWidthShort {
+  width: 10rem;
+}
+
+.inputWidthMiddle {
+  width: 30rem;
+}
+
+.inputWidthLong {
+  width: 50rem;
+}
+
 
 /* Tablet PC  */
 @media only screen and (min-width: 641px) and (max-width: 1000px) {
@@ -330,6 +352,19 @@ th {
     grid-template-columns: 10% 60% 60% 1fr;
     grid-template-areas:
       "paginatorArea clearBtnArea searchBtnArea"
+  }
+
+  .editingArea {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .inputWidthMiddle {
+    width: 30rem;
+  }
+
+  .inputWidthLong {
+    width: 40rem;
   }
 
 
@@ -369,4 +404,13 @@ th {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
+
+  .inputWidthMiddle {
+    width: 20rem;
+  }
+
+  .inputWidthLong {
+    width: 30rem;
+  }
+
 }

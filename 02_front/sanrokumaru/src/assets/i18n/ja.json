@@ -5,7 +5,7 @@
     "comment": "より良いコミュニケーションを目指して"
   },
   "signInScreen": {
-    "signIn": "サインイン",
+    "title": "サインイン",
     "eMailAddress": "E-Mailアドレス",
     "password": "パスワード",
     "signInBtn": "サインイン",
@@ -36,11 +36,13 @@
     }
   },
   "companyDetailScreen": {
-    "title": "企業情報登録画面",
+    "title": "企業情報詳細画面",
     "subTitle01": "企業情報",
+    "subTitle02": "担当者氏名",
+    "subTitle03": "その他",
     "companySeq": "企業コード",
     "companyName": "企業名",
-    "companyKana": "企業かな",
+    "companyKana": "企業名カナ",
     "companyPostalCode": "郵便番号",
     "companyAddress1": "都道府県",
     "companyAddress2": "市区町村、番地",
@@ -52,8 +54,8 @@
     "personInChargeFirstName": "姓",
     "personInChargeLastName": "名",
     "personInChargeEmailAddress": "メールアドレス",
-    "deleted01": "使用終了",
-    "deleted02": "終了日"
+    "deleted": "使用終了",
+    "deletedDay": "終了日"
   },
   "evaluationResultScreen": {
     "title": "評価結果一覧",
@@ -125,7 +127,7 @@
     "http": "サーバとの通信に失敗しました。"
   },
   "validateErrorMessage": {
-    "required": "必ず入力してください。",
+    "required": "必須項目です。",
     "format": "形式が正しくありません。"
   }
 }

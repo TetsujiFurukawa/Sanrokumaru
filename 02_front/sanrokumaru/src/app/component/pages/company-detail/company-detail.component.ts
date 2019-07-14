@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/service/company/company.service';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
 import { merge, of } from 'rxjs';
 import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { AppConst } from 'src/app/app-const';
 
 @Component({
   selector: 'app-company-detail',
@@ -14,12 +16,12 @@ import { Router } from '@angular/router';
 })
 export class CompanyDetailComponent implements OnInit {
   // These are the search condition settings.
-  public companySeq = new FormControl('', []);
-  public companyName = new FormControl('', []);
-  public companyKana = new FormControl('', []);
-  public companyPostalCode = new FormControl('', []);
-  public companyAddress1 = new FormControl('', []);
-  public companyAddress2 = new FormControl('', []);
+  public companySeq: number;
+  public companyName = new FormControl('', [Validators.required]);
+  public companyKana = new FormControl('', [Validators.required]);
+  public companyPostalCode = new FormControl('', [Validators.required]);
+  public companyAddress1 = new FormControl('', [Validators.required]);
+  public companyAddress2 = new FormControl('', [Validators.required]);
   public companyAddress3 = new FormControl('', []);
   public companyPhoneNumber = new FormControl('', []);
   public personInChargeFirstName = new FormControl('', []);
@@ -27,11 +29,11 @@ export class CompanyDetailComponent implements OnInit {
   public departmentInCharge1 = new FormControl('', []);
   public departmentInCharge2 = new FormControl('', []);
   public departmentInCharge3 = new FormControl('', []);
-  public personInChargeEmailAddress = new FormControl('', []);
+  public personInChargeEmailAddress = new FormControl('', [Validators.email]);
   public deleted = new FormControl('', []);
+  public deletedDay = new FormControl('', []);
 
   public mainForm = this.formBuilder.group({
-    companySeq: this.companySeq,
     companyName: this.companyName,
     companyKana: this.companyKana,
     companyPostalCode: this.companyPostalCode,
@@ -45,24 +47,29 @@ export class CompanyDetailComponent implements OnInit {
     departmentInCharge2: this.departmentInCharge2,
     departmentInCharge3: this.departmentInCharge3,
     personInChargeEmailAddress: this.personInChargeEmailAddress,
-    deleted: this.deleted
+    deleted: this.deleted,
+    deletedDay: this.deletedDay
   });
 
-  public searchCompanyDto: SearchCompanyDto;
-
+  public searchCompanyDtos: SearchCompanyDto[];
 
   public resultsLength = 0;
   public isLoadingResults = false;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private companyService: CompanyService,
+    private title: Title,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.setUpBrowserTitle();
   }
+  private setUpBrowserTitle() {
+    this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_COMPANY_Detail);
+  }
+
   private onBack() {
     this.router.navigate(['/company-list']);
   }

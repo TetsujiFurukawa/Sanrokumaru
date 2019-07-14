@@ -8,6 +8,8 @@ import { SignInService } from 'src/app/service/signIn/sign-in.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppConst } from 'src/app/app-const';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -49,13 +51,14 @@ export class SignInComponent implements OnInit {
     private infomationService: InformationService,
     private signInService: SignInService,
     private sessionService: SessionService,
+    private title: Title,
     private router: Router
 
   ) { }
 
   ngOnInit() {
     this.getInformations();
-
+    this.setUpBrowserTitle();
   }
 
   /**
@@ -63,7 +66,10 @@ export class SignInComponent implements OnInit {
    */
   private getInformations(): void {
     this.infomationService.getInformations().subscribe(informations => this.informations = informations);
+  }
 
+  private setUpBrowserTitle() {
+    this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_SIGN_IN);
   }
 
   onSubmit() {

@@ -9,112 +9,151 @@
             <div class="titleArea">
               {{ 'companyDetailScreen.title' | translate }}
             </div>
+
+            <!-- Input Area Company Information-->
             <div class="subTitleArea">
               {{ 'companyDetailScreen.subTitle01' | translate }}
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="companySeq" matInput type="text" formControlName="companySeq"
-                  placeholder="{{ 'companyDetailScreen.companySeq' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field" style="width: 30rem;">
-                <input id="companyName" matInput type="text" formControlName="companyName"
-                  placeholder="{{ 'companyDetailScreen.companyName' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field" style="width: 30rem;">
-                <input id="companyKana" matInput type="text" formControlName="companyKana"
-                  placeholder="{{ 'companyDetailScreen.companyKana' | translate }}">
-              </mat-form-field>
-            </div>
-
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="companyPostalCode" matInput type="text" formControlName="companyPostalCode"
-                  placeholder="{{ 'companyDetailScreen.companyPostalCode' | translate }}">
-              </mat-form-field>
-            </div>
-
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="companyAddress1" matInput type="text" formControlName="companyAddress1"
-                  placeholder="{{ 'companyDetailScreen.companyAddress1' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field" style="width: 50rem;">
-                <input id="companyAddress2" matInput type="text" formControlName="companyAddress2"
-                  placeholder="{{ 'companyDetailScreen.companyAddress2' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="companyAddress3" matInput type="text" formControlName="companyAddress3"
-                  placeholder="{{ 'companyDetailScreen.companyAddress3' | translate }}">
-              </mat-form-field>
-            </div>
-
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="companyPhoneNumber" matInput type="text" formControlName="companyPhoneNumber"
-                  placeholder="{{ 'companyDetailScreen.companyPhoneNumber' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="departmentInCharge1" matInput type="text" formControlName="departmentInCharge1"
-                  placeholder="{{ 'companyDetailScreen.departmentInCharge1' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="departmentInCharge2" matInput type="text" formControlName="departmentInCharge2"
-                  placeholder="{{ 'companyDetailScreen.departmentInCharge2' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="departmentInCharge3" matInput type="text" formControlName="departmentInCharge3"
-                  placeholder="{{ 'companyDetailScreen.departmentInCharge3' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="personInChargeFirstName" matInput type="text" formControlName="personInChargeFirstName"
-                  placeholder="{{ 'companyDetailScreen.personInChargeFirstName' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="personInChargeLastName" matInput type="text" formControlName="personInChargeLastName"
-                  placeholder="{{ 'companyDetailScreen.personInChargeLastName' | translate }}">
-              </mat-form-field>
-            </div>
-            <div class="editingInputArea">
-              <mat-form-field class="form-field">
-                <input id="personInChargeEmailAddress" matInput type="text" formControlName="personInChargeEmailAddress"
-                  placeholder="{{ 'companyDetailScreen.personInChargeEmailAddress' | translate }}">
-              </mat-form-field>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthShort">
+                  <input id="companySeq" matInput type="text"
+                    placeholder="{{ 'companyDetailScreen.companySeq' | translate }} " disabled value={{companySeq}}>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id="companyName" matInput type="text" maxlength="50" formControlName="companyName"
+                    placeholder="*{{ 'companyDetailScreen.companyName' | translate }}">
+                  <mat-error *ngIf="companyName.hasError('required')">
+                    {{ 'validateErrorMessage.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id=" companyKana" matInput type="text" maxlength="50" formControlName="companyKana"
+                    placeholder="{{ 'companyDetailScreen.companyKana' | translate }}">
+                  <mat-error *ngIf="companyKana.hasError('required')">
+                    {{ 'validateErrorMessage.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthShort">
+                  <input id="companyPostalCode" matInput type="text" maxlength="10" formControlName="companyPostalCode"
+                    placeholder="*{{ 'companyDetailScreen.companyPostalCode' | translate }}">
+                  <mat-error *ngIf="companyPostalCode.hasError('required')">
+                    {{ 'validateErrorMessage.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthShort">
+                  <input id="companyAddress1" matInput type="text" maxlength="100" formControlName="companyAddress1"
+                    placeholder="*{{ 'companyDetailScreen.companyAddress1' | translate }}">
+                  <mat-error *ngIf="companyAddress1.hasError('required')">
+                    {{ 'validateErrorMessage.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthLong">
+                  <input id="companyAddress2" matInput type="text" maxlength="100" formControlName="companyAddress2"
+                    placeholder="*{{ 'companyDetailScreen.companyAddress2' | translate }}">
+                  <mat-error *ngIf="companyAddress2.hasError('required')">
+                    {{ 'validateErrorMessage.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthLong">
+                  <input id="companyAddress3" matInput type="text" maxlength="100" formControlName="companyAddress3"
+                    placeholder="{{ 'companyDetailScreen.companyAddress3' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field">
+                  <input id="companyPhoneNumber" matInput type="tel" maxlength="15" formControlName="companyPhoneNumber"
+                    placeholder="{{ 'companyDetailScreen.companyPhoneNumber' | translate }}">
+                </mat-form-field>
+              </div>
             </div>
 
-            <div class="editingInputArea">
-              <label class="labelFor">{{ 'companyDetailScreen.deleted'  | translate}}</label>
-              <mat-checkbox id="deleted" formControlName="deleted"></mat-checkbox>
+            <!-- Input Area Person In Charge -->
+            <div class="subTitleArea">
+              {{ 'companyDetailScreen.subTitle02' | translate }}
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id="departmentInCharge1" matInput type="text" maxlength="100"
+                    formControlName="departmentInCharge1"
+                    placeholder="{{ 'companyDetailScreen.departmentInCharge1' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id="departmentInCharge2" matInput type="text" maxlength="100"
+                    formControlName="departmentInCharge2"
+                    placeholder="{{ 'companyDetailScreen.departmentInCharge2' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id="departmentInCharge3" matInput type="text" maxlength="50"
+                    formControlName="departmentInCharge3"
+                    placeholder="{{ 'companyDetailScreen.departmentInCharge3' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field">
+                  <input id="personInChargeFirstName" matInput type="text" maxlength="50"
+                    formControlName="personInChargeFirstName"
+                    placeholder="{{ 'companyDetailScreen.personInChargeFirstName' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field">
+                  <input id="personInChargeLastName" matInput type="text" maxlength="50"
+                    formControlName="personInChargeLastName"
+                    placeholder="{{ 'companyDetailScreen.personInChargeLastName' | translate }}">
+                </mat-form-field>
+              </div>
+              <div class="editingInputArea">
+                <mat-form-field class="form-field inputWidthMiddle">
+                  <input id="personInChargeEmailAddress" matInput type="email" maxlength="255"
+                    formControlName="personInChargeEmailAddress"
+                    placeholder="{{ 'companyDetailScreen.personInChargeEmailAddress' | translate }}">
+                  <mat-error *ngIf="personInChargeEmailAddress.hasError('email')">
+                    {{ 'validateErrorMessage.format' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
             </div>
+
+            <!-- Input Area Others -->
+            <div class="subTitleArea">
+              {{ 'companyDetailScreen.subTitle03' | translate }}
+              <div class="editingInputArea">
+                <label class="labelFor"> {{ 'companyDetailScreen.deleted'  | translate}}</label>
+                <mat-checkbox id="deleted" formControlName="deleted"></mat-checkbox>
+                <mat-form-field *ngIf="deleted.value" class="form-field inputWidthShort" style="padding-left: 1rem;">
+                  <input id="deletedDay" matInput type="email" formControlName="deletedDay"
+                    placeholder="{{ 'companyDetailScreen.deletedDay' | translate }}">
+                </mat-form-field>
+              </div>
+            </div>
+
           </mat-card-content>
         </mat-card>
+
         <!-- Button Area -->
         <div class="editingButtonArea">
-          <button mat-raised-button color="primary" id="backBtn" class="btn" type="submit"
+          <button mat-raised-button color="primary" id="backBtn" class="btn" type="button"
             (click)="onBack()">{{ "commonScreen.backBtn" | translate }}
           </button>
           <button mat-raised-button color="primary" id="updateBtn" class="btn" style="margin-left: 2rem;" type="submit"
-            (click)="onUpdate()">{{ "commonScreen.updateBtn" | translate }}
+            [disabled]="!mainForm.valid" (click)="onUpdate()">{{ "commonScreen.updateBtn" | translate }}
           </button>
         </div>
+
       </div>
     </form>
   </div>

@@ -9,6 +9,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { AppConst } from 'src/app/app-const';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-company-list',
@@ -52,16 +53,22 @@ export class CompanyListComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private companyService: CompanyService,
+    private title: Title,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.setUpLocale();
+    this.setUpBrowserTitle();
   }
 
   private setUpLocale() {
     this.locale = AppConst.LOCALE;
     this.timezone = AppConst.TIMEZONE;
+  }
+
+  private setUpBrowserTitle() {
+    this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_COMPANY_LIST);
   }
 
   private onClear() {
