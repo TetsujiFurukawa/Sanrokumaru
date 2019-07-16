@@ -71,6 +71,10 @@ export class CompanyListComponent implements OnInit {
     this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_COMPANY_LIST);
   }
 
+  private onNew() {
+    this.router.navigate(['/company-detail/new']);
+  }
+
   private onClear() {
     this.clearSearchCondition();
     this.clearSearchResultList();

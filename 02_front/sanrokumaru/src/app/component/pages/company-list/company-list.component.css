@@ -1,0 +1,44 @@
+#searchButtonArea {
+  display: grid;
+  padding-top: 0.5rem;
+  align-items: center;
+  justify-items: right;
+  grid-template-columns: 55% 15% 15% 15% 1fr;
+  grid-template-areas:
+    "paginatorArea newBtnArea clearBtnArea searchBtnArea"
+}
+
+#paginatorArea {
+  grid-area: paginatorArea;
+  justify-self: left;
+}
+
+#newBtnArea {
+  grid-area: newBtnArea;
+}
+
+#clearBtnArea {
+  grid-area: clearBtnArea;
+}
+
+#searchBtnArea {
+  grid-area: searchBtnArea;
+}
+
+/* Tablet PC  */
+@media only screen and (min-width: 641px) and (max-width: 1000px) {
+  #searchButtonArea {
+    grid-template-columns: 10% 15% 15% 15% 1fr;
+    grid-template-areas:
+      "paginatorArea newBtnArea clearBtnArea searchBtnArea"
+  }
+}
+
+/* SmartPhone */
+@media screen and (max-width: 640px) {
+  #searchButtonArea {
+    grid-template-columns: 5% 45% 45% 45% 1fr;
+    grid-template-areas:
+      ". newBtnArea clearBtnArea searchBtnArea"
+  }
+}
