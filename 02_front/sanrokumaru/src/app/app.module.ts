@@ -26,6 +26,7 @@ import { CompanyDetailComponent } from './component/pages/company-detail/company
 
 import { registerLocaleData } from '@angular/common';
 import localeJa from '@angular/common/locales/ja';
+import { YesNoDialogComponent } from './component/common/dialog/yes-no-dialog/yes-no-dialog.component';
 
 // 他言語化の設定
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +49,8 @@ registerLocaleData(localeJa, 'ja-JP');
     SidenavComponent,
     MatDatepickerYearComponent,
     CompanyListComponent,
-    CompanyDetailComponent
+    CompanyDetailComponent,
+    YesNoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,9 @@ registerLocaleData(localeJa, 'ja-JP');
         deps: [HttpClient]
       }
     }), ReactiveFormsModule
+  ],
+  entryComponents: [
+    YesNoDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

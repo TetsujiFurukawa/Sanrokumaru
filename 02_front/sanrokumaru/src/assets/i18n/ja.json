@@ -55,7 +55,13 @@
     "personInChargeLastName": "名",
     "personInChargeEmailAddress": "メールアドレス",
     "deleted": "使用終了",
-    "deletedDay": "終了日"
+    "deletedDay": "終了日",
+    "saveYesNoDialog": {
+      "title": "保存確認",
+      "message": "入力した内容を保存しますか？",
+      "captionYes": "はい",
+      "captionNo": "いいえ"
+    }
   },
   "evaluationResultScreen": {
     "title": "評価結果一覧",

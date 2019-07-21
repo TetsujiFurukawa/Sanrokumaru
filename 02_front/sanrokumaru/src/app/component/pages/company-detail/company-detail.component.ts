@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { CompanyService } from 'src/app/service/company/company.service';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
 import { merge, of } from 'rxjs';
-import { startWith, switchMap, map, catchError } from 'rxjs/operators';
-import { HttpParams } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { AppConst } from 'src/app/app-const';
+import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
+import { YesNoDialogData } from 'src/app/entity/dialog/yes-no-dialog-data';
+import { CompanyService } from 'src/app/service/company/company.service';
+
+import { HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
+import { YesNoDialogComponent } from '../../common/dialog/yes-no-dialog/yes-no-dialog.component';
 
 @Component({
   selector: 'app-company-detail',
@@ -59,6 +65,8 @@ export class CompanyDetailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private companyService: CompanyService,
+    private readonly translateService: TranslateService,
+    private dialog: MatDialog,
     private title: Title,
     private router: Router
   ) { }
@@ -75,6 +83,28 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   private onUpdate() {
+    const dialogData: YesNoDialogData = {
+      title: this.translateService.instant('companyDetailScreen.saveYesNoDialog.title'),
+      message: this.translateService.instant('companyDetailScreen.saveYesNoDialog.message'),
+      captionYes: this.translateService.instant('companyDetailScreen.saveYesNoDialog.captionYes'),
+      captionNo: this.translateService.instant('companyDetailScreen.saveYesNoDialog.captionNo')
+    };
+
+    const dialogRef = this.dialog.open(YesNoDialogComponent, {
+      width: '250px',
+      height: '200px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: ${result}');
+      if ('${result}') {
+        this.update();
+      }
+    });
+  }
+
+  private update() {
     merge()
       .pipe(
         startWith({}),

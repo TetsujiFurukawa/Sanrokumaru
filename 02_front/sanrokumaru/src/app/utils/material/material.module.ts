@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -46,7 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatRadioModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     MatGridListModule,
@@ -68,7 +70,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatRadioModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
