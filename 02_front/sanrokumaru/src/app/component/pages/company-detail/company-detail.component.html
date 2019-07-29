@@ -1,7 +1,11 @@
 <div class="mainColor">
+  <div class="loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner class="loading-spinner" *ngIf="isLoadingResults"></mat-spinner>
+  </div>
   <div class="wrapper mainBody">
     <form [formGroup]="mainForm">
       <div class="editingArea">
+
         <mat-card>
           <mat-card-content>
             <app-error-messages></app-error-messages>

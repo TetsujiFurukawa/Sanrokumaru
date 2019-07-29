@@ -14,7 +14,7 @@ import { SignInComponent } from './component/pages/sign-in/sign-in.component';
         { path: 'signIn', component: SignInComponent },
         { path: 'company-list', component: CompanyListComponent },
         { path: 'company-detail/new', component: CompanyDetailComponent },
-        { path: 'company-detail/:id', component: CompanyDetailComponent },
+        { path: 'company-detail/:companySeq', component: CompanyDetailComponent },
         { path: 'evaluation-result', component: EvaluationResultComponent }
       ]
     ),
