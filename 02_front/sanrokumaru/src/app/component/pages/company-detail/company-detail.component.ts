@@ -1,4 +1,4 @@
-import { merge, of } from 'rxjs';
+import { merge, of, never } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { AppConst } from 'src/app/app-const';
 import { CompanyDto } from 'src/app/entity/company/company-dto';
@@ -79,7 +79,7 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   getCompany(companySeq: number) {
-    merge()
+    never()
       .pipe(
         startWith({}),
         switchMap(() => {
