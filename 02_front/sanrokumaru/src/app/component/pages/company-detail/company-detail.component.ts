@@ -130,7 +130,7 @@ export class CompanyDetailComponent implements OnInit {
   private update() {
     const companyDto: CompanyDto = this.createCompanyDto();
 
-    merge()
+    never()
       .pipe(
         startWith({}),
         switchMap(() => {
