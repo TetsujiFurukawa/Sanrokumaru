@@ -1,5 +1,5 @@
-import { merge, of, never } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AppConst } from 'src/app/app-const';
 import { CompanyDto } from 'src/app/entity/company/company-dto';
 import { YesNoDialogData } from 'src/app/entity/dialog/yes-no-dialog-data';
@@ -79,25 +79,19 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   getCompany(companySeq: number) {
-    never()
+    this.isLoadingResults = true;
+
+    this.companyService.getCompany(companySeq)
       .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.companyService.getCompany(companySeq);
-        }),
-
-        map(data => {
-          this.isLoadingResults = false;
-          return data;
-        }),
-
         catchError(() => {
           this.isLoadingResults = false;
           return of(null as any);
         })
 
-      ).subscribe(data => this.extractFromCompanyDto(data));
+      ).subscribe(data => {
+        this.isLoadingResults = false;
+        this.extractFromCompanyDto(data);
+      });
 
   }
 
@@ -128,31 +122,21 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   private update() {
+
+    this.isLoadingResults = true;
     const companyDto: CompanyDto = this.createCompanyDto();
 
-    never()
+    this.companyService.createCompany(companyDto)
       .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          if (companyDto.companySeq == null) {
-            return this.companyService.createCompany(companyDto);
-          } else {
-            return this.companyService.updateCompany(companyDto);
-          }
-        }),
-
-        map(data => {
-          this.isLoadingResults = false;
-          return data;
-        }),
-
         catchError(() => {
           this.isLoadingResults = false;
           return of(null as any);
         })
 
-      ).subscribe(data => this.extractFromCompanyDto(data));
+      ).subscribe(data => {
+        this.isLoadingResults = false;
+        this.extractFromCompanyDto(data);
+      });
 
   }
 
