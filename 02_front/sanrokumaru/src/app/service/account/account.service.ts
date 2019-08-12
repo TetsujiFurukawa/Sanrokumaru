@@ -36,7 +36,7 @@ export class AccountService {
 
     )
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of([]);
         })

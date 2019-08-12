@@ -29,7 +29,7 @@ export class EvaluationService {
 
     return this.http.get<SearchEvaluationResultListDto>(this.server + this.webApiUrl, { params: httpParams })
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })

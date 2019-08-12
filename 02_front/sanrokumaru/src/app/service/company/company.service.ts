@@ -26,7 +26,7 @@ export class CompanyService {
     const webApiUrl: String = 'company-list';
     return this.http.get<SearchCompanyListDto>(this.server + webApiUrl, { params: httpParams })
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })
@@ -44,7 +44,7 @@ export class CompanyService {
     }
     )
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })
@@ -56,7 +56,7 @@ export class CompanyService {
 
     return this.http.post<CompanyDto>(this.server + webApiUrl, companyDto)
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })
@@ -69,7 +69,7 @@ export class CompanyService {
 
     return this.http.put<CompanyDto>(this.server + webApiUrl, companyDto)
       .pipe(
-        catchError(err => {
+        catchError(error => {
           this.errorMessageService.add(this.translateService.instant('errMessage.http'));
           return of(null as any);
         })
