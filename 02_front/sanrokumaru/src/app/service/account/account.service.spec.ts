@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { AccountService } from './account.service';
 
-describe('SidenavService', () => {
+xdescribe('SidenavService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  xit('should be created', () => {
+  it('should be created', () => {
     const service: AccountService = TestBed.get(AccountService);
     expect(service).toBeTruthy();
   });

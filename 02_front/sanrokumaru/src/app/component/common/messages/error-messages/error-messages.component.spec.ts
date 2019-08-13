@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorMessagesComponent } from './error-messages.component';
 
-describe('ErrorMessagesComponent', () => {
+xdescribe('ErrorMessagesComponent', () => {
   let component: ErrorMessagesComponent;
   let fixture: ComponentFixture<ErrorMessagesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorMessagesComponent ]
+      declarations: [ErrorMessagesComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('ErrorMessagesComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

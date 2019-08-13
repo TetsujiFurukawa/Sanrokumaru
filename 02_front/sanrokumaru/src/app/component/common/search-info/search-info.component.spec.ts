@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchInfoComponent } from './search-info.component';
 
-describe('SearchInfoComponent', () => {
+xdescribe('SearchInfoComponent', () => {
   let component: SearchInfoComponent;
   let fixture: ComponentFixture<SearchInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchInfoComponent ]
+      declarations: [SearchInfoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('SearchInfoComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

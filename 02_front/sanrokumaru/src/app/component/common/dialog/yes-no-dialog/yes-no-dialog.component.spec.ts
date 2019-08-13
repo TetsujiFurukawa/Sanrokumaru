@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { YesNoDialogComponent } from './yes-no-dialog.component';
 
-describe('YesNoDialogComponent', () => {
+xdescribe('YesNoDialogComponent', () => {
   let component: YesNoDialogComponent;
   let fixture: ComponentFixture<YesNoDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YesNoDialogComponent ]
+      declarations: [YesNoDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('YesNoDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
