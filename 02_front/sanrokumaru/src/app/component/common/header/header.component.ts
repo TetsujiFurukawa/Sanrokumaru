@@ -12,10 +12,10 @@ import { AvailableMenuListDto } from 'src/app/entity/account/available-menu-list
 export class HeaderComponent implements OnInit {
 
   // 親コンポーネントとの連係
-  @Output() public sidenavToggle = new EventEmitter();
+  @Output() sidenavToggle = new EventEmitter();
 
   // メニュー
-  public availableMenuListDtoLists: AvailableMenuListDto[];
+  availableMenuListDtoLists: AvailableMenuListDto[];
 
   constructor(
     private accountService: AccountService,
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   /**
    * イベントを発生する。
    */
-  public onToggleSidenav = () => {
+  onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }
 }

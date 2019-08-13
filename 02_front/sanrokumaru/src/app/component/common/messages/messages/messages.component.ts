@@ -8,7 +8,7 @@ import { MessageService } from 'src/app/service/message/message.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
     this.messageService.clear();

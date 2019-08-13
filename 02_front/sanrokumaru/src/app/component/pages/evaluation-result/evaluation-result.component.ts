@@ -94,14 +94,14 @@ export class EvaluationResultComponent implements OnInit {
   onReceiveEventFromChild(eventData: String) {
     this.yearFrom.setValue(eventData);
   }
-  private onClear() {
+  onClear() {
 
     this.clearSearchCondition();
     this.clearSearchResultList();
 
   }
 
-  private onSearch() {
+  onSearch() {
 
     merge(this.paginator.page)
       .pipe(

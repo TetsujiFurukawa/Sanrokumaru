@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
-import { DateAdapter } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +9,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 export class AppComponent {
 
   constructor(
-    private translate: TranslateService,
-    public router: Router
+    private translate: TranslateService
   ) {
     // 言語の初期設定
     this.translate.setDefaultLang('en');

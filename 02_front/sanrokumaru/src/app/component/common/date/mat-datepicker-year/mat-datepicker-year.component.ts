@@ -46,11 +46,11 @@ export class MatDatepickerYearComponent implements OnInit {
     this.adapter.setLocale(this.locale);
     this.event.emit(this.year.value);
   }
-  public reset() {
+  reset() {
     this.year.setValue(moment());
   }
 
-  private chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
+  chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.year.value;
     ctrlValue.year(normalizedYear.year());
     this.year.setValue(ctrlValue);
@@ -58,7 +58,7 @@ export class MatDatepickerYearComponent implements OnInit {
     datepicker.close();
   }
 
-  private addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.event.emit(this.year.value);
   }
 

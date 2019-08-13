@@ -95,11 +95,11 @@ export class CompanyDetailComponent implements OnInit {
 
   }
 
-  private onBack() {
+  onBack() {
     this.router.navigate(['/company-list']);
   }
 
-  private onUpdate() {
+  onUpdate() {
     const dialogData: YesNoDialogData = {
       title: this.translateService.instant('companyDetailScreen.saveYesNoDialog.title'),
       message: this.translateService.instant('companyDetailScreen.saveYesNoDialog.message'),

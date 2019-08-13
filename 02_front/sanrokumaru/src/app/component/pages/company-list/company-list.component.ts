@@ -71,16 +71,16 @@ export class CompanyListComponent implements OnInit {
     this.title.setTitle(AppConst.APP_TITLE + AppConst.APP_SUB_TITLE_COMPANY_LIST);
   }
 
-  private onNew() {
+  onNew() {
     this.router.navigate(['/company-detail/new']);
   }
 
-  private onClear() {
+  onClear() {
     this.clearSearchCondition();
     this.clearSearchResultList();
   }
 
-  private onSearch() {
+  onSearch() {
     merge(this.paginator.page)
       .pipe(
         startWith({}),
