@@ -39,7 +39,7 @@ export class CompanyService {
 
     return this.http.get<CompanyDto>(this.server + webApiUrl, {
       params: {
-        companySeq: `${companySeq}`
+        companySeq: '${companySeq}'
       }
     }
     )
