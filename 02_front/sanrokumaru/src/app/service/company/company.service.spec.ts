@@ -2,9 +2,11 @@ import { CompanyService } from './company.service';
 import { ErrorMessageService } from 'src/app/service/message/error-message.service';
 import { SearchCompanyListDto } from 'src/app/entity/company/search-company-list-dto';
 import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { asyncError, asyncData } from 'src/app/testing/async-observable-helpers';
 import { CompanyDto } from 'src/app/entity/company/company-dto';
+import { TestBed } from '@angular/core/testing';
+import { TranslateService } from '@ngx-translate/core';
 
 describe('CompanyService', () => {
   let companyService: CompanyService;
@@ -14,10 +16,19 @@ describe('CompanyService', () => {
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put']);
     translateServiceSpy = jasmine.createSpyObj('TranslateService', ['instant']);
-    companyService = new CompanyService(
-      <any>httpClientSpy,
-      new ErrorMessageService(),
-      <any>translateServiceSpy);
+    TestBed.configureTestingModule({
+      providers: [
+        CompanyService,
+        { provide: HttpClient, useValue: httpClientSpy },
+        ErrorMessageService,
+        { provide: TranslateService, useValue: translateServiceSpy },
+      ],
+    });
+    companyService = TestBed.get(CompanyService);
+    // companyService = new CompanyService(
+    //   <any>httpClientSpy,
+    //   new ErrorMessageService(),
+    //   <any>translateServiceSpy);
   });
 
   it('should be created', () => {
