@@ -116,7 +116,7 @@ export class CompanyListComponent implements OnInit {
 
         catchError(() => {
           this.isLoadingResults = false;
-          return of(null as any);
+          return of(null as SearchCompanyDto[]);
         })
 
       ).subscribe(data => this.searchCompanyDtos = data);

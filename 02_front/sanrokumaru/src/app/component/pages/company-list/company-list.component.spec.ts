@@ -1,16 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CompanyListComponent } from './company-list.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { CompanyService } from 'src/app/service/company/company.service';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { TranslateService, TranslatePipe, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
+import { CompanyService } from 'src/app/service/company/company.service';
+import { MaterialModule } from 'src/app/utils/material/material.module';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { MaterialModule } from 'src/app/utils/material/material.module';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
+
+import { CompanyListComponent } from './company-list.component';
+import { AppConst } from 'src/app/app-const';
 
 describe('CompanyListComponent', () => {
   let component: CompanyListComponent;
@@ -24,6 +26,7 @@ describe('CompanyListComponent', () => {
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     companyServiceSpy = jasmine.createSpyObj('CompanyService', ['getCompanyList']);
     translatePipeSpy = jasmine.createSpyObj('TranslatePipe', ['translate']);
+
 
     TestBed.configureTestingModule({
       declarations: [CompanyListComponent],
@@ -57,4 +60,44 @@ describe('CompanyListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('locale and timezone should be set when called ngOnInit', () => {
+    component.ngOnInit();
+    expect(component.locale).toEqual(AppConst.LOCALE);
+    expect(component.timezone).toEqual(AppConst.TIMEZONE);
+  });
+
+  it('locale and timezone should be set when called setUpLocale', () => {
+    component['setUpLocale']();
+    expect(component.locale).toEqual(AppConst.LOCALE);
+    expect(component.timezone).toEqual(AppConst.TIMEZONE);
+  });
+
+  // it('browser title should be set when called setUpBrowserTitle', () => {
+  //   component['setUpBrowserTitle']();
+  //   expect(component.locale).toEqual(AppConst.LOCALE);
+  // });
+
+  it('should navigate when called onNew', () => {
+    component['onNew']();
+    expect(routerSpy.navigate.calls.count()).toBe(1, 'one call');
+  });
+
+  it('should navigate when called onClear', () => {
+    fillSearchCriteria(component);
+    component['onClear']();
+    expect(component.companyName.value).toEqual('');
+    expect(component.companyKana.value).toEqual('');
+    expect(component.deleted.value).toEqual('');
+  });
+
+
+
+
 });
+function fillSearchCriteria(component: CompanyListComponent) {
+  component.companyName.setValue('a');
+  component.companyKana.setValue('a');
+  component.deleted.setValue(true);
+}
+
