@@ -4,7 +4,7 @@ import { MaterialModule } from 'src/app/utils/material/material.module';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,10 @@ import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/
 
 import { CompanyListComponent } from './company-list.component';
 import { AppConst } from 'src/app/app-const';
+import { throwError, Observable } from 'rxjs';
+import { SearchCompanyListDto } from 'src/app/entity/company/search-company-list-dto';
+import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
+import { asyncData } from 'src/app/testing/async-observable-helpers';
 
 describe('CompanyListComponent', () => {
   let component: CompanyListComponent;
@@ -91,8 +95,44 @@ describe('CompanyListComponent', () => {
     expect(component.deleted.value).toEqual('');
   });
 
+  it('should get SearchCompanyListDto when called onSearch', () => {
+    component['onSearch']();
+    expect(component.isLoadingResults).toEqual(false);
+    expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
+  });
 
+  it('should catch error when called onSearch', () => {
+    component['onSearch']();
+    companyServiceSpy.getCompanyList.and.returnValue(throwError(''));
+    expect(component.isLoadingResults).toEqual(false);
+  });
 
+  // it('should get SearchCompanyListDto when called onSearch', () => {
+  //   const expectedSearchCompanyListDto: SearchCompanyListDto = new SearchCompanyListDto();
+  //   const searchCompanyDto: SearchCompanyDto[] =
+  //     [{
+  //       companySeq: BigInt('1'),
+  //       companyName: 'companyName',
+  //       companyKana: 'companyKana',
+  //       companyAddress1: 'companyAddress1',
+  //       deleted: '',
+  //       createUser: 'createUser',
+  //       createTime: new Date,
+  //       updateUser: 'updateUser',
+  //       updateTime: new Date
+  //     }];
+  //   expectedSearchCompanyListDto.searchCompanyDtos = searchCompanyDto;
+
+  //   companyServiceSpy.getCompanyList.and.returnValue(new Observable());
+
+  //   companyServiceSpy.getCompanyList(null).subscribe(
+  //     expect(component.searchCompanyDtos).toEqual(expectedSearchCompanyListDto.searchCompanyDtos)
+  //   );
+
+  //   component['onSearch']();
+  //   expect(component.isLoadingResults).toEqual(false);
+  //   expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
+  // });
 
 });
 function fillSearchCriteria(component: CompanyListComponent) {
