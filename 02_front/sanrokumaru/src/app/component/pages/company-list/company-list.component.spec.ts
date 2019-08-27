@@ -31,7 +31,6 @@ describe('CompanyListComponent', () => {
     companyServiceSpy = jasmine.createSpyObj('CompanyService', ['getCompanyList']);
     translatePipeSpy = jasmine.createSpyObj('TranslatePipe', ['translate']);
 
-
     TestBed.configureTestingModule({
       declarations: [CompanyListComponent],
       schemas: [NO_ERRORS_SCHEMA],
@@ -61,6 +60,9 @@ describe('CompanyListComponent', () => {
     fixture.detectChanges();
   });
 
+  /**
+   * Type Script test cases.
+   */
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -107,32 +109,33 @@ describe('CompanyListComponent', () => {
     expect(component.isLoadingResults).toEqual(false);
   });
 
-  // it('should get SearchCompanyListDto when called onSearch', () => {
-  //   const expectedSearchCompanyListDto: SearchCompanyListDto = new SearchCompanyListDto();
-  //   const searchCompanyDto: SearchCompanyDto[] =
-  //     [{
-  //       companySeq: BigInt('1'),
-  //       companyName: 'companyName',
-  //       companyKana: 'companyKana',
-  //       companyAddress1: 'companyAddress1',
-  //       deleted: '',
-  //       createUser: 'createUser',
-  //       createTime: new Date,
-  //       updateUser: 'updateUser',
-  //       updateTime: new Date
-  //     }];
-  //   expectedSearchCompanyListDto.searchCompanyDtos = searchCompanyDto;
+  it('should call map operator when called onSearch', () => {
+    const expectedSearchCompanyListDto: SearchCompanyListDto = new SearchCompanyListDto();
+    const searchCompanyDto: SearchCompanyDto[] =
+      [{
+        companySeq: BigInt('1'),
+        companyName: 'companyName',
+        companyKana: 'companyKana',
+        companyAddress1: 'companyAddress1',
+        deleted: '',
+        createUser: 'createUser',
+        createTime: new Date,
+        updateUser: 'updateUser',
+        updateTime: new Date
+      }];
+    expectedSearchCompanyListDto.searchCompanyDtos = searchCompanyDto;
+    companyServiceSpy.getCompanyList.and.returnValue(asyncData(expectedSearchCompanyListDto));
 
-  //   companyServiceSpy.getCompanyList.and.returnValue(new Observable());
+    component['onSearch']();
+    expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
+  });
 
-  //   companyServiceSpy.getCompanyList(null).subscribe(
-  //     expect(component.searchCompanyDtos).toEqual(expectedSearchCompanyListDto.searchCompanyDtos)
-  //   );
-
-  //   component['onSearch']();
-  //   expect(component.isLoadingResults).toEqual(false);
-  //   expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
-  // });
+  it('should navigate when called listClicked', () => {
+    const searchCompanyDto: SearchCompanyDto = new SearchCompanyDto();
+    searchCompanyDto.companySeq = BigInt('1');
+    component['listClicked'](searchCompanyDto);
+    expect(routerSpy.navigate.calls.count()).toBe(1, 'one call');
+  });
 
 });
 function fillSearchCriteria(component: CompanyListComponent) {
