@@ -3,10 +3,10 @@ import { CompanyService } from 'src/app/service/company/company.service';
 import { MaterialModule } from 'src/app/utils/material/material.module';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
+import { Title, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
@@ -60,13 +60,13 @@ describe('CompanyListComponent', () => {
     fixture.detectChanges();
   });
 
-  /**
-   * Type Script test cases.
-   */
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
+  /**
+   * Type Script test cases.
+   */
   it('locale and timezone should be set when called ngOnInit', () => {
     component.ngOnInit();
     expect(component.locale).toEqual(AppConst.LOCALE);
@@ -97,19 +97,19 @@ describe('CompanyListComponent', () => {
     expect(component.deleted.value).toEqual('');
   });
 
-  it('should get SearchCompanyListDto when called onSearch', () => {
-    component['onSearch']();
+  it('should get SearchCompanyListDto when called onSearch', async () => {
+    await component['onSearch']();
     expect(component.isLoadingResults).toEqual(false);
     expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
   });
 
-  it('should catch error when called onSearch', () => {
-    component['onSearch']();
+  it('should catch error when called onSearch', async () => {
+    await component['onSearch']();
     companyServiceSpy.getCompanyList.and.returnValue(throwError(''));
     expect(component.isLoadingResults).toEqual(false);
   });
 
-  it('should call map operator when called onSearch', () => {
+  it('should call map operator when called onSearch', async () => {
     const expectedSearchCompanyListDto: SearchCompanyListDto = new SearchCompanyListDto();
     const searchCompanyDto: SearchCompanyDto[] =
       [{
@@ -126,7 +126,9 @@ describe('CompanyListComponent', () => {
     expectedSearchCompanyListDto.searchCompanyDtos = searchCompanyDto;
     companyServiceSpy.getCompanyList.and.returnValue(asyncData(expectedSearchCompanyListDto));
 
-    component['onSearch']();
+    await component['onSearch']();
+    expect(component.searchCompanyDtos).toEqual(expectedSearchCompanyListDto.searchCompanyDtos);
+    expect(component.isLoadingResults).toEqual(false);
     expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
   });
 
@@ -137,10 +139,59 @@ describe('CompanyListComponent', () => {
     expect(routerSpy.navigate.calls.count()).toBe(1, 'one call');
   });
 
+  /**
+   * DOM test cases.
+   */
+  it('should set company name with searchCondition1', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('#searchCondition1'));
+    const htmlElement: HTMLElement = queriedElement.nativeElement;
+    expect(htmlElement.textContent).toContain('companyListScreen.companyName');
+  });
+
+  it('should set company kana with searchCondition2', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('#searchCondition2'));
+    const htmlElement: HTMLElement = queriedElement.nativeElement;
+    expect(htmlElement.textContent).toContain('companyListScreen.companyKana');
+  });
+
+  it('should set deleted with searchCondition3', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('#searchCondition3'));
+    const htmlElement: HTMLElement = queriedElement.nativeElement;
+    expect(htmlElement.textContent).toContain('companyListScreen.deleted');
+  });
+
+  it('verify initial value of searchConditions', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    let queriedElement = debugElement.query(By.css('#companyName'));
+    let htmlElement: HTMLInputElement = queriedElement.nativeElement;
+    expect(htmlElement.textContent).toEqual('');
+
+    queriedElement = debugElement.query(By.css('#companyKana'));
+    htmlElement = queriedElement.nativeElement;
+    expect(htmlElement.textContent).toEqual('');
+
+    queriedElement = debugElement.query(By.css('#deleted'));
+    htmlElement = queriedElement.nativeElement;
+    expect(htmlElement.checked).toBeUndefined();
+  });
+
+  it('should entry company name', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('#companyName'));
+    const htmlInputElement: HTMLInputElement = queriedElement.nativeElement;
+    const expectedEntry = 'abcd1234日本語';
+
+    htmlInputElement.value = expectedEntry;
+    htmlInputElement.dispatchEvent(new Event('input'));
+    expect(component.companyName.value).toEqual(expectedEntry);
+  });
+
 });
 function fillSearchCriteria(component: CompanyListComponent) {
   component.companyName.setValue('a');
   component.companyKana.setValue('a');
   component.deleted.setValue(true);
 }
-
