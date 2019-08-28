@@ -25,7 +25,7 @@ export class CompanyListComponent implements OnInit {
   // Search criteria controls
   companyName = new FormControl('', []);
   companyKana = new FormControl('', []);
-  deleted = new FormControl('', []);
+  deleted = new FormControl(false);
 
   // Form builder
   mainForm = this.formBuilder.group({
@@ -129,8 +129,7 @@ export class CompanyListComponent implements OnInit {
     const conditions = {
       companyName: this.companyName.value,
       companyKana: this.companyKana.value,
-      deleted: this.deleted.value,
-
+      deleted: this.deleted.value.toString(),
       pageSize: this.paginator.pageSize.toString(),
       pageIndex: this.paginator.pageIndex.toString()
     };
@@ -147,7 +146,7 @@ export class CompanyListComponent implements OnInit {
   private clearSearchCondition() {
     this.companyName.setValue('');
     this.companyKana.setValue('');
-    this.deleted.setValue('');
+    this.deleted.setValue(false);
   }
 
   /**

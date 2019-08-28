@@ -2,7 +2,7 @@ import { HttpLoaderFactory } from 'src/app/app.module';
 import { CompanyService } from 'src/app/service/company/company.service';
 import { MaterialModule } from 'src/app/utils/material/material.module';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/
 
 import { CompanyListComponent } from './company-list.component';
 import { AppConst } from 'src/app/app-const';
-import { throwError, Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { SearchCompanyListDto } from 'src/app/entity/company/search-company-list-dto';
 import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
 import { asyncData } from 'src/app/testing/async-observable-helpers';
@@ -94,7 +94,7 @@ describe('CompanyListComponent', () => {
     component['onClear']();
     expect(component.companyName.value).toEqual('');
     expect(component.companyKana.value).toEqual('');
-    expect(component.deleted.value).toEqual('');
+    expect(component.deleted.value).toEqual(false);
   });
 
   it('should get SearchCompanyListDto when called onSearch', async () => {
@@ -166,16 +166,16 @@ describe('CompanyListComponent', () => {
   it('verify initial value of searchConditions', () => {
     const debugElement: DebugElement = fixture.debugElement;
     let queriedElement = debugElement.query(By.css('#companyName'));
-    let htmlElement: HTMLInputElement = queriedElement.nativeElement;
-    expect(htmlElement.textContent).toEqual('');
+    let htmlInputElement: HTMLInputElement = queriedElement.nativeElement;
+    expect(htmlInputElement.textContent).toEqual('');
 
     queriedElement = debugElement.query(By.css('#companyKana'));
-    htmlElement = queriedElement.nativeElement;
-    expect(htmlElement.textContent).toEqual('');
+    htmlInputElement = queriedElement.nativeElement;
+    expect(htmlInputElement.textContent).toEqual('');
 
-    queriedElement = debugElement.query(By.css('#deleted'));
-    htmlElement = queriedElement.nativeElement;
-    expect(htmlElement.checked).toBeUndefined();
+    queriedElement = debugElement.query(By.css('.mat-checkbox-inner-container'));
+    htmlInputElement = queriedElement.nativeElement;
+    expect(htmlInputElement.checked).toBeUndefined();
   });
 
   it('should entry company name', () => {
@@ -187,6 +187,62 @@ describe('CompanyListComponent', () => {
     htmlInputElement.value = expectedEntry;
     htmlInputElement.dispatchEvent(new Event('input'));
     expect(component.companyName.value).toEqual(expectedEntry);
+  });
+
+  it('should entry company kana', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('#companyKana'));
+    const htmlInputElement: HTMLInputElement = queriedElement.nativeElement;
+    const expectedEntry = 'アイウエオカキクケコ';
+
+    htmlInputElement.value = expectedEntry;
+    htmlInputElement.dispatchEvent(new Event('input'));
+    expect(component.companyKana.value).toEqual(expectedEntry);
+  });
+
+  /** The material check box is different from normal. */
+  it('should entry deleted', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+    const queriedElement = debugElement.query(By.css('.mat-checkbox-inner-container'));
+    const htmlInputElement: HTMLInputElement = queriedElement.nativeElement;
+
+    htmlInputElement.click();
+    fixture.detectChanges();
+    expect(component.mainForm.value.deleted).toBe(true);
+
+  });
+
+  it('should create http param', () => {
+    const debugElement: DebugElement = fixture.debugElement;
+
+    let queriedElement = debugElement.query(By.css('#companyName'));
+    const htmlInputElement: HTMLInputElement = queriedElement.nativeElement;
+    const expectedEntry = 'abcd1234日本語';
+    htmlInputElement.value = expectedEntry;
+    htmlInputElement.dispatchEvent(new Event('input'));
+
+    queriedElement = debugElement.query(By.css('#companyKana'));
+    const htmlInputElementKana: HTMLInputElement = queriedElement.nativeElement;
+    const expectedEntryKana = 'アイウエオカキクケコ';
+    htmlInputElementKana.value = expectedEntryKana;
+    htmlInputElementKana.dispatchEvent(new Event('input'));
+
+    queriedElement = debugElement.query(By.css('.mat-checkbox-inner-container'));
+    const htmlInputElementDeleted: HTMLInputElement = queriedElement.nativeElement;
+    htmlInputElementDeleted.click();
+    fixture.detectChanges();
+
+    const conditions = {
+      companyName: expectedEntry,
+      companyKana: expectedEntryKana,
+      deleted: 'true',
+      pageSize: '50',
+      pageIndex: '0',
+    };
+    const paramsOptions = <any>{ fromObject: conditions };
+    const expectedHttpParams = new HttpParams(paramsOptions);
+
+    expect(component['createHttpParams']()).toEqual(expectedHttpParams);
   });
 
 });
