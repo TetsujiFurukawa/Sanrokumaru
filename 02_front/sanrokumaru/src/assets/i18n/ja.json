@@ -19,8 +19,8 @@
   "companyListScreen": {
     "title": "企業一覧",
     "companyName": "企業名",
-    "companyKana": "企業かな",
-    "deleted": "終了",
+    "companyKana": "企業カナ",
+    "deleted": "削除済み",
     "newBtn": "新規",
     "clearBtn": "クリア",
     "searchBtn": "検索",

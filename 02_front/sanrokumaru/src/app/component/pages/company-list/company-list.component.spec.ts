@@ -1,22 +1,22 @@
+import { throwError } from 'rxjs';
+import { AppConst } from 'src/app/app-const';
 import { HttpLoaderFactory } from 'src/app/app.module';
+import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
+import { SearchCompanyListDto } from 'src/app/entity/company/search-company-list-dto';
 import { CompanyService } from 'src/app/service/company/company.service';
+import { asyncData } from 'src/app/testing/async-observable-helpers';
 import { MaterialModule } from 'src/app/utils/material/material.module';
 
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
-import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Title, By } from '@angular/platform-browser';
+import { By, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 import { CompanyListComponent } from './company-list.component';
-import { AppConst } from 'src/app/app-const';
-import { throwError } from 'rxjs';
-import { SearchCompanyListDto } from 'src/app/entity/company/search-company-list-dto';
-import { SearchCompanyDto } from 'src/app/entity/company/search-company-dto';
-import { asyncData } from 'src/app/testing/async-observable-helpers';
 
 describe('CompanyListComponent', () => {
   let component: CompanyListComponent;
