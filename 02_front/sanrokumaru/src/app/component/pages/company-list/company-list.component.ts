@@ -34,8 +34,10 @@ export class CompanyListComponent implements OnInit {
     deleted: this.deleted
   });
 
-  // Search related variables
+  // Search result dto
   searchCompanyDtos: SearchCompanyDto[];
+
+  // Material tables header
   displayCompanyListColumns: string[] = [
     'companySeq',
     'companyName',
@@ -48,8 +50,9 @@ export class CompanyListComponent implements OnInit {
     'updateTime',
   ];
 
-  resultsLength = 0;
+  // Loading and pagenation
   isLoadingResults = false;
+  resultsLength = 0;
   @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
   constructor(

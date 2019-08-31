@@ -79,6 +79,7 @@ describe('CompanyListComponent', () => {
     expect(component.timezone).toEqual(AppConst.TIMEZONE);
   });
 
+  // TBD
   // it('browser title should be set when called setUpBrowserTitle', () => {
   //   component['setUpBrowserTitle']();
   //   expect(component.locale).toEqual(AppConst.LOCALE);
@@ -95,18 +96,6 @@ describe('CompanyListComponent', () => {
     expect(component.companyName.value).toEqual('');
     expect(component.companyKana.value).toEqual('');
     expect(component.deleted.value).toEqual(false);
-  });
-
-  it('should get SearchCompanyListDto when called onSearch', async () => {
-    await component['onSearch']();
-    expect(component.isLoadingResults).toEqual(false);
-    expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
-  });
-
-  it('should catch error when called onSearch', async () => {
-    await component['onSearch']();
-    companyServiceSpy.getCompanyList.and.returnValue(throwError(''));
-    expect(component.isLoadingResults).toEqual(false);
   });
 
   it('should call map operator when called onSearch', async () => {
@@ -130,6 +119,12 @@ describe('CompanyListComponent', () => {
     expect(component.searchCompanyDtos).toEqual(expectedSearchCompanyListDto.searchCompanyDtos);
     expect(component.isLoadingResults).toEqual(false);
     expect(companyServiceSpy.getCompanyList.calls.count()).toBe(1, 'one call');
+  });
+
+  it('should catch error when called onSearch', async () => {
+    await component['onSearch']();
+    companyServiceSpy.getCompanyList.and.returnValue(throwError(''));
+    expect(component.isLoadingResults).toEqual(false);
   });
 
   it('should navigate when called listClicked', () => {
