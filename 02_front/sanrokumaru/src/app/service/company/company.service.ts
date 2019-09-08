@@ -24,6 +24,7 @@ export class CompanyService {
 
   public getCompanyList(httpParams: HttpParams): Observable<SearchCompanyListDto> {
     const webApiUrl: String = 'company-list';
+
     return this.http.get<SearchCompanyListDto>(this.server + webApiUrl, { params: httpParams })
       .pipe(
         catchError(error => {
@@ -31,7 +32,6 @@ export class CompanyService {
           return of(null as SearchCompanyListDto);
         })
       );
-
   }
 
   public getCompany(companySeq: number): Observable<CompanyDto> {
@@ -61,7 +61,6 @@ export class CompanyService {
           return of(null as CompanyDto);
         })
       );
-
   }
 
   public updateCompany(companyDto: CompanyDto): Observable<CompanyDto> {
@@ -74,7 +73,6 @@ export class CompanyService {
           return of(null as CompanyDto);
         })
       );
-
   }
 
 }
