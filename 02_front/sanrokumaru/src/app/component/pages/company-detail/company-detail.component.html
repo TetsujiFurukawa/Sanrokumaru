@@ -16,7 +16,7 @@
             <!-- Input Area Company Information-->
             <div class="subTitleArea">
               {{ 'companyDetailScreen.subTitle01' | translate }}
-              <div class="editingInputArea">
+              <div class="editingInputArea" *ngIf="this.router.url!=='/company-detail/new'">
                 <mat-form-field class="form-field inputWidthShort">
                   <input id="companySeq" matInput type="text"
                     placeholder="{{ 'companyDetailScreen.companySeq' | translate }} " disabled value={{companySeq}}>

@@ -70,8 +70,10 @@ export class CompanyDetailComponent implements OnInit {
 
   ngOnInit() {
     this.setUpBrowserTitle();
-    const companySeq = +this.route.snapshot.paramMap.get('companySeq');
-    this.getCompany(companySeq);
+    if (this.router.url !== '/company-detail/new') {
+      const companySeq = +this.route.snapshot.paramMap.get('companySeq');
+      this.getCompany(companySeq);
+    }
   }
 
   private setUpBrowserTitle() {
